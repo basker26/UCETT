@@ -1,0 +1,296 @@
+<style>@page WordSection1{size: 841.95pt 595.35pt;mso-page-orientation: landscape;}div.WordSection1 {page: WordSection1;}table{border-collapse:collapse;}td{border:1px gray solid;width:5em;padding:2px;}</style><html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export Table to Word</title></head><body><table border='1' cellpadding='1' cellspacing='1'>
+    <thead>
+          <tr><th style="padding: 0px;"><h6><strong>DAY </strong></h6></th>
+          <th style="text-align: center; padding: 0px;">9:00-10:00</th>
+          <th style="text-align: center;padding: 0px;">10:00-11:00</th>
+          <th style="text-align: center;padding: 0px;">11:00-12:00</th>
+          <th style="text-align: center;padding: 0px;">12:00-1:00</th>
+          <!-- <th style="text-align: center;">1:00-2:00</th> -->
+          <th style="text-align: center;padding: 0px;">2:00-3:00</th>
+          <th style="text-align: center;padding: 0px;">3:00-4:00</th>
+          <th style="text-align: center;padding: 0px;">4:00-5:00</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        <!-- ng-init="seggregate(f)" -->
+        <!-- ng-attr-colspan="{{f.sem}}" -->
+      <!-- ngRepeat: f in weekdata.datas --><tr ng-repeat="f in weekdata.datas" ng-init="seggregate(f)" class="ng-scope">
+         <td class="ng-binding">Monday</td>
+         <!-- ngIf: f.p1b --><td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}" style="text-align: center;" class="ng-binding ng-scope" colspan="3">BEE ( GKK/ ) -I( CSE, S-IV Lab )</td><!-- end ngIf: f.p1b -->
+         <!-- ngIf: f.p2b -->
+         <!-- ngIf: f.p3b -->
+         <!-- ngIf: f.p4b --><td ng-if="f.p4b" ng-attr-colspan="{{f.p4col}}" style="text-align: center;" class="ng-binding ng-scope" colspan="1"></td><!-- end ngIf: f.p4b -->
+         <!-- <td>{{f.p5}}</td> -->
+         <!-- ngIf: f.p6b --><td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}" style="text-align: center;" class="ng-binding ng-scope" colspan="3"></td><!-- end ngIf: f.p6b -->
+         <!-- ngIf: f.p7b -->
+         <!-- ngIf: f.p8b -->
+       
+
+      </tr><!-- end ngRepeat: f in weekdata.datas --><tr ng-repeat="f in weekdata.datas" ng-init="seggregate(f)" class="ng-scope">
+         <td class="ng-binding">Tuesday</td>
+         <!-- ngIf: f.p1b --><td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}" style="text-align: center;" class="ng-binding ng-scope" colspan="4"></td><!-- end ngIf: f.p1b -->
+         <!-- ngIf: f.p2b -->
+         <!-- ngIf: f.p3b -->
+         <!-- ngIf: f.p4b -->
+         <!-- <td>{{f.p5}}</td> -->
+         <!-- ngIf: f.p6b --><td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}" style="text-align: center;" class="ng-binding ng-scope" colspan="3"></td><!-- end ngIf: f.p6b -->
+         <!-- ngIf: f.p7b -->
+         <!-- ngIf: f.p8b -->
+       
+
+      </tr><!-- end ngRepeat: f in weekdata.datas --><tr ng-repeat="f in weekdata.datas" ng-init="seggregate(f)" class="ng-scope">
+         <td class="ng-binding">Wednesday</td>
+         <!-- ngIf: f.p1b --><td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}" style="text-align: center;" class="ng-binding ng-scope" colspan="4"></td><!-- end ngIf: f.p1b -->
+         <!-- ngIf: f.p2b -->
+         <!-- ngIf: f.p3b -->
+         <!-- ngIf: f.p4b -->
+         <!-- <td>{{f.p5}}</td> -->
+         <!-- ngIf: f.p6b --><td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}" style="text-align: center;" class="ng-binding ng-scope" colspan="3"></td><!-- end ngIf: f.p6b -->
+         <!-- ngIf: f.p7b -->
+         <!-- ngIf: f.p8b -->
+       
+
+      </tr><!-- end ngRepeat: f in weekdata.datas --><tr ng-repeat="f in weekdata.datas" ng-init="seggregate(f)" class="ng-scope">
+         <td class="ng-binding">Thursday</td>
+         <!-- ngIf: f.p1b --><td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}" style="text-align: center;" class="ng-binding ng-scope" colspan="4"></td><!-- end ngIf: f.p1b -->
+         <!-- ngIf: f.p2b -->
+         <!-- ngIf: f.p3b -->
+         <!-- ngIf: f.p4b -->
+         <!-- <td>{{f.p5}}</td> -->
+         <!-- ngIf: f.p6b --><td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}" style="text-align: center;" class="ng-binding ng-scope" colspan="3"></td><!-- end ngIf: f.p6b -->
+         <!-- ngIf: f.p7b -->
+         <!-- ngIf: f.p8b -->
+       
+
+      </tr><!-- end ngRepeat: f in weekdata.datas --><tr ng-repeat="f in weekdata.datas" ng-init="seggregate(f)" class="ng-scope">
+         <td class="ng-binding">Friday</td>
+         <!-- ngIf: f.p1b --><td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}" style="text-align: center;" class="ng-binding ng-scope" colspan="4"></td><!-- end ngIf: f.p1b -->
+         <!-- ngIf: f.p2b -->
+         <!-- ngIf: f.p3b -->
+         <!-- ngIf: f.p4b -->
+         <!-- <td>{{f.p5}}</td> -->
+         <!-- ngIf: f.p6b --><td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}" style="text-align: center;" class="ng-binding ng-scope" colspan="3"></td><!-- end ngIf: f.p6b -->
+         <!-- ngIf: f.p7b -->
+         <!-- ngIf: f.p8b -->
+       
+
+      </tr><!-- end ngRepeat: f in weekdata.datas --><tr ng-repeat="f in weekdata.datas" ng-init="seggregate(f)" class="ng-scope">
+         <td class="ng-binding">Saturday</td>
+         <!-- ngIf: f.p1b --><td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}" style="text-align: center;" class="ng-binding ng-scope" colspan="4"></td><!-- end ngIf: f.p1b -->
+         <!-- ngIf: f.p2b -->
+         <!-- ngIf: f.p3b -->
+         <!-- ngIf: f.p4b -->
+         <!-- <td>{{f.p5}}</td> -->
+         <!-- ngIf: f.p6b --><td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}" style="text-align: center;" class="ng-binding ng-scope" colspan="3"></td><!-- end ngIf: f.p6b -->
+         <!-- ngIf: f.p7b -->
+         <!-- ngIf: f.p8b -->
+       
+
+      </tr><!-- end ngRepeat: f in weekdata.datas -->
+    </tbody>
+  </table><table border='1' cellpadding='1' cellspacing='1'>
+    <thead>
+        <tr>
+          <th>S no</th>  
+          <th scope="col">Subject Name</th>
+          <th scope="col">Elective</th>
+
+          <th scope="col">Faculty Name</th>
+
+        </tr>
+      </thead>
+    <tbody>
+      <!-- ngRepeat: p in weekdata.theory --><tr ng-repeat="p in weekdata.theory" class="ng-scope">
+          <td class="ng-binding">1</td>
+          <td class="ng-binding">Basic Electronics Engineering</td>
+          <td class="ng-binding">----</td>
+
+          <td class="ng-binding">Mr.G.Kishore Kumar</td>
+      </tr><!-- end ngRepeat: p in weekdata.theory --><tr ng-repeat="p in weekdata.theory" class="ng-scope">
+          <td class="ng-binding">2</td>
+          <td class="ng-binding">Logic and Switching Theory</td>
+          <td class="ng-binding">----</td>
+
+          <td class="ng-binding">Mr.M.Venkat Dass</td>
+      </tr><!-- end ngRepeat: p in weekdata.theory --><tr ng-repeat="p in weekdata.theory" class="ng-scope">
+          <td class="ng-binding">3</td>
+          <td class="ng-binding">Data Structures and Algorithms</td>
+          <td class="ng-binding">----</td>
+
+          <td class="ng-binding">Prof.K.Shyamala</td>
+      </tr><!-- end ngRepeat: p in weekdata.theory --><tr ng-repeat="p in weekdata.theory" class="ng-scope">
+          <td class="ng-binding">4</td>
+          <td class="ng-binding">Mathematics-III(Probability &amp; Statistics)</td>
+          <td class="ng-binding">----</td>
+
+          <td class="ng-binding">Dr.K.Ramesh Babu</td>
+      </tr><!-- end ngRepeat: p in weekdata.theory --><tr ng-repeat="p in weekdata.theory" class="ng-scope">
+          <td class="ng-binding">5</td>
+          <td class="ng-binding">Humanities-1(Operation Research)</td>
+          <td class="ng-binding">----</td>
+
+          <td class="ng-binding">Mrs.C.Vani</td>
+      </tr><!-- end ngRepeat: p in weekdata.theory --><tr ng-repeat="p in weekdata.theory" class="ng-scope">
+          <td class="ng-binding">6</td>
+          <td class="ng-binding">Positive Psychology</td>
+          <td class="ng-binding">----</td>
+
+          <td class="ng-binding">DR.Lakshmi Mantha</td>
+      </tr><!-- end ngRepeat: p in weekdata.theory --><tr ng-repeat="p in weekdata.theory" class="ng-scope">
+          <td class="ng-binding">7</td>
+          <td class="ng-binding">Essence of Indian Traditional Knowledge</td>
+          <td class="ng-binding">----</td>
+
+          <td class="ng-binding">Dr.K.Rajesh</td>
+      </tr><!-- end ngRepeat: p in weekdata.theory --><tr ng-repeat="p in weekdata.theory" class="ng-scope">
+          <td class="ng-binding">8</td>
+          <td class="ng-binding">Signals and Systems</td>
+          <td class="ng-binding">----</td>
+
+          <td class="ng-binding">Dr.M.Shyam Sunder</td>
+      </tr><!-- end ngRepeat: p in weekdata.theory --><tr ng-repeat="p in weekdata.theory" class="ng-scope">
+          <td class="ng-binding">9</td>
+          <td class="ng-binding">Automata Languages and Computation</td>
+          <td class="ng-binding">----</td>
+
+          <td class="ng-binding">Mr.M.Thirupathi</td>
+      </tr><!-- end ngRepeat: p in weekdata.theory --><tr ng-repeat="p in weekdata.theory" class="ng-scope">
+          <td class="ng-binding">10</td>
+          <td class="ng-binding">Operating Systems</td>
+          <td class="ng-binding">----</td>
+
+          <td class="ng-binding">Mrs.A.Gayathri</td>
+      </tr><!-- end ngRepeat: p in weekdata.theory --><tr ng-repeat="p in weekdata.theory" class="ng-scope">
+          <td class="ng-binding">11</td>
+          <td class="ng-binding">Software Engineering</td>
+          <td class="ng-binding">----</td>
+
+          <td class="ng-binding">HARSHA</td>
+      </tr><!-- end ngRepeat: p in weekdata.theory -->
+    </tbody>
+  </table><table border='1' cellpadding='1' cellspacing='1'>
+    <thead>
+        <tr>
+          <th>S no</th>  
+          <th scope="col">Subject Name</th>
+          <th scope="col">Elective</th>
+
+          <th scope="col">Batch</th>
+          <th scope="col">Facultys</th>
+        </tr>
+      </thead>
+    <tbody>
+      <!-- ngRepeat: p in weekdata.lab --><tr ng-repeat="p in weekdata.lab" class="ng-scope">
+          <td class="ng-binding">1</td>
+          <td class="ng-binding">IT Workshop(Python and MATLAB)</td>
+          <td class="ng-binding">----</td>
+          <td class="ng-binding">I</td>
+          <!-- <td>{{p.faculty}}</td> -->
+          <td><h6 class="ng-binding">Mr.M.Thirupathi</h6><!-- ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data2" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Mrs.Lavanya</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data3" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Mrs.Saida</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngRepeat: q in weekdata.data4 --></td>
+          <!-- <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch"></td>
+          <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+       -->
+       </tr><!-- end ngRepeat: p in weekdata.lab --><tr ng-repeat="p in weekdata.lab" class="ng-scope">
+          <td class="ng-binding">2</td>
+          <td class="ng-binding">IT Workshop(Python and MATLAB)</td>
+          <td class="ng-binding">----</td>
+          <td class="ng-binding">II</td>
+          <!-- <td>{{p.faculty}}</td> -->
+          <td><h6 class="ng-binding">Mr.M.Thirupathi</h6><!-- ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data2" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Mrs.Lavanya</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data3" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Mrs.Saida</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngRepeat: q in weekdata.data4 --></td>
+          <!-- <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch"></td>
+          <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+       -->
+       </tr><!-- end ngRepeat: p in weekdata.lab --><tr ng-repeat="p in weekdata.lab" class="ng-scope">
+          <td class="ng-binding">3</td>
+          <td class="ng-binding">IT Workshop(Python and MATLAB)</td>
+          <td class="ng-binding">----</td>
+          <td class="ng-binding">III</td>
+          <!-- <td>{{p.faculty}}</td> -->
+          <td><h6 class="ng-binding">Mr.M.Thirupathi</h6><!-- ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data2" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Mrs.Lavanya</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data3" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Mrs.Saida</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngRepeat: q in weekdata.data4 --></td>
+          <!-- <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch"></td>
+          <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+       -->
+       </tr><!-- end ngRepeat: p in weekdata.lab --><tr ng-repeat="p in weekdata.lab" class="ng-scope">
+          <td class="ng-binding">4</td>
+          <td class="ng-binding">Data Structures and Algorithms</td>
+          <td class="ng-binding">----</td>
+          <td class="ng-binding">I</td>
+          <!-- <td>{{p.faculty}}</td> -->
+          <td><h6 class="ng-binding">Dr.I.Govardhan Rao</h6><!-- ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data2" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Ms.Ramya</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data3" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Ms.Prashanthi</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngRepeat: q in weekdata.data4 --></td>
+          <!-- <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch"></td>
+          <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+       -->
+       </tr><!-- end ngRepeat: p in weekdata.lab --><tr ng-repeat="p in weekdata.lab" class="ng-scope">
+          <td class="ng-binding">5</td>
+          <td class="ng-binding">Data Structures and Algorithms</td>
+          <td class="ng-binding">----</td>
+          <td class="ng-binding">II</td>
+          <!-- <td>{{p.faculty}}</td> -->
+          <td><h6 class="ng-binding">Dr.I.Govardhan Rao</h6><!-- ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data2" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Ms.Ramya</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data3" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Ms.Prashanthi</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngRepeat: q in weekdata.data4 --></td>
+          <!-- <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch"></td>
+          <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+       -->
+       </tr><!-- end ngRepeat: p in weekdata.lab --><tr ng-repeat="p in weekdata.lab" class="ng-scope">
+          <td class="ng-binding">6</td>
+          <td class="ng-binding">Data Structures and Algorithms</td>
+          <td class="ng-binding">----</td>
+          <td class="ng-binding">III</td>
+          <!-- <td>{{p.faculty}}</td> -->
+          <td><h6 class="ng-binding">Dr.I.Govardhan Rao</h6><!-- ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data2" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Ms.Ramya</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data3" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Ms.Prashanthi</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngRepeat: q in weekdata.data4 --></td>
+          <!-- <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch"></td>
+          <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+       -->
+       </tr><!-- end ngRepeat: p in weekdata.lab --><tr ng-repeat="p in weekdata.lab" class="ng-scope">
+          <td class="ng-binding">7</td>
+          <td class="ng-binding">Basic Electronics Engineering</td>
+          <td class="ng-binding">----</td>
+          <td class="ng-binding">I</td>
+          <!-- <td>{{p.faculty}}</td> -->
+          <td><h6 class="ng-binding">Mr.G.Kishore Kumar</h6><!-- ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngRepeat: q in weekdata.data4 --></td>
+          <!-- <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch"></td>
+          <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+       -->
+       </tr><!-- end ngRepeat: p in weekdata.lab --><tr ng-repeat="p in weekdata.lab" class="ng-scope">
+          <td class="ng-binding">8</td>
+          <td class="ng-binding">Basic Electronics Engineering</td>
+          <td class="ng-binding">----</td>
+          <td class="ng-binding">II</td>
+          <!-- <td>{{p.faculty}}</td> -->
+          <td><h6 class="ng-binding">Mr.G.Kishore Kumar</h6><!-- ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngRepeat: q in weekdata.data4 --></td>
+          <!-- <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch"></td>
+          <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+       -->
+       </tr><!-- end ngRepeat: p in weekdata.lab --><tr ng-repeat="p in weekdata.lab" class="ng-scope">
+          <td class="ng-binding">9</td>
+          <td class="ng-binding">Basic Electronics Engineering</td>
+          <td class="ng-binding">----</td>
+          <td class="ng-binding">III</td>
+          <!-- <td>{{p.faculty}}</td> -->
+          <td><h6 class="ng-binding">Mr.G.Kishore Kumar</h6><!-- ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngRepeat: q in weekdata.data4 --></td>
+          <!-- <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch"></td>
+          <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+       -->
+       </tr><!-- end ngRepeat: p in weekdata.lab --><tr ng-repeat="p in weekdata.lab" class="ng-scope">
+          <td class="ng-binding">10</td>
+          <td class="ng-binding">Operating Systems</td>
+          <td class="ng-binding">----</td>
+          <td class="ng-binding">I</td>
+          <!-- <td>{{p.faculty}}</td> -->
+          <td><h6 class="ng-binding">Mr.M.Thirupathi</h6><!-- ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data2" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Mrs.A.Gayathri</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data3" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Mr.N.Madhu</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngRepeat: q in weekdata.data4 --></td>
+          <!-- <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch"></td>
+          <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+       -->
+       </tr><!-- end ngRepeat: p in weekdata.lab --><tr ng-repeat="p in weekdata.lab" class="ng-scope">
+          <td class="ng-binding">11</td>
+          <td class="ng-binding">Operating Systems</td>
+          <td class="ng-binding">----</td>
+          <td class="ng-binding">II</td>
+          <!-- <td>{{p.faculty}}</td> -->
+          <td><h6 class="ng-binding">Mr.M.Thirupathi</h6><!-- ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data2" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Mrs.A.Gayathri</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data3" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Mr.N.Madhu</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data3 --><!-- ngRepeat: q in weekdata.data4 --></td>
+          <!-- <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch"></td>
+          <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+       -->
+       </tr><!-- end ngRepeat: p in weekdata.lab -->
+      </tbody>
+  </table></body></html>

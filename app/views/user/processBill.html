@@ -1,0 +1,25 @@
+<form class="row g-3" ng-submit="sub(subject,dept.sem)">
+  <div class="col-md-3">
+    <!-- <label for="validationDefault01" class="form-label">First name</label> -->
+    <input type="text" placeholder="Subject Name" class="form-control" id="validationDefault01" ng-model="subject.name" required>
+  </div>
+  <div class="col-md-4">
+    <input type="text" placeholder="Subject Abbrevation" class="form-control" id="validationDefault02" ng-model="subject.abbr"   required>
+  </div>
+  <div class="col-md-3">
+    <input type="text" placeholder="Elective" class="form-control" id="validationDefault03">
+  </div>
+  <div class="col-md-3">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" checked>
+      <label class="form-check-label" for="inlineRadio1">block</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
+      <label class="form-check-label" for="inlineRadio2">Non-blocked</label>
+    </div>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
+</form>
