@@ -210,7 +210,24 @@ router
         }
     });
 })
-
+//cherrycode
+.post("/exceladdfacinfo",checkSignIn,function(req,res){
+    var data=req.body;
+    var wrong=[1,2,3,3,4];
+    data.forEach((item)=>{
+        // if(){
+        //     connection.query("",[],function(err,data){
+        //         if(err) console.log(err);
+        //         else{}
+        //     });
+        // }else{
+        //     wrong.append(item);
+        // }
+        
+    })
+    res.send(response(true,"true",wrong));
+})
+//
 .post("/home/role",checkSignIn,function(req,res){
     var obj =req.body;
     var name=obj.roleName;

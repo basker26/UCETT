@@ -231,6 +231,7 @@
    
         })
         .constant("globalConfig", {
+            excelfacapi:"http://localhost:4000/api/user/exceladdfacinfo",
             uploaddata:'http://localhost:4000/api/user/uploaddata',
             deleteoldallot:'http://localhost:4000/api/user/deleteoldallot',
             deletedata:'http://localhost:4000/api/user/deletedata',
