@@ -12,6 +12,7 @@
         service.test1=test1;
         service.uploaddata=uploaddata;
         // service.getde
+        service.excelfac=e;
         service.deletespec=deletespec;
         service.addrooms=addrooms;
         service.editfinalinsert=editfinalinsert;
@@ -72,6 +73,9 @@
         service.deleteoldallot=deleteoldallot;
         return service;
         uploaddata
+        function e(data){
+            return $http.post(globalConfig.excelfacapi,data).then(handleSuccess , handleError("Eroor "))
+        }
         function uploaddata(details){
             return $http.post(globalConfig.uploaddata,details).then(handleSuccess , handleError("Eroor "));
         }
