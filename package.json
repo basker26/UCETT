@@ -1,10 +1,11 @@
 {
-  "name": "RPDWorkflowProject",
+  "name": "rpdworkflowproject",
   "version": "1.0.0",
   "description": "automation of workflow",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "bijeet chatterjee",
   "dependencies": {
@@ -48,5 +49,14 @@
     "url": "^0.11.0",
     "uuidv4": "*",
     "winston": "^3.3.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r-naveen-k/UCETT.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/r-naveen-k/UCETT/issues"
+  },
+  "homepage": "https://github.com/r-naveen-k/UCETT#readme"
 }
