@@ -8,7 +8,7 @@ const { uuid } = require('uuidv4');
 const { v4: uuidv4 } = require('uuid');
 const { connect } = require("net");
 const { data} = require("jquery");
-const { includes } = require("underscore");
+const { includes, forEach } = require("underscore");
 // const { element } = require("angular");
 const timestamp = require('time-stamp'),
     dbConnection = require("../config/dbConnection.js"),
@@ -214,21 +214,30 @@ router
 .post("/exceladdfacinfo",checkSignIn,function(req,res){
     var data=req.body;
     var wrong=[1,2,3,3,4];
-    data.forEach((item)=>{
-        // if(){
-        //     connection.query("",[],function(err,data){
-        //         if(err) console.log(err);
-        //         else{}
-        //     });
-        // }else{
-        //     wrong.append(item);
-        // }
+    console.log(req.session);
+    // data.forEach((item)=>{
+    //     // if(){
+    //     //     connection.query("",[],function(err,data){
+    //     //         if(err) console.log(err);
+    //     //         else{}
+    //     //     });
+    //     // }else{
+    //     //     wrong.append(item);
+    //     // }
         
-    })
+    // })
     res.send(response(true,"true",wrong));
 })
+.post("/excelSubAdd",function(req,res){
+    var data=req.body.data;
+    // console.log(req);
+    data.forEach(item => {
+        console.log(item);
+    })
+    res.send(response(true,"true",data));
+})
 //
-.post("/home/role",checkSignIn,function(req,res){
+.post("/home/role",checkSignIn,(req,res)=>{
     var obj =req.body;
     var name=obj.roleName;
     var desc=obj.roleDescription;
@@ -1684,7 +1693,7 @@ router
 
 })
 .post("/getdepart",function(req,res){
-    connection.query('SELECT distinct name as  building_name,b.description FROM clmsdb.time_table tt,clmsdb.buildings b ',function(err,data){
+    connection.query('SELECT distinct(department) as building_name FROM clmsdb.departments_course;',function(err,data){
         if(err) throw err;
         else{
         res.send(response(true,"success",data)); 
@@ -2389,7 +2398,7 @@ router
 // })
 
 function checkSignIn(req, res,next){
-    if(req.session){
+    if(req.session.data){
     //    console.log(req.session);
 
        next();     //If session exists, proceed to page
