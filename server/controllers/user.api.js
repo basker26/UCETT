@@ -7,7 +7,7 @@ var express = require("express"),
 const { uuid } = require('uuidv4');
 const { v4: uuidv4 } = require('uuid');
 const { connect } = require("net");
-const { data} = require("jquery");
+const { data, contains} = require("jquery");
 const { includes, forEach } = require("underscore");
 // const { element } = require("angular");
 const timestamp = require('time-stamp'),
@@ -224,19 +224,112 @@ router
     //     // }else{
     //     //     wrong.append(item);
     //     // }
-        
     // })
     res.send(response(true,"true",wrong));
 })
+
+//ExcelsubAdd by naveen
 .post("/excelSubAdd",function(req,res){
     var data=req.body.data;
-    // console.log(req);
-    data.forEach(item => {
-        console.log(item);
+    if(!req.body.id){res.send(response(false,"Please select course",null));return;}
+    connection.query("SELECT id FROM clmsdb.departments_course where id=?",[req.body.id],(err,result)=>{
+        if(err)console.log(err);
+        if(result.length!=1){res.send(response(false,"Course doesn't exist",null));return;}
     })
-    res.send(response(true,"true",data));
+    // console.log(req);
+    function containsNumbers(str) {
+        return /[0-9]/.test(str);
+      }
+
+      function isType(str)
+      {
+        if(str=="Theory" || str=="Lab")return true;
+        return false;
+      }
+      
+
+      var wrong=[];
+
+    data.forEach(item => {
+        var subj=item.subjectname;
+        var abbr=item.abbr.toUpperCase();
+        var type=item.type;
+        var elective=item.elective;
+        
+        if(subj!='' && abbr!=''  && type!='' && !containsNumbers(subj) && !containsNumbers(abbr) && !containsNumbers(elective) && !containsNumbers(type)&& isType(type))  
+        {
+            if(elective=="")elective="---";
+            connection.query("SELECT * FROM clmsdb.subject_info where type=? and sub_name =? and sub_abbr=? and elective=? and subinfo=?",[type,subj,abbr,elective,req.body.id],(err,result)=>{
+                if(err)console.log("err");
+                if(result.length==0)
+                {
+                    connection.query("INSERT INTO `clmsdb`.`subject_info` (`type`, `sub_name`, `sub_abbr`,`elective`, `subinfo`) VALUES (?,?,?,?,?)", [type,subj,abbr,elective,req.body.id],(err,result)=>{
+                        if(err)
+                        { wrong.push(item);}
+                    });
+                }
+                else 
+                {
+                    console.log("item already exist");
+                    wrong.push(item);
+                }
+            });
+
+        }
+        else wrong.push(item);
+    });
+    if(wrong.length>0)console.log(wrong.length + " entries failed");
+    res.send(response(true,"true",wrong));
 })
-//
+
+//Adding courses and departments from excell 
+// author @rnaveenk
+.post("/excelDeptAdd",(req,res)=>{
+    var data = req.body.data;
+    var wrong=[];
+
+    function containsNumbers(str) {
+        return /[0-9]/.test(str);
+      }
+
+    data.forEach(item => {
+    var course = (item.course).toUpperCase();
+    var specialization = (item.specialization).toUpperCase();
+    var semester = item.semester;
+    var department = (item.department).toUpperCase();
+
+    if(containsNumbers(course) || containsNumbers(specialization) || containsNumbers(department) || Number.isNaN(semester))
+    {
+        console.log("Invalid Entries");
+        // res.send(response(false,"Incorrect Input Format",null ));
+        wrong.push(item);
+    }
+
+    else{
+    for(var i=1;i<=semester;i++)
+    {
+        const s = +i;
+        connection.query("SELECT * FROM clmsdb.departments_course WHERE course=? AND  specilization=? AND semester=? AND department=?",[course,specialization,s,department],(err,result)=>{
+            if(err) console.log(err);
+            else if(result.length>0)
+            {
+                console.log("Entry already Existed");
+                // wrong.add(item)
+            }
+            else{
+                connection.query("INSERT INTO `clmsdb`.`departments_course` (`course`, `specilization`, `semester`, `department`) VALUES (?,?,?,?)",[course,specialization,s,department],(err,result)=>{
+                    if(err)console.log(err);
+                });
+            }
+        });
+    }
+    }
+});
+
+    res.send(response(true,"true",wrong)) ;
+})
+
+
 .post("/home/role",checkSignIn,(req,res)=>{
     var obj =req.body;
     var name=obj.roleName;
