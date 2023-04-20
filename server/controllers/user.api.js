@@ -230,8 +230,10 @@ router
 
 //ExcelsubAdd by naveen
 .post("/excelSubAdd",function(req,res){
+    if(!req.body.data){res.send(response(false,"Missing Input parameters",null));return;}
     var data=req.body.data;
     if(!req.body.id){res.send(response(false,"Please select course",null));return;}
+
     connection.query("SELECT id FROM clmsdb.departments_course where id=?",[req.body.id],(err,result)=>{
         if(err)console.log(err);
         if(result.length!=1){res.send(response(false,"Course doesn't exist",null));return;}
@@ -249,8 +251,16 @@ router
       
 
       var wrong=[];
+      var flag=false;
 
     data.forEach(item => {
+
+        if(!(item.subjectname && item.abbr && item.type && item.elective))
+        {
+            flag=true;
+            return;
+        }
+
         var subj=item.subjectname;
         var abbr=item.abbr.toUpperCase();
         var type=item.type;
@@ -279,26 +289,38 @@ router
         else wrong.push(item);
     });
     if(wrong.length>0)console.log(wrong.length + " entries failed");
+
+    if(flag)res.send(response(false,"Invalid Input format", null));
+    else
     res.send(response(true,"true",wrong));
 })
 
 //Adding courses and departments from excell 
 // author @rnaveenk
 .post("/excelDeptAdd",(req,res)=>{
+    if(!req.body.data)
+    {res.send(response(false, "no data", null));return;}
     var data = req.body.data;
     var wrong=[];
+    var flag=false;
 
     function containsNumbers(str) {
         return /[0-9]/.test(str);
       }
 
     data.forEach(item => {
+    if(!(item.course && item.specialization && item.semester && item.department))
+    {
+        flag=true;
+        return;
+    }
+
     var course = (item.course).toUpperCase();
     var specialization = (item.specialization).toUpperCase();
     var semester = item.semester;
     var department = (item.department).toUpperCase();
 
-    if(containsNumbers(course) || containsNumbers(specialization) || containsNumbers(department) || Number.isNaN(semester))
+    if(course=="" || specialization=="" || semester=="" || department=="" || containsNumbers(course) || containsNumbers(specialization) || containsNumbers(department) || Number.isNaN(semester))
     {
         console.log("Invalid Entries");
         // res.send(response(false,"Incorrect Input Format",null ));
@@ -325,7 +347,9 @@ router
     }
     }
 });
-
+        
+    if(flag==true)res.send(response(false, " Invalid data format", null));
+    else
     res.send(response(true,"true",wrong)) ;
 })
 
