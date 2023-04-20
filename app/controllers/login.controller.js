@@ -32,6 +32,7 @@
                         $(".success").delay(200).addClass("in").fadeOut(3000);
                         
                         $rootScope.User=res.data;
+                        console.log( $rootScope.User);
                         $rootScope.userLogin=true;
                         $localStorage.userData = res.data;
                         $localStorage.userData.password=$scope.user.password;
