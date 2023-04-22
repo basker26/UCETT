@@ -608,3 +608,14 @@ width:33% !important;
   height: 15px;
   width: 15px;
 }
+
+/* avatar */
+.avatar a
+{
+  text-decoration-line: none;
+  color: #333;
+}
+.avatar a:hover
+{
+  color: #da4f49 !important ;
+}
