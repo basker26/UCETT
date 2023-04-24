@@ -2,7 +2,9 @@ a{
   text-decoration: none;
   color: inherit;     
 }
-
+.full-height{
+  height: 100%;
+}
 .mobile{
   display: none; /*hides short title*/
 }
@@ -68,7 +70,7 @@ a{
     border-bottom-right-radius: .5rem;
   }
 
-  @media screen and (max-width:600) {
+  @media screen and (max-width:1080px) {
     .pc{
       display: none;
     }
@@ -605,4 +607,15 @@ width:33% !important;
 .sir_names .small_checks{
   height: 15px;
   width: 15px;
+}
+
+/* avatar */
+.avatar a
+{
+  text-decoration-line: none;
+  color: #333;
+}
+.avatar a:hover
+{
+  color: #da4f49 !important ;
 }
