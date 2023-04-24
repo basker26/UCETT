@@ -64,7 +64,7 @@
                 </select>
             </div>
             <!-- for lab -->
-            <div class="col" ng-hide="d.type=='Lab'?false:true">
+            <div class="col">
                 <div class="wrapper" >
                     <div class="selected-items-box">
                     faculty
@@ -81,7 +81,7 @@
                     </div>
                 </div>
             </div>
-            <div ng-if="d.type=='Lab'?false:true">
+            <!-- <div ng-if="d.type=='Lab'?false:true">
                 <div>Faculty</div>
                     <select  ng-disabled="!d.department" ng-model="d.faculty" class="form-select form-select-sm"
                         aria-label=".form-select-sm example">
@@ -89,7 +89,7 @@
                             value={{f}}>{{f.name}}</option>
     
                     </select>
-            </div>
+            </div> -->
             <div class="wraper col" ng-if="d.type=='Lab'?true:false">
                 <div class="selected-items-box ">
                 Batch

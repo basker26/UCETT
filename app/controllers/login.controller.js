@@ -25,8 +25,6 @@
                 userService.Login($scope.user).then(function(res) {
                     //console.log($scope.user);
                     if (res.success) {
-
-
                         //alert("login controller");
                         $(".success").removeClass("in").show();
                         $(".success").delay(200).addClass("in").fadeOut(3000);
@@ -41,7 +39,6 @@
                             $state.go("home");
                         }else{
                             $state.go("home");
-
                         }
                     } else {
                         $(".error").removeClass("in").show();

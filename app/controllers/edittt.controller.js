@@ -73,7 +73,7 @@
             $scope.previousdata;
             userService.allotwithprevious(item).then(function(res){
                 $scope.previousdata=res.data;
-                 if($scope.previousdata.lab.length>0 && $scope.previousdata.theory.length>0){
+                 if($scope.previousdata.lab.length>0 || $scope.previousdata.theory.length>0){
                     // $scope.chectflag=true;
                     $scope.visible=false;
                     $scope.getweekrpt($scope.dept,false);

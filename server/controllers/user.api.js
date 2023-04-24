@@ -776,7 +776,7 @@ router
 //editgetelemnetAPI
 .post('/editgetelementAPI',checkSignIn,function(req,res){
     var body=req.body;
-    console.log(body);
+    console.log(body,"editgetelement");
     var str=[];
     body.code.forEach((element,index)=>{
         // count++;
@@ -818,7 +818,7 @@ router
 //
 .post('/getelementAPI',checkSignIn,function(req,res){
     var body=req.body;
-    console.log(body);
+    console.log(body,"getelement");
     var str=[];
     body.code.forEach((element,index)=>{
         // count++;
@@ -1002,6 +1002,7 @@ router
     console.log(body.subinfo.faculty);
     // res.send(response(true,'sucess',null));
     if(body.subinfo.type=='Lab'){
+        if(!body.subinfo.batch) body.subinfo.batch=null;
         if(body.subinfo.faculty.length==1){
             connection.query("INSERT INTO `clmsdb`.`lab_faculty_allotment` (subcode, faccode1, batch) VALUES (?, ?, ?)",[body.subinfo.subjectid,body.subinfo.faculty[0].facid,body.subinfo.batch],function(err,data){
                 if(err){
@@ -1464,6 +1465,7 @@ router
         
         }
 })
+
 .post("/weekreport",function(req,res){
     var de=req.body;
     console.log(de);
@@ -1517,9 +1519,10 @@ router
         }
     }); 
 })
-.post("/getsubjectname",checkSignIn,function(req,res){
+.post("/getsubjectname",function(req,res){
     var body=req.body;
     var value;
+    console.log(body);
     if(body.theoryfacallt)
         value=body.theoryfacallt;
     else
@@ -1528,14 +1531,14 @@ router
         if(err) throw err;
         else{
             if(data.length!=0){
-                console.log(data)
+                console.log(data,"theory");
                 res.send(response(true,"sucess",data));
             }else{
-                connection.query("SELECT concat(sub_abbr,'-',batch) as subject FROM clmsdb.lab_faculty_allotment,clmsdb.subject_info where labfacallt=? and subject_info.sub_id=lab_faculty_allotment.subcode",[value],function(err,data2){
+                connection.query("call clmsdb.subnamewithfacname(?)",[value],function(err,data2){
                     if(err) throw err;
                     else{
-                        console.log(data2)
-                        res.send(response(true,"sucess",data2));
+                        console.log(data2[0],"lab");
+                        res.send(response(true,"sucess",data2[0]));
                     }
                 })
             }

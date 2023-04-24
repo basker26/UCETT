@@ -1,3 +1,4 @@
+// const { json } = require("body-parser");
 
 (function() {
     'use strict';
@@ -82,7 +83,7 @@
         }
         function validate(item1,item2){
             var check = true;
-            // console.log(item1,item2)
+            console.log(item1,item2);
             var arr=[];
             item2.forEach(element=>{
                 arr.push(element.subject);
@@ -121,31 +122,13 @@
             }else{
                 return false;
             }
-            // item1.forEach(element=>{
-            //     console.log(item2,element)
-            //     console.log(item2.includes(element))
-            //    if(!item2.includes(element)){
-            //         // return false;
-            //         check=false;
-
-            //    }
-            // });
-            // if(!check){
-            //     return check;
-            // }else{
-            //     return check;
-            // }
-            // return check;
         }
 
         $scope.confirmfacallotment=function(item,tem2){
-            if(validate($scope.subjectinfo.subjects,item)){
-                console.log(validate($scope.subjectinfo.subjects,item));
-                var check=$scope.check(item);
-                console.log(check);
-                if(!check){
-                userService.clearFacSubAllot(tem2).then(function(res){
-                    if(res){
+                // var check=$scope.check(item);
+                // if(!check){
+                // userService.clearFacSubAllot(tem2).then(function(res){
+                //     if(res){
                         item.forEach(element=>{
                             if(element.batch){
                                 var details={
@@ -173,24 +156,28 @@
                                     deptdetails:tem2
                                     }
                                 userService.facallotment(details).then(function(res){
+                                    userService.allotwithprevious(tem2).then(function(res){
+                                        $scope.previousdata=res.data;
+                                        console.log(res.data);
+                                    }).catch(function(err){
+                                        console.log(err);
+                                    })
                                 }).catch(function(err){
                                     console.log(err);
                                 })
                             }  
                     });
-                    $scope.allotwithprevious(tem2);
-                    }
-                }).then(function(err){
-                    console.log(err);
-                });
-                }else{
-                    alert("Please review the allotment");
-                }
-                
-            }else{
-                alert("Please allot for all subjects selected");
-            }
-        
+                    item.splice(0,item.length);
+
+                    
+                    // $scope.allotwithprevious(tem2);
+                    // }
+                // }).then(function(err){
+                //     console.log(err);
+                // });
+                // }else{
+                //     alert("Please review the allotment");
+                // }
         }
         $scope.addfaculty=function(d,f,batchs){
             if(d.type=="Lab"){
@@ -234,31 +221,55 @@
                 }
                
             }else{
-                if(d.subject && d.faculty){
+                if(d.subject){
+                    var  faculty=[];
                     d.subject=JSON.parse(d.subject);
-                    d.faculty=JSON.parse(d.faculty);
-                    var fac=[];
-                    fac.push({facid:d.faculty.id,facname:d.faculty.name});
-                    console.log(fac)
-                    var data={
-                        subid:d.subject.sub_id,
-                        subject:d.subject.sub_name,
-                        faculty:fac,
-                        type:"Theory"
-                    }
-                    var check=false;
-                    $scope.facsub.forEach((element,index)=>{
-                       if(element.subid==data.subid){
-                            // console.log(element);
-                            check=true;
-                            $scope.facsub.splice(index,1,data); 
-                       }
+                    // d.faculty=JSON.parse(d.faculty);
+                    f.forEach(element=>{
+                        if(element.selected&&element.selected==true){
+                            faculty.push({facid:element.id,facname:element.name});
+                            element.selected=false;
+                        }
                     });
-                    if(!check){
-                        $scope.facsub.push(data);
+                    if(faculty.length<5 && faculty.length>0){
+                        var type;
+                        type=(faculty.length==1)?"Theory":"Lab";
+                        var data={
+                            subid:d.subject.sub_id,
+                            subject:d.subject.sub_name,
+                            faculty:faculty,
+                            type:type
+                        }
+                        var check=false;
+                        $scope.facsub.forEach((element,index)=>{
+                           if(element.subid==data.subid){
+                                if(element.faculty.length==data.faculty.length){
+                                    element.faculty.sort((a,b)=>a.facid>b.facid?1:-1);
+                                    data.faculty.sort((a,b)=>a.facid>b.facid?1:-1);
+                                    var y=[];
+                                    var z=[];
+                                    element.faculty.forEach((item)=>{
+                                        y.push(item.facid);
+                                    });
+                                    data.faculty.forEach((item)=>{
+                                        z.push(item.facid);
+                                    });
+                                    if(JSON.stringify(y)==JSON.stringify(z)){
+                                        console.log(y,z,element.subid,data.subid);
+                                        $scope.facsub.splice(index,1,data);
+                                        console.log($scope.facsub); 
+                                        check=true;
+                                    }
+                                }
+                           }
+                        });
+                        if(!check){
+                            $scope.facsub.push(data);
+                        }
+                        $scope.d.subject=null;
+                    }else{
+                            alert("Max faculty 4 allowed");
                     }
-                    $scope.d.subject=null;
-                    $scope.d.faculty=null;
                 }else{
                     if(!d.subject)
                         alert("Please Select Subject");
@@ -335,7 +346,7 @@
             $scope.previousdata;
             userService.allotwithprevious(item).then(function(res){
                 $scope.previousdata=res.data;
-                 if($scope.previousdata.lab.length>0 && $scope.previousdata.theory.length>0){
+                 if($scope.previousdata.lab.length>0 || $scope.previousdata.theory.length>0){
                     $scope.chectflag=true;
                     $scope.visible=false;
                     $scope.getweekrpt($scope.dept,false);
