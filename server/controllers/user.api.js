@@ -210,22 +210,79 @@ router
         }
     });
 })
-//cherrycode
-.post("/exceladdfacinfo",checkSignIn,function(req,res){
+//charan_code_personal_faculty
+.post("/personalfaculty",function(req,res){
     var data=req.body;
-    var wrong=[1,2,3,3,4];
-    console.log(req.session);
-    // data.forEach((item)=>{
-    //     // if(){
-    //     //     connection.query("",[],function(err,data){
-    //     //         if(err) console.log(err);
-    //     //         else{}
-    //     //     });
-    //     // }else{
-    //     //     wrong.append(item);
-    //     // }
-    // })
-    res.send(response(true,"true",wrong));
+    if(!data.id)
+        res.send(response(false,"faculty_dept_info",null));
+        var info=[
+            data.id,
+            ["","","","","","","","",""],
+            ["","","","","","","","",""],
+            ["","","","","","","","",""],
+            ["","","","","","","","",""],
+            ["","","","","","","","",""],
+            ["","","","","","","","",""],
+            0
+    ]
+   
+    connection.query("call clmsdb.faculty_personal(?);",[data.id],function(err,data){
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log(data);
+            console.log(data[0]);
+          data[0].forEach((i)=>
+            {
+                console.log(i)
+                for(var j=i.d_from;j<=i.d_to;j++)
+                {
+                    var day1=i.day;
+
+                    info[ret_day(i.day)][j]=i.info;
+                    info[7]++;
+                    console.log("enterde");
+                }
+            })
+            res.send(response(true,"faculty_dept_info",info));
+        }
+
+
+    })
+  //  console.log(get_facdep_info(data.id));
+   
+})
+
+
+
+
+//cherrycode
+.post("/exceladdfacinfo",function(req,res){
+    var data=req.body.data;
+    console.log(data);
+    var wrong=[];
+    var flag=false;
+    data.forEach((item)=>{
+        if(!( item.name && item.abbr && item.emp_code && item.active && item.department && item.phoneno && item.email)){
+            flag=true;
+            return;
+        }
+         if( (/^([a-zA-Z])+/).test(item.name) && (/^([a-zA-Z])+/).test(item.abbr) && (/^([a-zA-Z0-9])+/).test(item.emp_code) &&(/^([a-zA-Z0-9])+/).test(item.department) &&  (/^([0-9])+/).test(item.active) &&(/([0-9]{10})/).test(item.phoneno) && (/^[a-zA-Z0-9_\.\-]+[@][a-z]+[\.][a-z]{2,3}/).test(item.email)){
+             connection.query("INSERT INTO `clmsdb`.`faculty_info` (`name`, `abbr`, `emp_code`, `department`, `active`, `phoneno`, `emaill`) VALUES (?, ?, ?, ?, ?,?, ?)",[item.name,item.abbr,item.emp_code,item.department,item.active,item.phoneno,item.email],function(err,data){
+                 if(err) console.log(err);
+                else{}
+            });
+        }else{
+            flag=true;
+            wrong.push(item);
+            return;
+        }
+    
+    });
+    if(flag)
+    res.send(response(false,"Invalid Data",wrong));
+    res.send(response(true,"valid data",wrong));
 })
 
 //ExcelsubAdd by naveen
