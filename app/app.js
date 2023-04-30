@@ -231,6 +231,7 @@
    
         })
         .constant("globalConfig", {
+            delallotment:"http://localhost:4000/api/user/delallotment",
             excelfacapi:"http://localhost:4000/api/user/exceladdfacinfo",
             uploaddata:'http://localhost:4000/api/user/uploaddata',
             deleteoldallot:'http://localhost:4000/api/user/deleteoldallot',

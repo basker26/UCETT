@@ -123,6 +123,24 @@
                 return false;
             }
         }
+        $scope.deleteallotment=function(id,semid){
+            var details={
+                id:id       
+            }
+            userService.delallotment(details).then(function(res)
+            {
+                    alert(res.message);
+                    // $scope.allotwithprevious(semid);
+                    userService.allotwithprevious(semid).then(function(res){
+                        $scope.previousdata=res.data;
+                        console.log(res.message);
+                    }).catch(function(err){
+                        console.log(err);
+                    })
+            }).catch(function(err){console.log(err)})
+        }
+
+
 
         $scope.confirmfacallotment=function(item,tem2){
                 // var check=$scope.check(item);

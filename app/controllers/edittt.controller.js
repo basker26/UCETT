@@ -363,43 +363,41 @@
                 }
                
             }else{
-                if(d.subject && d.faculty){
+                if(d.subject){
+                    var  faculty=[];
                     d.subject=JSON.parse(d.subject);
-                    d.faculty=JSON.parse(d.faculty);
-                    var fac=[];
-                    fac.push({facid:d.faculty.id,facname:d.faculty.name});
-                    console.log(fac)
-                    var data={
-                        subid:d.subject.sub_id,
-                        subject:d.subject.sub_name,
-                        faculty:fac,
-                        type:"Theory"
-                    }
-                    userService.editallotment(data).then(function(res){
-                        if(res){
-                            console.log(res)
-                            userService.allotwithprevious(item).then(function(res){
-                                $scope.previousdata=res.data;
-                            }).catch(function(err){
-                                console.log(err);
-                            })
+                    f.forEach(element=>{
+                        if(element.selected&&element.selected==true){
+                            faculty.push({facid:element.id,facname:element.name});
+                            element.selected=false;
                         }
-                    }).catch(function(err){
-                        console.log(err);
-                    })
-                    var check=false;
-                    $scope.facsub.forEach((element,index)=>{
-                       if(element.subid==data.subid){
-                            // console.log(element);
-                            check=true;
-                            $scope.facsub.splice(index,1,data); 
-                       }
                     });
-                    if(!check){
-                        $scope.facsub.push(data);
+                    if(faculty.length<5 && faculty.length>0){
+                        var type;
+                        type=(faculty.length==1)?"Theory":"Lab";
+                        var data={
+                            subid:d.subject.sub_id,
+                            subject:d.subject.sub_name,
+                            faculty:faculty,
+                            type:type
+                        }
+                        userService.editallotment(data).then(function(res){
+                            if(res){
+                                console.log(res)
+                                userService.allotwithprevious(item).then(function(res){
+                                    $scope.previousdata=res.data;
+                                }).catch(function(err){
+                                    console.log(err);
+                                })
+                            }
+                        }).catch(function(err){
+                            console.log(err);
+                        })
+                        $scope.d.subject=null;
+                    }else{
+                            alert("Max faculty 4 allowed");
                     }
                     $scope.d.subject=null;
-                    $scope.d.faculty=null;
                 }else{
                     if(!d.subject)
                         alert("Please Select Subject");

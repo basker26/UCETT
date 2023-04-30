@@ -181,11 +181,12 @@
               <td>{{p.theoryfacallt}}</td>
               <td>{{p.sub_name}}</td>
               <td>{{p.name}}</td>
-              <td><input type="button" ng-click="deleteallotment(p.)"></td>
+              <td><input type="button" ng-click="deleteallotment(p.theoryfacallt,dept)"></td>
               <!-- <td><li ng-repeat="fac in f.faculty" >{{fac.facname}}</li></td> -->
           </tr>
         </tbody>
     </table>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -209,7 +210,8 @@
               <td ng-repeat ="q in previousdata.data2" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
               <td ng-repeat ="q in previousdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
               <td ng-repeat ="q in previousdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
-
+              <td><input type="button" ng-click="deleteallotment(p.labfacallt,dept)"></td>
+            
               <!-- <td><li ng-repeat="fac in f.faculty" >{{fac.facname}}</li></td> -->
           </tr>
         </tbody>

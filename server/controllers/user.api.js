@@ -58,6 +58,28 @@ router
         });
     res.send(true,"sucess",true);
 })
+//charan code
+
+.post("/delallotment",checkSignIn,function(req,res){
+    var body=req.body;
+    console.log(body.id,"im at delete");
+    if(body.id)
+    {
+        connection.query("DELETE FROM `clmsdb`.`theory_fac_allotment` WHERE (`theoryfacallt` = ?)",[body.id],function(error,result){
+            if(error)
+                console.log(error);
+            
+        })
+        connection.query("DELETE FROM `clmsdb`.`lab_faculty_allotment` WHERE (`labfacallt` = ?)",[body.id],function(err,data)
+        {
+            if(err)
+                console.log(err);
+        })
+    }
+    res.send(response(true,"successfully de-allocated",null));
+})
+
+
 .post("/login",function(req,res){
     console.log(req.body);
     var obj =req.body;
@@ -211,6 +233,7 @@ router
     });
 })
 //cherrycode
+
 .post("/exceladdfacinfo",checkSignIn,function(req,res){
     var data=req.body;
     var wrong=[1,2,3,3,4];
