@@ -2595,7 +2595,14 @@ router
          
 
 // })
-
+function ret_day(item){
+    if(item=="Monday") return 1;
+    if(item=="Tuesday") return 2;
+    if(item=="Wednesday") return 3;
+    if(item=="Thursday") return 4;
+    if(item=="Friday") return 5;
+    if(item=="Saturday") return 6;
+}
 function checkSignIn(req, res,next){
     if(req.session.data){
     //    console.log(req.session);
