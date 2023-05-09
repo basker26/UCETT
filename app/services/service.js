@@ -9,6 +9,9 @@
     function userService($http, globalConfig) {
         
         var service = {};
+        //charan
+        service.personalfaculty=personal;
+        //endcharan
         service.delallotment=delallotment;
         service.test1=test1;
         service.uploaddata=uploaddata;
@@ -72,6 +75,10 @@
         service.editallotment=editallotment;
         service.editgetelement=editgetelement;
         service.deleteoldallot=deleteoldallot;
+
+        // naveen
+        service.headfoot = headfoot;
+
         service.excelsub=excelsub;
         service.getfacname=getfacname;
         service.addopenelectives=addopenelectives;
@@ -85,6 +92,9 @@
         }
         function excelsub(data){
             return  $http.post(globalConfig.excelsub,data).then(handleSuccess , handleError("Eroor "))
+        }
+        function personal(id){
+            return $http.post(globalConfig.personalfaculty,id).then(handleSuccess,handleError("Error "));
         }
         function e(data){
             return $http.post(globalConfig.excelfacapi,data).then(handleSuccess , handleError("Eroor "))
@@ -291,6 +301,11 @@
          function EditUserStatus(user){
             //alert("entered service part");
             return $http.post(globalConfig.userEditStatusApi,user).then(handleSuccess,handleError("Error changing password"));
+        }
+
+        // naveen
+        function headfoot(user){
+            return $http.post(globalConfig.headfoot,user).then(handleSuccess,handleError("Error changing password"));
         }
     }
 })();

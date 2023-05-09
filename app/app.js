@@ -36,18 +36,6 @@
                 controller:"checkstatus"
             })
           
-           //to be present 
-            .state("managecontract", {
-                parent:"home",
-                url: "/hr/managecontract",
-                views: {
-                    'tasks@home':{
-                        templateUrl: "/views/hr_cell/contractorSelector.html",
-                        controller: "hrcellController"
-                    }   
-                }
-            
-            })
             .state("Schedule TimeTable", {
                 parent:"home",
                 url: "/edit/timetable",
@@ -112,7 +100,6 @@
                         controller: "hrcellController"
                     }   
                 }
-            
             })
          
 
@@ -241,6 +228,7 @@
    
         })
         .constant("globalConfig", {
+            personalfaculty:"http://localhost:4000/api/user/personalfaculty",
             getfacname:"http://localhost:4000/api/user/getfacname",
             delallotment:"http://localhost:4000/api/user/delallotment",
             excelfacapi:"http://localhost:4000/api/user/exceladdfacinfo",
@@ -300,8 +288,9 @@
             addsubjecti:'http://localhost:4000/api/user/addsubjecti',
             changefacname:'http://localhost:4000/api/user/changefacname',
             editallotment:'http://localhost:4000/api/user/editallotment',
-            excelsub:'http://localhost:4000/api/user/excelSubAdd',
-            addopenelectives:'http://localhost:4000/api/user/addopenelectives'
+
+            // naveen 
+            headfoot: "http://localhost:4000/api/user/headfoot",
         }).run(run);
 
     run.$inject = ['$rootScope','$localStorage'];

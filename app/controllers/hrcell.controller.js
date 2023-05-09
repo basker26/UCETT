@@ -21,19 +21,21 @@
                   // var data={
                     id:
                   // }
+                  
+                 userService.headfoot($rootScope.week).then((res)=>{
+                  $scope.signs = res.data;
+                  console.log($scope.signs);
+                 }).catch((err)=>{
+                    console.log(err);
+                 })
+
                   userService.getweekrpt($rootScope.week).then(function(res){
                     $scope.weekdata=res.data;
                     console.log(res.data);
-                    if($rootScope.upload){
-                      // $scope.export();
-                      if($rootScope.upload){
+
                         setTimeout(() => {
                           $scope.export(); 
-    
                           }, 6000);
-                      }
-                      
-                    }
                     
                     // $rootScope.week.set=false;
                 }).catch(function(err){
@@ -107,9 +109,11 @@
                 return;
              }
           
-             var html=angular.element(document.querySelector('#exportthis'))[0].innerHTML;
-             var html1=angular.element(document.querySelector('#exportthis1'))[0].innerHTML;
-             var html2=angular.element(document.querySelector('#exportthis2'))[0].innerHTML;
+             var letterhead=angular.element(document.querySelector('#letterhead'))[0].outerHTML;
+             var letterfoot=angular.element(document.querySelector('#letterfoot'))[0].outerHTML;
+             var html=angular.element(document.querySelector('#exportthis'))[0].outerHTML;
+             var html1=angular.element(document.querySelector('#exportthis1'))[0].outerHTML;
+             var html2=angular.element(document.querySelector('#exportthis2'))[0].outerHTML;
 
 
              
@@ -118,23 +122,19 @@
              var header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' " +
                        "xmlns:w='urn:schemas-microsoft-com:office:word' " +
                        "xmlns='http://www.w3.org/TR/REC-html40'>" +
-                       "<head><meta charset='utf-8'><title>Export Table to Word</title></head><body>";
+                       "<head><meta charset='utf-8'><title>Export Table to Word</title>"+
+                       '</head><body>';
              var footer = "</body></html>";
-             var sourceHTML = header + "<table border='1' cellpadding='1' cellspacing='1'>" + html + "</table>" + "<table border='1' cellpadding='1' cellspacing='1'>" + html1 + "</table>"+"<table border='1' cellpadding='1' cellspacing='1'>" + html2 + "</table>"+footer;
-             var sourceHTML1 = header + "<table border='1' cellpadding='1' cellspacing='1'>" + html1 + "</table>" + footer;
-             var sourceHTML2 = header + "<table border='1' cellpadding='1' cellspacing='1'>" + html2 + "</table>" + footer;
+             var sourceHTML = header +letterhead+"<table>"+ html  +"</table>" + "<table>" + html1 +"</table>"+"<table>" +  html2 +"</table>"+letterfoot+footer;
 
-             // EU A4 use: size: 841.95pt 595.35pt;
-             // US Letter use: size:11.0in 8.5in;
-             
              css = (
                '<style>' +
                '@page WordSection1{size: 841.95pt 595.35pt;mso-page-orientation: landscape;}' +
                'div.WordSection1 {page: WordSection1;}' +
-               'table{border-collapse:collapse;}td{border:1px gray solid;width:5em;padding:2px;}'+
+               'table{width:24cm;}td{border:1px black solid;width:5em;padding:2px;}'+
                '</style>'
              );
-             link
+             link;
              // html = angular.element(document.querySelector('#exportthis'))[0].innerHTML;
              blob = new Blob([css+sourceHTML], {
                type: 'application/msword'
@@ -159,6 +159,10 @@
                  return;
               }
            
+              console.log("printing");
+
+              var letterhead=angular.element(document.querySelector('#letterhead'))[0].innerHTML;
+              var letterfoot=angular.element(document.querySelector('#letterfoot'))[0].innerHTML;
               var html=angular.element(document.querySelector('#exportthis'))[0].innerHTML;
               var html1=angular.element(document.querySelector('#exportthis1'))[0].innerHTML;
               var html2=angular.element(document.querySelector('#exportthis2'))[0].innerHTML;
@@ -172,7 +176,7 @@
                         "xmlns='http://www.w3.org/TR/REC-html40'>" +
                         "<head><meta charset='utf-8'><title>Export Table to Word</title></head><body>";
               var footer = "</body></html>";
-              var sourceHTML = header + "<table border='1' cellpadding='1' cellspacing='1'>" + html + "</table>" + "<table border='1' cellpadding='1' cellspacing='1'>" + html1 + "</table>"+"<table border='1' cellpadding='1' cellspacing='1'>" + html2 + "</table>"+footer;
+              var sourceHTML = header +letterhead+ "<table border='1' cellpadding='1' cellspacing='1'>" + html + "</table>" + "<table border='1' cellpadding='1' cellspacing='1'>" + html1 + "</table>"+"<table border='1' cellpadding='1' cellspacing='1'>" + html2 + "</table>"+letterfoot+footer;
               var sourceHTML1 = header + "<table border='1' cellpadding='1' cellspacing='1'>" + html1 + "</table>" + footer;
               var sourceHTML2 = header + "<table border='1' cellpadding='1' cellspacing='1'>" + html2 + "</table>" + footer;
 
@@ -181,9 +185,9 @@
               
               css = (
                 '<style>' +
-                '@page WordSection1{size: 841.95pt 595.35pt;mso-page-orientation: landscape;}' +
+                '@page WordSection1{size: 841.95pt 595.35pt;mso-page-orientation:landscape;}' +
                 'div.WordSection1 {page: WordSection1;}' +
-                'table{border-collapse:collapse;}td{border:1px gray solid;width:5em;padding:2px;}'+
+                'table{border-collapse:collapse;}td{border:1px gray solid;width:5em;padding:1px;}'+
                 '</style>'
               );
               link
@@ -379,6 +383,14 @@
                  }).catch(function(err){
                    console.log(err);
                  });
+
+
+                 userService.headfoot(details).then((res)=>{
+                  $scope.signs = res.data;
+                  console.log($scope.signs);
+                 }).catch((err)=>{
+                    console.log(err);
+                 })
              }
              }else
               if($state.current.name == "conreg"){
