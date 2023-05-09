@@ -72,8 +72,20 @@
         service.editallotment=editallotment;
         service.editgetelement=editgetelement;
         service.deleteoldallot=deleteoldallot;
+        service.excelsub=excelsub;
+        service.getfacname=getfacname;
+        service.addopenelectives=addopenelectives;
         return service;
         uploaddata
+        function addopenelectives(data){
+            return  $http.post(globalConfig.addopenelectives,data).then(handleSuccess , handleError("Eroor "))
+        }
+        function getfacname(){
+            return  $http.post(globalConfig.getfacname).then(handleSuccess , handleError("Eroor "))
+        }
+        function excelsub(data){
+            return  $http.post(globalConfig.excelsub,data).then(handleSuccess , handleError("Eroor "))
+        }
         function e(data){
             return $http.post(globalConfig.excelfacapi,data).then(handleSuccess , handleError("Eroor "))
         }

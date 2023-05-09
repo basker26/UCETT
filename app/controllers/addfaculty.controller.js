@@ -9,6 +9,7 @@
     function Controller($scope, $rootScope, userService, $state, $stateParams, $localStorage,$window) {
         if ($rootScope.userLogin && $rootScope.User && $rootScope.User.rolls.includes($state.current.name)) {
             if($state.current.name ==  "Add faculty"){
+                
                 function refresh() {
                     // body...
                     userService.getfac().then(function(res){

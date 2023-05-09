@@ -202,6 +202,16 @@
                     
                 }
             })
+            .state("Open electives",{
+                parent:"home",
+                url:"home/Open electives",
+                views:{
+                    'tasks@home':{
+                        templateUrl:"/views/timetablesetter/Openelectives.html",
+                        controller:"Openelectives"
+                    }
+                }
+            })
             .state("Clear Timetable",{
                 parent:"home",
                 url:"home/ClearTimetable",
@@ -231,6 +241,7 @@
    
         })
         .constant("globalConfig", {
+            getfacname:"http://localhost:4000/api/user/getfacname",
             delallotment:"http://localhost:4000/api/user/delallotment",
             excelfacapi:"http://localhost:4000/api/user/exceladdfacinfo",
             uploaddata:'http://localhost:4000/api/user/uploaddata',
@@ -288,7 +299,9 @@
             deletesubject:'http://localhost:4000/api/user/deletesubject',
             addsubjecti:'http://localhost:4000/api/user/addsubjecti',
             changefacname:'http://localhost:4000/api/user/changefacname',
-            editallotment:'http://localhost:4000/api/user/editallotment'
+            editallotment:'http://localhost:4000/api/user/editallotment',
+            excelsub:'http://localhost:4000/api/user/excelSubAdd',
+            addopenelectives:'http://localhost:4000/api/user/addopenelectives'
         }).run(run);
 
     run.$inject = ['$rootScope','$localStorage'];
