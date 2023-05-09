@@ -1,5 +1,5 @@
 a{
-  text-decoration: none;
+  text-decoration: none !important;
   color: inherit;     
 }
 .full-height{
@@ -553,6 +553,11 @@ width:33% !important;
   margin-bottom: 20px;
 }
 
+/* #exportthis{
+  width: 1400px;height: 280px;
+} */
+
+
 .mycard
 {
   margin: 2%;
@@ -582,15 +587,16 @@ width:33% !important;
 .close-button
 {
   background:none;
-  color:red;
-  font-weight:500;
+  /* color:red; */
+  font-weight:1000;
   border-radius:100%;
   border:1px solid rgb(241, 233, 188);
+  border:none;
 }
 
 .close-button:hover{
-  background-color: #da4f49;
-  color: white;
+  /* background-color: #da4f49; */
+  color: #da4f49;
 }
 
 

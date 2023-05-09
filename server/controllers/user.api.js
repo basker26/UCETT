@@ -15,6 +15,7 @@ const timestamp = require('time-stamp'),
     connection = dbConnection.getConnection();// for database connection.
 
 var multer  = require('multer');
+const { sign } = require("crypto");
 var storage = multer.diskStorage({
 
     destination: function (req, file, cb) {
@@ -353,6 +354,162 @@ router
     res.send(response(true,"true",wrong)) ;
 })
 
+.post("/headfoot",(req,res)=>{
+    // res.send(response(true,"success",null));
+    const romans={
+        "1" : "I",
+        "2" : "II",
+        "3" : "III",
+        "4" : "IV",
+        "5" : "V",
+        "6" : "VI",
+        "7" : "VII",
+        "8" : "VIII",
+        "9" : "IX",
+        "10" : "X"
+    }
+    if(req.body)
+    {
+        var finaldata={};
+        var signs={hod:null,cod:null,incharge:null,principal:null,dept:null,fidata:null}
+        if(req.body.id)
+        {
+            connection.query("SELECT * FROM clmsdb.departments_course where id=?",[req.body.id],(err,result)=>{
+                if(err)console.log(err);
+                else{
+                    { 
+                        finaldata.dept = result[0].department,
+                        finaldata.grad = result[0].course,
+                        finaldata.specilization = result[0].specilization,
+                        finaldata.sem = result[0].semester  
+                        
+                        connection.query("SELECT name FROM clmsdb.faculty_info where id =(SELECT facid FROM clmsdb.heads where deptid=?)",[finaldata.dept],(err,data)=>{
+                            if(err)console.log(err)
+                            else{
+                            signs.hod=data[0].name;
+                
+                            
+                            //INCHARGE
+                            connection.query("select p.name from clmsdb.persons as p,clmsdb.processrole as r,clmsdb.user_role_mapping as m where r.description='Time table Incharge' and r.id=m.roleid and m.userid= p.codeno and p.division=?",[finaldata.dept],(err,data)=>{
+                                if(err)console.log(err);
+                                else{
+                                    var concating="";
+                                    // console.log(data)
+                                    data.forEach((i)=>{
+                                        concating += (" & " + i.name);
+                                    })
+                                    concating = concating.slice(3,concating.length);
+                                    signs.incharge = concating;
+                                    
+                                    //PRINCIPAL
+                                    connection.query("select fac.name as name from clmsdb.faculty_info as fac, clmsdb.principalsandcoordinators as pc where fac.id in (pc.principal)",(err,data)=>{
+                                        if(err)console.log(err);
+                                        else{
+                                            signs.principal= data[0].name;
+                
+                                            //COORDINATOR
+                                            connection.query("select fac.name as name from clmsdb.faculty_info as fac, clmsdb.principalsandcoordinators as pc where fac.id in (pc.cod)",(err,data)=>{
+                                                if(err)console.log(err);
+                                                else{
+                                                    signs.cod= data[0].name;
+                
+                                                    //DEPARTMENT FULLFORM
+                                                    connection.query("SELECT fullname as deptname FROM clmsdb.departmentnames where abbrivation=?;",[finaldata.specilization],(err,data)=>{
+                                                        if(err)console.log(err);
+                                                        else{
+                                                            // console.log(data);
+                                                            signs.dept=(data[0].deptname).toUpperCase();
+                                                            temp=(finaldata.sem).toString()
+                                                            finaldata.sem = romans[temp]
+                                                            signs.fidata=finaldata;
+                                                            res.send(response(true,"success",signs));
+                                                        }
+                                                    })
+                
+                                                    
+                                    
+                                                }
+                                            })
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                        })
+                    }      
+                }
+            })
+
+        }
+        else{
+            finaldata = req.body
+            connection.query("SELECT name FROM clmsdb.faculty_info where id =(SELECT facid FROM clmsdb.heads where deptid=?)",[finaldata.dept],(err,data)=>{
+                if(err)console.log(err)
+                else{
+                signs.hod=data[0].name;
+    
+                
+                //INCHARGE
+                connection.query("select p.name from clmsdb.persons as p,clmsdb.processrole as r,clmsdb.user_role_mapping as m where r.description='Time table Incharge' and r.id=m.roleid and m.userid= p.codeno and p.division=?",[finaldata.dept],(err,data)=>{
+                    if(err)console.log(err);
+                    else{
+                        var concating="";
+                        // console.log(data)
+                        data.forEach((i)=>{
+                            concating += (" & " + i.name);
+                        })
+                        concating = concating.slice(3,concating.length);
+                        signs.incharge = concating;
+                        
+                        //PRINCIPAL
+                        connection.query("select fac.name as name from clmsdb.faculty_info as fac, clmsdb.principalsandcoordinators as pc where fac.id in (pc.principal)",(err,data)=>{
+                            if(err)console.log(err);
+                            else{
+                                signs.principal= data[0].name;
+    
+                                //COORDINATOR
+                                connection.query("select fac.name as name from clmsdb.faculty_info as fac, clmsdb.principalsandcoordinators as pc where fac.id in (pc.cod)",(err,data)=>{
+                                    if(err)console.log(err);
+                                    else{
+                                        signs.cod= data[0].name;
+    
+                                        //DEPARTMENT FULLFORM
+                                        connection.query("SELECT fullname as deptname FROM clmsdb.departmentnames where abbrivation=?;",[finaldata.specilization],(err,data)=>{
+                                            if(err)console.log(err);
+                                            else{
+                                                signs.dept=(data[0].deptname).toUpperCase();
+                                                connection.query("SELECT semester FROM clmsdb.departments_course where id=?",[finaldata.sem],(err,data)=>{
+                                                    if(err)console.log(err)
+                                                    else{
+                                                        finaldata.sem= romans[data[0].semester]
+                                                        signs.fidata=finaldata;
+                                                        res.send(response(true,"success",signs));
+                                                    }
+                                                })
+                                                // console.log(data);
+                                                
+
+                                            }
+                                        })
+    
+                                        
+                        
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
+            }
+            })
+        }
+        //HEAD OF DEPT
+        
+    }
+    else{
+        res.send(response(false,"failed",null));
+    }
+})
 
 .post("/home/role",checkSignIn,(req,res)=>{
     var obj =req.body;

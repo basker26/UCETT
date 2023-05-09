@@ -31,22 +31,39 @@
             border-radius: 5px;font-size: small;font-weight:bolder;">View</button>
         </div>
     </div>
+
   </div>
 
-  <div  class="table-responsive" >
+  <div id="printing" class="printing">
+      <!-- HEADER FOR TIME TABLE  -->
+      <div id="letterhead" class="full justify-content-center mt-3" style=" font-family:'Times New Roman', Times, serif">
+        <div id="logo" class="col-12 text-center" style="text-align: center;"><img src="../../logo.png" height="75px" width="75px" alt="ou"></div>
+        <div id="departmentname" class="col-12 text-center font-weight-bold h4" style="text-align: center;">DEPARTMENT OF {{signs.dept}}</div>
+        <div id="collagename" class="col-12 text-center h5" style="text-align: center;">University College Of Engineering(Autonomous), Osmania University, Hyderabad - 500007</div>
+        <div id="academicyear" class="col-12 text-center font-weight-bold h5 " style="text-align: center;">Academic year 2022-2023</div>
+
+        <div class="row full" style="text-align: left;margin-top: 10px;">
+          <div class="col">class: {{signs.fidata.grad}} {{signs.fidata.sem}} semester ({{signs.fidata.specilization}})</div>
+      </div>
+    </div>
+
+  
+  
+
+  <div  class="table-responsive justify-content-center" >
       <!-- <div class="shadow p-3 mb-5  rounded responsivebg" style="background-color:#faf9f6;width:220px;align-content: center;" > -->
     <div class="mobiletable">
-    <table id="exportthis" class="table table-bordered" ng-if="weekdata" style="width: 1400px;height: 280px">
+    <table id="exportthis" class="table table-bordered" ng-if="weekdata" style="margin:auto;border-collapse: collapse;" >
     <thead>
-          <th style="padding: 0px;"><h6><strong>DAY </strong></h5></th>
-          <th style="text-align: center; padding: 0px;">9:00-10:00</th>
-          <th style="text-align: center;padding: 0px;">10:00-11:00</th>
-          <th style="text-align: center;padding: 0px;">11:00-12:00</th>
-          <th style="text-align: center;padding: 0px;">12:00-1:00</th>
+          <th style="padding: 0px;border: 1px solid black;"><h6><strong>DAY </strong></h5></th>
+          <th style="text-align: center; padding: 0px;border: 1px solid black;">9:00-10:00</th>
+          <th style="text-align: center;padding: 0px;border: 1px solid black;">10:00-11:00</th>
+          <th style="text-align: center;padding: 0px;border: 1px solid black;">11:00-12:00</th>
+          <th style="text-align: center;padding: 0px;border: 1px solid black;">12:00-1:00</th>
           <!-- <th style="text-align: center;">1:00-2:00</th> -->
-          <th style="text-align: center;padding: 0px;">2:00-3:00</th>
-          <th style="text-align: center;padding: 0px;">3:00-4:00</th>
-          <th style="text-align: center;padding: 0px;">4:00-5:00</th>
+          <th style="text-align: center;padding: 0px;border: 1px solid black;">2:00-3:00</th>
+          <th style="text-align: center;padding: 0px;border: 1px solid black;">3:00-4:00</th>
+          <th style="text-align: center;padding: 0px;border: 1px solid black;">4:00-5:00</th>
 
       </tr>
     </thead>
@@ -54,122 +71,96 @@
         <!-- ng-init="seggregate(f)" -->
         <!-- ng-attr-colspan="{{f.sem}}" -->
       <tr ng-repeat="f in weekdata.datas"  ng-init="seggregate(f)">
-         <td >{{f.day}}</td>
-         <td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}"  style="text-align: center;">{{f.p1}}</td>
-         <td ng-if="f.p2b" ng-attr-colspan="{{f.p2col}}"  style="text-align: center;">{{f.p2}}</td>
-         <td ng-if="f.p3b" ng-attr-colspan="{{f.p3col}}"  style="text-align: center;">{{f.p3}}</td>
-         <td ng-if="f.p4b" ng-attr-colspan="{{f.p4col}}"  style="text-align: center;">{{f.p4}}</td>
+         <td style="text-align: center;border: 1px solid black;">{{f.day}}</td>
+         <td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}"  style="text-align: center;border: 1px solid black;">{{f.p1}}</td>
+         <td ng-if="f.p2b" ng-attr-colspan="{{f.p2col}}"  style="text-align: center;border: 1px solid black;">{{f.p2}}</td>
+         <td ng-if="f.p3b" ng-attr-colspan="{{f.p3col}}"  style="text-align: center;border: 1px solid black;">{{f.p3}}</td>
+         <td ng-if="f.p4b" ng-attr-colspan="{{f.p4col}}"  style="text-align: center;border: 1px solid black;">{{f.p4}}</td>
          <!-- <td>{{f.p5}}</td> -->
-         <td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}"  style="text-align: center;">{{f.p6}}</td>
-         <td ng-if="f.p7b" ng-attr-colspan="{{f.p7col}}"   style="text-align: center;">{{f.p7}}</td>
-         <td ng-if="f.p8b" ng-attr-colspan="{{f.p8col}}"   style="text-align: center;">{{f.p8}}</td>
+         <td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}"  style="text-align: center;border: 1px solid black;">{{f.p6}}</td>
+         <td ng-if="f.p7b" ng-attr-colspan="{{f.p7col}}"   style="text-align: center;border: 1px solid black;">{{f.p7}}</td>
+         <td ng-if="f.p8b" ng-attr-colspan="{{f.p8col}}"   style="text-align: center;border: 1px solid black;">{{f.p8}}</td>
        
 
       </tr>
     </tbody>
   </table>
 </div>
-  <table class="table table-striped" id="exportthis1">
-    <thead>
-        <tr>
-          <th>S no</th>  
-          <th scope="col">Subject Name</th>
-          <th scope="col">Elective</th>
 
-          <th scope="col">Faculty Name</th>
-
+<div class="row p-3">
+  <div class=" col-12 col-md-6" id="theroy">
+    <table class="table table-striped table-bordered" id="exportthis1" style="border-collapse: collapse;" >
+      <thead>
+          <tr>
+            <th style="text-align: center;border: 1px solid black;">S no</th>  
+            <th style="text-align: center;border: 1px solid black;" scope="col">Subject Name</th>
+            <th style="text-align: center;border: 1px solid black;" scope="col">Elective</th>
+  
+            <th style="text-align: center;border: 1px solid black;" scope="col">Faculty Name</th>
+  
+          </tr>
+        </thead>
+      <tbody>
+        <tr ng-repeat="p in weekdata.theory">
+            <td style="text-align: center;border: 1px solid black;">{{$index+1}}</td>
+            <td style="text-align: center;border: 1px solid black;"> {{p.sub_name}}</td>
+            <td style="text-align: center;border: 1px solid black;">{{p.elective}}</td>
+  
+            <td style="text-align: center;border: 1px solid black;">{{p.name}}</td>
         </tr>
-      </thead>
-    <tbody>
-      <tr ng-repeat="p in weekdata.theory">
-          <td>{{$index+1}}</td>
-          <td>{{p.sub_name}}</td>
-          <td>{{p.elective}}</td>
-
-          <td>{{p.name}}</td>
-      </tr>
-    </tbody>
-  </table>
-  <table class="table table-striped" id="exportthis2">
+      </tbody>
+    </table>
+  </div>
+  <div class=" col col-sm-6">
+    
+  <table class="table table-striped table-bordered" id="exportthis2" style="border-collapse: collapse;">
     <thead>
         <tr>
-          <th>S no</th>  
-          <th scope="col">Subject Name</th>
-          <th scope="col">Elective</th>
+          <th style="text-align: center;border: 1px solid black;">S no</th>  
+          <th style="text-align: center;border: 1px solid black;" scope="col">Subject Name</th>
+          <th style="text-align: center;border: 1px solid black;" scope="col">Elective</th>
 
-          <th scope="col">Batch</th>
-          <th scope="col">Facultys</th>
+          <th style="text-align: center;border: 1px solid black;" scope="col">Batch</th>
+          <th style="text-align: center;border: 1px solid black;" scope="col">Facultys</th>
         </tr>
       </thead>
     <tbody>
       <tr ng-repeat="p in weekdata.lab">
-          <td>{{$index+1}}</td>
-          <td>{{p.sub_name}}</td>
-          <td>{{p.elective}}</td>
-          <td>{{p.batch}}</td>
+          <td style="text-align: center;border: 1px solid black;">{{$index+1}}</td>
+          <td style="text-align: center;border: 1px solid black;">{{p.sub_name}}</td>
+          <td style="text-align: center;border: 1px solid black;">{{p.elective}}</td>
+          <td style="text-align: center;border: 1px solid black;">{{p.batch}}</td>
           <!-- <td>{{p.faculty}}</td> -->
-          <td ><H6>{{p.faculty}}</H6><h6 ng-repeat ="q in weekdata.data2" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</h6><h6 ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</h6><h6 ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</h6></td>
+          <td style="text-align: center;border: 1px solid black;"><H6>{{p.faculty}}</H6><h6 ng-repeat ="q in weekdata.data2" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</h6><h6 ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</h6><h6 ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</h6></td>
           <!-- <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch"></td>
           <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
        -->
        </tr>
       </tbody>
   </table>
+  </div>
+</div>
+  
+</div>
+   <!-- FOOTER FOR TIME TABLE  -->
+
+<div id="letterfoot" class="row full">
+  <table table-border="0" class="full " style="margin-top: 150px;word-wrap: break-word;">
+    <tr style=" font-family: Times New Roman, Times, serif;text-align: center;">
+      <td><b>{{signs.incharge}}</b><br><b>In-Charge of Time-Tables(MED)</b></td>
+      <td><b>{{signs.cod}}</b><br><b>Overall co-ordinator, Time tables</b></td>
+      <td><b>{{signs.hod}}</b><br><b>Head, Dept. of {{signs.dept}}</b></td>
+      <td><b>{{signs.principal}}</b><br><b>Principal(UCEOU)</b></td>
+    </tr>
+  </table>
 </div>
 
-<!-- <div ng-hide="!fi.check">
-   -->
-   <!-- <div> -->
-  <!-- <div class="myDIV" ng-hide="fi.check">{{fi.check}}</div> -->
-  <!-- <div class="hide"> -->
-    <!-- <table class="table table-striped">
-      <thead>
-          <tr>
-            <th>S no</th>  
-            <th scope="col">Subject Name</th>
-            <th scope="col">Elective</th>
 
-            <th scope="col">Faculty Name</th>
+<div class="row justify-content-center mt-3" >
+  <div class="col-md-1" >
+      <button  type="submit" class="btn btn-primary " ng-click="exportdoc()" style="background-color: #e96b56;
+        border-radius: 5px;font-size: small;font-weight:bolder; width:100%">Print</button>
+       
+  </div>
+</div>
 
-          </tr>
-        </thead>
-      <tbody>
-        <tr ng-repeat="p in weekdata.theory">
-            <td>{{$index+1}}</td>
-            <td>{{p.sub_name}}</td>
-            <td>{{p.elective}}</td>
-
-            <td>{{p.name}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="table table-striped">
-      <thead>
-          <tr>
-            <th>S no</th>  
-            <th scope="col">Subject Name</th>
-            <th scope="col">Elective</th>
-
-            <th scope="col">Batch</th>
-            <th scope="col">Faculty1</th>
-            <th scope="col">Faculty2</th>
-            <th scope="col">Faculty3</th>
-            <th scope="col">Faculty4</th>
-          </tr>
-        </thead>
-      <tbody>
-        <tr ng-repeat="p in weekdata.lab">
-            <td>{{$index+1}}</td>
-            <td>{{p.sub_name}}</td>
-            <td>{{p.elective}}</td>
-            <td>{{p.batch}}</td>
-            <td>{{p.faculty}}</td>
-            <td ng-repeat ="q in weekdata.data2" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
-            <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
-            <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
-        </tr>
-      </tbody>
-    </table> -->
-  <!-- </div> -->
-<div class=" container row justify-content-center"><div class="col-2" > <button class= "btn btn-secondary" ng-click="export()">generate pdf</button>
-</div></div> </div>

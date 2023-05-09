@@ -71,6 +71,10 @@
         service.editallotment=editallotment;
         service.editgetelement=editgetelement;
         service.deleteoldallot=deleteoldallot;
+
+        // naveen
+        service.headfoot = headfoot;
+
         return service;
         uploaddata
         function e(data){
@@ -275,6 +279,11 @@
          function EditUserStatus(user){
             //alert("entered service part");
             return $http.post(globalConfig.userEditStatusApi,user).then(handleSuccess,handleError("Error changing password"));
+        }
+
+        // naveen
+        function headfoot(user){
+            return $http.post(globalConfig.headfoot,user).then(handleSuccess,handleError("Error changing password"));
         }
     }
 })();
