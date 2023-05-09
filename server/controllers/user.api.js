@@ -283,7 +283,7 @@ router
 //cherrycode
 .post("/exceladdfacinfo",function(req,res){
     var data=req.body.data;
-    console.log(data);
+    // console.log(data);
     var wrong=[];
     var flag=false;
     data.forEach((item)=>{
@@ -292,10 +292,46 @@ router
             return;
         }
          if( (/^([a-zA-Z])+/).test(item.name) && (/^([a-zA-Z])+/).test(item.abbr) && (/^([a-zA-Z0-9])+/).test(item.emp_code) &&(/^([a-zA-Z0-9])+/).test(item.department) &&  (/^([0-9])+/).test(item.active) &&(/([0-9]{10})/).test(item.phoneno) && (/^[a-zA-Z0-9_\.\-]+[@][a-z]+[\.][a-z]{2,3}/).test(item.email)){
-             connection.query("INSERT INTO `clmsdb`.`faculty_info` (`name`, `abbr`, `emp_code`, `department`, `active`, `phoneno`, `emaill`) VALUES (?, ?, ?, ?, ?,?, ?)",[item.name,item.abbr,item.emp_code,item.department,item.active,item.phoneno,item.email],function(err,data){
-                 if(err) console.log(err);
-                else{}
+            connection.query("SELECT * FROM clmsdb.faculty_info where emp_code=?",[item.emp_code],(err,data0)=>{
+                if(err) console.log(err);
+                else if(data0.length==0){
+                    connection.query("INSERT INTO `clmsdb`.`faculty_info` (`name`, `abbr`, `emp_code`, `department`, `active`, `phoneno`, `emaill`) VALUES (?, ?, ?, ?, ?,?, ?)",[item.name,item.abbr,item.emp_code,item.department,item.active,item.phoneno,item.email],function(err,data){
+                        if(err) console.log(err);
+                       else{
+                           //start
+                           connection.query("SELECT id FROM clmsdb.faculty_info where name=? and  abbr=? and active=2 and  department=?",[item.name,item.abbr,item.department],function(err,data1){
+                               if(err) console.log( err);
+                               else{
+                                   connection.query("INSERT INTO `clmsdb`.`users` (`user_id`, `password`, `dofcreation`, `valid`) VALUES (?,MD5(?),curdate(),1)",[data1[0].id,"123456",],function(err,data2){
+                                       if(err)  console.log( err);
+                                       else{
+                                           connection.query("INSERT INTO `clmsdb`.`user_role_mapping` (`userid`, `roleid`) VALUES (?, ?)",[data1[0].id,'ROL00001'],function(err,data3){
+                                               if(err)  console.log( err);
+                                               else{
+                                                   // connection.query("insert into usersession(session_id,userId,loginStatus,timein)values('"+ req.sessionID+"','"+ user_id+"',1,'"+timein+"')")
+                                                   connection.query("SELECT * FROM clmsdb.faculty_info order by department",function(err,data4){
+                                                       if(err)  console.log( err);
+                                                       else{
+                                                           connection.query("UPDATE `clmsdb`.`faculty_info` SET `active` = '1' WHERE (`id` = ?)",[data1[0].id],function(err,data3){
+                                                               if(err)  console.log(err);
+                                                               else{
+                                                               }
+                                                           })
+                                                       }
+                                                   })
+                                               }
+                                           })
+                                       }
+                                   })
+                               }
+                           })
+                           //stop
+                       }
+                   });
+                }
+                else {wrong.push(item);}
             });
+            
         }else{
             flag=true;
             wrong.push(item);
