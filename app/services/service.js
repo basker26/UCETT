@@ -9,6 +9,9 @@
     function userService($http, globalConfig) {
         
         var service = {};
+        //charan
+        service.personalfaculty=personal;
+        //endcharan
         service.delallotment=delallotment;
         service.test1=test1;
         service.uploaddata=uploaddata;
@@ -78,6 +81,9 @@
 
         return service;
         uploaddata
+        function personal(id){
+            return $http.post(globalConfig.personalfaculty,id).then(handleSuccess,handleError("Error "));
+        }
         function e(data){
             return $http.post(globalConfig.excelfacapi,data).then(handleSuccess , handleError("Eroor "))
         }

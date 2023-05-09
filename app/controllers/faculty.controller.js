@@ -34,12 +34,21 @@
                     var data={
                         id:item,
                     }
-                    userService.viewfac(data).then(function(res){
-                        $scope.details=res.data;
-                    }).catch(function(err){
-                        console.log(err);
-                    })
+                    
+                    //charan
+                 $scope.facinfo;
+                  userService.personalfaculty(data).then(function(res){
+                    console.log(res.data);
+                    $scope.facinfo=res.data;
+                  }).catch(function(err)
+                  {
+                    console.log(err);
+                  })
+                    
+
+                  //charanend
                 }
+                $scope.viewfaculty($rootScope.User.userId);
                 var data={id:$rootScope.User.userId};
                 userService.viewfac(data).then(function(res){
                     $scope.details=res.data;
@@ -57,6 +66,7 @@
                   }).catch(function(err){
                     console.log(err);
                   })
+                  
             }
         }else{
             $state.go("login");
