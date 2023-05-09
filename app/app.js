@@ -36,18 +36,6 @@
                 controller:"checkstatus"
             })
           
-           //to be present 
-            .state("managecontract", {
-                parent:"home",
-                url: "/hr/managecontract",
-                views: {
-                    'tasks@home':{
-                        templateUrl: "/views/hr_cell/contractorSelector.html",
-                        controller: "hrcellController"
-                    }   
-                }
-            
-            })
             .state("Schedule TimeTable", {
                 parent:"home",
                 url: "/edit/timetable",
@@ -112,7 +100,6 @@
                         controller: "hrcellController"
                     }   
                 }
-            
             })
          
 
@@ -289,7 +276,10 @@
             deletesubject:'http://localhost:4000/api/user/deletesubject',
             addsubjecti:'http://localhost:4000/api/user/addsubjecti',
             changefacname:'http://localhost:4000/api/user/changefacname',
-            editallotment:'http://localhost:4000/api/user/editallotment'
+            editallotment:'http://localhost:4000/api/user/editallotment',
+
+            // naveen 
+            headfoot: "http://localhost:4000/api/user/headfoot",
         }).run(run);
 
     run.$inject = ['$rootScope','$localStorage'];
