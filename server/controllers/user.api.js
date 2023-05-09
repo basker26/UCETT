@@ -239,12 +239,12 @@ router
         res.send(response(false,"faculty_dept_info",null));
         var info=[
             data.id,
-            ["","","","","","","","",""],
-            ["","","","","","","","",""],
-            ["","","","","","","","",""],
-            ["","","","","","","","",""],
-            ["","","","","","","","",""],
-            ["","","","","","","","",""],
+            [{d_from:1,d_to:1,info:"*",s:true},{d_from:2,d_to:2,info:"*",s:true},{d_from:3,d_to:3,info:"*",s:true},{d_from:4,d_to:4,info:"*",s:true},{d_from:5,d_to:5,info:"*",s:true},{d_from:6,d_to:6,info:"*",s:true},{d_from:7,d_to:7,info:"*",s:true},{d_from:8,d_to:8,info:"*",s:true},{d_from:9,d_to:9,info:"*",s:true},{d_from:10,d_to:10,info:"*",s:true}],
+            [{d_from:1,d_to:1,info:"*",s:true},{d_from:2,d_to:2,info:"*",s:true},{d_from:3,d_to:3,info:"*",s:true},{d_from:4,d_to:4,info:"*",s:true},{d_from:5,d_to:5,info:"*",s:true},{d_from:6,d_to:6,info:"*",s:true},{d_from:7,d_to:7,info:"*",s:true},{d_from:8,d_to:8,info:"*",s:true},{d_from:9,d_to:9,info:"*",s:true},{d_from:10,d_to:10,info:"*",s:true}],
+            [{d_from:1,d_to:1,info:"*",s:true},{d_from:2,d_to:2,info:"*",s:true},{d_from:3,d_to:3,info:"*",s:true},{d_from:4,d_to:4,info:"*",s:true},{d_from:5,d_to:5,info:"*",s:true},{d_from:6,d_to:6,info:"*",s:true},{d_from:7,d_to:7,info:"*",s:true},{d_from:8,d_to:8,info:"*",s:true},{d_from:9,d_to:9,info:"*",s:true},{d_from:10,d_to:10,info:"*",s:true}],
+            [{d_from:1,d_to:1,info:"*",s:true},{d_from:2,d_to:2,info:"*",s:true},{d_from:3,d_to:3,info:"*",s:true},{d_from:4,d_to:4,info:"*",s:true},{d_from:5,d_to:5,info:"*",s:true},{d_from:6,d_to:6,info:"*",s:true},{d_from:7,d_to:7,info:"*",s:true},{d_from:8,d_to:8,info:"*",s:true},{d_from:9,d_to:9,info:"*",s:true},{d_from:10,d_to:10,info:"*",s:true}],
+            [{d_from:1,d_to:1,info:"*",s:true},{d_from:2,d_to:2,info:"*",s:true},{d_from:3,d_to:3,info:"*",s:true},{d_from:4,d_to:4,info:"*",s:true},{d_from:5,d_to:5,info:"*",s:true},{d_from:6,d_to:6,info:"*",s:true},{d_from:7,d_to:7,info:"*",s:true},{d_from:8,d_to:8,info:"*",s:true},{d_from:9,d_to:9,info:"*",s:true},{d_from:10,d_to:10,info:"*",s:true}],
+            [{d_from:1,d_to:1,info:"*",s:true},{d_from:2,d_to:2,info:"*",s:true},{d_from:3,d_to:3,info:"*",s:true},{d_from:4,d_to:4,info:"*",s:true},{d_from:5,d_to:5,info:"*",s:true},{d_from:6,d_to:6,info:"*",s:true},{d_from:7,d_to:7,info:"*",s:true},{d_from:8,d_to:8,info:"*",s:true},{d_from:9,d_to:9,info:"*",s:true},{d_from:10,d_to:10,info:"*",s:true}],
             0
     ]
    
@@ -258,15 +258,27 @@ router
           data[0].forEach((i)=>
             {
                 console.log(i)
-                for(var j=i.d_from;j<=i.d_to;j++)
+              /*  for(var j=i.d_from;j<=i.d_to;j++)
                 {
                     var day1=i.day;
 
                     info[ret_day(i.day)][j]=i.info;
                     info[7]++;
                     console.log("enterde");
+                }*/
+                info[ret_day(i.day)][i.d_from-1].d_to=i.d_to;
+                info[ret_day(i.day)][i.d_from-1].info=i.info;
+                info[7]+=i.d_to-i.d_from+1;
+
+                for(var j=i.d_from;j<i.d_to;j++)
+                {
+                    
+                    info[ret_day(i.day)][j].s=false;
+                    //info[7]++;
+                
                 }
             })
+
             res.send(response(true,"faculty_dept_info",info));
         }
 
