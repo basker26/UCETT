@@ -9,6 +9,7 @@
     function userService($http, globalConfig) {
         
         var service = {};
+        service.delallotment=delallotment;
         service.test1=test1;
         service.uploaddata=uploaddata;
         // service.getde
@@ -83,10 +84,13 @@
         function uploaddata(details){
             return $http.post(globalConfig.uploaddata,details).then(handleSuccess , handleError("Eroor "));
         }
+        function delallotment(details){
+            return $http.post(globalConfig.delallotment,details).then(handleSuccess , handleError("Error "));
+        }
         function changefacname(details){
             return $http.post(globalConfig.changefacname,details).then(handleSuccess , handleError("Eroor "));
         }
-        deleteoldallot
+        // deleteoldallot
         function deleteoldallot(details){
             return $http.post(globalConfig.deleteoldallot,details).then(handleSuccess , handleError("Eroor "));
         }
