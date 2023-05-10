@@ -1,3 +1,16 @@
+<script>
+    $(function() {
+  $(".exportToExcel").click(function(event) {
+    console.log("Exporting XLS");
+    $("#studentTable").table2excel({
+      exclude: ".excludeThisClass",
+      name: $("#studentTable").data("tableName"),
+      filename: "StudentTable.xls",
+      preserveColors: false
+    });
+  });
+});
+</script>
 <div class="col-11 col-md-2">
     <select  ng-model="dept.dept" class="form-select form-select-sm " aria-label=".form-select-sm example" ng-change="getinfo(dept.dept)">
         <option disabled>Select Department</option>
@@ -182,8 +195,5 @@
 
         </tr>
     </table>
-     <button onclick="tableToExcel(
-        'studtable', 'Students')">
-        Click to Export
-    </button>
+<button class="exportToExcel">Export to XLS</button>
 </div>
