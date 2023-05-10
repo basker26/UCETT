@@ -2234,11 +2234,13 @@ router
             res.send(response(true,'sucess',data));
         }
     })
+
+    
 })
 .post("/addfaculty",checkSignIn,function(req,res){
     var body=req.body;
     console.log(body);
-    connection.query('INSERT INTO `clmsdb`.`faculty_info` (`name`, `abbr`, `department`,`active`) VALUES (?,?,?,?)',[body.name,body.abbr,body.dept,2],function(err,data){
+    connection.query("INSERT INTO `clmsdb`.`faculty_info` (`name`, `abbr`, `emp_code`, `department`, `active`, `phoneno`, `emaill`) VALUES (?, ?, ?, ?, ?,?, ?)",[body.name,body.abbr,body.emp_code,body.dept,2,body.phone,body.email],function(err,data){
         if(err) throw err;
         else{
             connection.query("SELECT id FROM clmsdb.faculty_info where name=? and  abbr=? and active=2 and  department=?",[body.name,body.abbr,body.dept],function(err,data1){

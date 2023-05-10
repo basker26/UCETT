@@ -85,8 +85,8 @@
                     }
                 }
                 $scope.addfaculty=function(item,facdata){
-                    var ob=facdata.find(o=>o.name===item.name);
-                    if(ob){
+                    // var ob=facdata.find(o=>o.name===item.name);
+                    if(false){
                         alert("faculty already exists");
                     }else{
                         userService.addfaculty(item).then(function(res){
