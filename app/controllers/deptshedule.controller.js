@@ -8,11 +8,7 @@
         if ($rootScope.userLogin && $rootScope.User && $rootScope.User.rolls.includes($state.current.name)) {
             if($state.current.name == "Dept schedule"){
                 // $scope.deptfaculty=[];
-                 $(document).ready(function () {
-                    $("#export").table2excel({
-                        filename: "Students.xls"
-                    });
-                 });
+             
                 userService.custom().then(function(res){
                     $scope.data=res.data;
                 }).catch(function(err){
@@ -56,7 +52,7 @@
               link.download = 'Document';   
               // $scope.upload(link);
               document.body.appendChild(link);
-              if (navigator.msSaveOrOpenBlob ) navigator.msSaveOrOpenBlob( blob, 'Document.doc'); // IE10-11
+              if (navigator.msSaveOrOpenBlob ) navigator.msSaveOrOpenBlob( blob, 'Document.docx'); // IE10-11
                   else link.click();  // other browsers
               document.body.removeChild(link);
                   }
