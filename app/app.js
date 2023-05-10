@@ -199,6 +199,18 @@
                     }
                 }
             })
+            //dept schedule
+            .state("Dept schedule",{
+                parent:"home",
+                url:"home/Dept schedule",
+                views:{
+                    'tasks@home':{
+                        templateUrl:"/views/timetablesetter/Deptschedule.html",
+                        controller:"Deptschedule"
+                    }
+                }
+            })
+            //
             .state("Clear Timetable",{
                 parent:"home",
                 url:"home/ClearTimetable",
