@@ -79,8 +79,20 @@
         // naveen
         service.headfoot = headfoot;
 
+        service.excelsub=excelsub;
+        service.getfacname=getfacname;
+        service.addopenelectives=addopenelectives;
         return service;
         uploaddata
+        function addopenelectives(data){
+            return  $http.post(globalConfig.addopenelectives,data).then(handleSuccess , handleError("Eroor "))
+        }
+        function getfacname(){
+            return  $http.post(globalConfig.getfacname).then(handleSuccess , handleError("Eroor "))
+        }
+        function excelsub(data){
+            return  $http.post(globalConfig.excelsub,data).then(handleSuccess , handleError("Eroor "))
+        }
         function personal(id){
             return $http.post(globalConfig.personalfaculty,id).then(handleSuccess,handleError("Error "));
         }

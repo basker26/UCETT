@@ -189,6 +189,16 @@
                     
                 }
             })
+            .state("Open electives",{
+                parent:"home",
+                url:"home/Open electives",
+                views:{
+                    'tasks@home':{
+                        templateUrl:"/views/timetablesetter/Openelectives.html",
+                        controller:"Openelectives"
+                    }
+                }
+            })
             .state("Clear Timetable",{
                 parent:"home",
                 url:"home/ClearTimetable",
@@ -219,6 +229,7 @@
         })
         .constant("globalConfig", {
             personalfaculty:"http://localhost:4000/api/user/personalfaculty",
+            getfacname:"http://localhost:4000/api/user/getfacname",
             delallotment:"http://localhost:4000/api/user/delallotment",
             excelfacapi:"http://localhost:4000/api/user/exceladdfacinfo",
             uploaddata:'http://localhost:4000/api/user/uploaddata',

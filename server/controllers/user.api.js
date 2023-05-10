@@ -48,6 +48,83 @@ router
  
 
 })
+.post("/addopenelectives",function(req,res){
+    if(req.body.grad && req.body.sem && req.body.elec && req.body.faculty.length>0 && req.body.abbr && req.body.name){
+        var d=req.body;
+        connection.query("SELECT id FROM clmsdb.departments_course where course=? and semester=?",[d.grad,d.sem],function(err,data){
+            if(err) console.log(err);
+            else{
+                
+                        data.forEach(item=>{
+                            
+                            connection.query("SELECT sub_id FROM clmsdb.subject_info where subinfo=? and elective=? and sub_name=?",[item.id,d.elec,d.name],function(err,rest){
+                                if(err) console.log(err);
+                                else if(rest.length==0){
+                                    connection.query("INSERT INTO `clmsdb`.`subject_info` (`type`, `sub_name`, `sub_abbr`, `active`, `elective`, `subinfo`) VALUES (?,?,?,?,?,?)",["Theory",d.name,d.abbr,0,d.elec,item.id],function(err,data1){
+                                        if(err) console.log(err);
+                                        else{
+                                                connection.query("SELECT sub_id FROM clmsdb.subject_info where subinfo= ? and elective=? and sub_name=?",[item.id,d.elec,d.name],function(err,data2){
+                                                    if(err) console.log(err);
+                                                    else if(data2.length==1){
+                                                        if(d.faculty.length==1){
+                                                            connection.query("INSERT INTO `clmsdb`.`theory_fac_allotment` (sub_id, facid) VALUES (?, ?)",[data2[0].sub_id,d.faculty[0]],function(err,data3){
+                                                                if(err) throw err;
+                                                                else{
+                                                                    console.log("done",data);
+                                                                    
+                                                                }
+                                                            })
+                                                        }
+                                                        if(d.faculty.length==2){
+                                                            connection.query("INSERT INTO `clmsdb`.`lab_faculty_allotment` (subcode, faccode1,faccode2) VALUES (?, ?,?)",[data2[0].sub_id,d.faculty[0],d.faculty[1]],function(err,data){
+                                                                if(err){
+                                                                    throw err;
+                                                                }
+                                                                else{
+                                                                    // console.log(data)
+                                                                }
+                                                            })
+                                                        }
+                                                        if(d.faculty.length==3){
+                                                            connection.query("INSERT INTO `clmsdb`.`lab_faculty_allotment` (subcode, faccode1,faccode2,faccode3) VALUES (?, ?, ?,?)",[data2[0].sub_id,d.faculty[0],d.faculty[1],d.faculty[2]],function(err,data){
+                                                                if(err){
+                                                                    throw err;
+                                                                }
+                                                                else{
+                                                                    // console.log(data)
+                                                                    // res.send(response(true,'sucess',null));
+                                                                }
+                                                            })
+                                                        }
+                                                        if(d.faculty.length==4){
+                                                            connection.query("INSERT INTO `clmsdb`.`lab_faculty_allotment` (subcode, faccode1,faccode2,faccode3,faccode4) VALUES (?, ?, ?,?,?)",[data2[0].sub_id,d.faculty[0],d.faculty[1],d.faculty[2],d.faculty[3]],function(err,data){
+                                                                if(err){
+                                                                    throw err;
+                                                                }
+                                                                else{
+                                                                    // console.log(data)
+                                                                }
+                                                            })
+                                                        }
+                                                    }
+                                                })
+                                                
+                                        }
+                                    })
+                                }
+                            })
+                            
+                        })
+                    
+                
+        res.send(response(false,"unsucess",null))
+
+            }
+        })
+    }else{
+        res.send(response(false,"unsucess",null))
+    }
+})
 .post("/uploaddata",checkSignIn,function(req,res){
     var body=req.body;
     console.log(body,"hello im at upload");
@@ -358,6 +435,7 @@ router
 
 //ExcelsubAdd by naveen
 .post("/excelSubAdd",function(req,res){
+    console.log(req.body);
     if(!req.body.data){res.send(response(false,"Missing Input parameters",null));return;}
     var data=req.body.data;
     if(!req.body.id){res.send(response(false,"Please select course",null));return;}
@@ -380,7 +458,7 @@ router
 
       var wrong=[];
       var flag=false;
-
+      console.log(data);
     data.forEach(item => {
 
         if(!(item.subjectname && item.abbr && item.type && item.elective))
@@ -391,6 +469,7 @@ router
 
         var subj=item.subjectname;
         var abbr=item.abbr.toUpperCase();
+        item.type[0].toUpperCase();
         var type=item.type;
         var elective=item.elective;
         
@@ -856,6 +935,15 @@ router
         if(err) throw err;
         else{
             res.send(response(true,"sucess",data))
+        }
+    })
+})
+.post("/getfacname",checkSignIn,function(req,res){
+    connection.query("SELECT * FROM clmsdb.faculty_info",function(err,data){
+        if(err) console.log(err);
+        else{
+            // console.log(data);
+            res.send(response(true,"sucess",data));
         }
     })
 })
@@ -2494,6 +2582,7 @@ router
 })
 .post("/deletesubject",checkSignIn,function(req,res){
     var detail=req.body;
+    console.log(detail);
     connection.query("DELETE FROM `clmsdb`.`subject_info` WHERE (`sub_id` = ?)",[detail.id],function(err,data1){
         if(err) throw err;
         else{
@@ -2508,14 +2597,15 @@ router
 })
 .post("/addsubjecti",checkSignIn,function(req,res){
     var data=req.body;
-    // console.log(data);if()
-    connection.query("INSERT INTO `clmsdb`.`subject_info` (`type`, `sub_name`, `sub_abbr`, `subinfo`,`elective`,`active`) VALUES (?,?,?,?,?,?)",[data.data.type,data.data.name,data.data.abbr,data.sem,data.data.elective,data.data.block],function(err,data){
+    console.log(data);
+    connection.query("INSERT INTO `clmsdb`.`subject_info` (`type`, `sub_name`, `sub_abbr`, `subinfo`,`elective`,`active`) VALUES (?,?,?,?,?,?)",[data.data.type,data.data.name,data.data.abbr,data.sem,data.data.elective,data.data.block],function(err,ata){
         if(err) throw err;
         else{
-            connection.query("SELECT * FROM clmsdb.subject_info where subinfo=?",[data.sem],function(err,data){
+            connection.query("SELECT * FROM clmsdb.subject_info where subinfo=?",[data.sem],function(err,ta){
                 if(err) throw err;
                 else{
-                    res.send(response(true,"sucess",data));
+                    console.log(ta)
+                    res.send(response(true,"sucess",ta));
                 }
             })
         }
