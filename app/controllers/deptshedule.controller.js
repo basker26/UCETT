@@ -8,6 +8,11 @@
         if ($rootScope.userLogin && $rootScope.User && $rootScope.User.rolls.includes($state.current.name)) {
             if($state.current.name == "Dept schedule"){
                 // $scope.deptfaculty=[];
+                 $(document).ready(function () {
+                    $("#export").table2excel({
+                        filename: "Students.xls"
+                    });
+                 });
                 userService.custom().then(function(res){
                     $scope.data=res.data;
                 }).catch(function(err){
