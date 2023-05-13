@@ -2,20 +2,20 @@ var express = require("express"),
     session= require("express-session"),
     router = express.Router(),
     fs = require('fs'),
-    html_to_pdf = require('html-pdf-node'),
+    // html_to_pdf = require('html-pdf-node'),
     url = require('url');
-const { uuid } = require('uuidv4');
-const { v4: uuidv4 } = require('uuid');
-const { connect } = require("net");
-const { data, contains} = require("jquery");
-const { includes, forEach } = require("underscore");
+// const { uuid } = require('uuidv4');
+// const { v4: uuidv4 } = require('uuid');
+// const { connect } = require("net");
+// const { data, contains} = require("jquery");
+// const { includes, forEach } = require("underscore");
 // const { element } = require("angular");
 const timestamp = require('time-stamp'),
     dbConnection = require("../config/dbConnection.js"),
     connection = dbConnection.getConnection();// for database connection.
 
 var multer  = require('multer');
-const { sign } = require("crypto");
+// const { sign } = require("crypto");
 var storage = multer.diskStorage({
 
     destination: function (req, file, cb) {
