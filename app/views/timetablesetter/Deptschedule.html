@@ -13,18 +13,21 @@
   });
 });
 </script>
-<div class="col-11 col-md-2">
-    <select  ng-model="dept.dept" class="form-select form-select-sm " aria-label=".form-select-sm example" ng-change="getinfo(dept.dept)">
-        <option disabled>Select Department</option>
-        <option ng-repeat="d in data.data" value={{d.department}}>{{d.department}}</option>
-    </select>
-</div>
-<div class="row mycard mt-0">
-    <style>
-        table, th, td {
-          border:1px solid black;
-        }
-        </style>
+
+<div class="row shadow mt-3" style="margin:auto;justify-content: center;">
+    <div class="mt-2 row full p-2" style="background: rgb(247, 236, 224);">
+        <div class="col" >
+            <h5>Select Department</h5>
+            <select  ng-model="dept.dept" class="form-select form-select-lg rounded " aria-label=".form-select-sm example" ng-change="getinfo(dept.dept)">
+                <option disabled>Select Department</option>
+                <option ng-repeat="d in data.data" value={{d.department}}>{{d.department}}</option>
+            </select>
+        </div>
+        <div class="col-md-3" style="margin: auto;">
+            <button class="btn btn-success" ng-click="exportdoc">Export to XLS</button>
+        </div>
+    </div>
+    <div class="row full mt-2 p-3" style="text-align:center;overflow-x: scroll;justify-content: left;">
     <table id="export">
         <th>
             Id
@@ -197,5 +200,14 @@
 
         </tr>
     </table>
-<button ng-click="exportdoc">Export to XLS</button>
+    <style>
+        table, th, td {
+          border:1px solid black;
+        }
+
+
+    </style>
 </div>
+</div>
+
+
