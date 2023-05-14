@@ -2,60 +2,36 @@
     'use strict';
     angular
         .module('app')
+        .factory('Excel',function($window){
+            var uri='data:application/vnd.ms-excel;base64,',
+                template='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+                base64=function(s){return $window.btoa(unescape(encodeURIComponent(s)));},
+                format=function(s,c){return s.replace(/{(\w+)}/g,function(m,p){return c[p];})};
+            return {
+                tableToExcel:function(tableId,worksheetName){
+                    var table=$(tableId),
+                        ctx={worksheet:worksheetName,table:table.html()},
+                        href=uri+base64(format(template,ctx));
+                    return href;
+                }
+            };
+        })
         .controller('Deptschedule', Controller);
-    Controller.$inject = ['$scope', '$rootScope', 'userService', '$state', '$stateParams', '$localStorage','$window'];
-    function Controller($scope, $rootScope, userService, $state, $stateParams, $localStorage,$window) {
+    Controller.$inject = ['$timeout','$scope', '$rootScope', 'userService', '$state', '$stateParams', '$localStorage','$window','Excel'];
+    
+    function Controller($timeout,$scope, $rootScope, userService, $state, $stateParams, $localStorage,$window,Excel) {
         if ($rootScope.userLogin && $rootScope.User && $rootScope.User.rolls.includes($state.current.name)) {
             if($state.current.name == "Dept schedule"){
-                // $scope.deptfaculty=[];
-             
                 userService.custom().then(function(res){
                     $scope.data=res.data;
                 }).catch(function(err){
                     console.log(err);
                 })
                 //excel
-                $scope.exportdoc=function(){
-                    if (!$window.Blob) {
-                      alert('Your legacy browser does not support this action.');
-                      return;
-                   }    
-                   var link; 
-             var blob, url, css;            
-                   var html=angular.element(document.querySelector('#export'))[0].outerHTML;
-                   var header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' " +
-                   "xmlns:w='urn:schemas-microsoft-com:office:word' " +
-                   "xmlns='http://www.w3.org/TR/REC-html40'>" +
-                   "<head><meta charset='utf-8'><title>Export Table to Word</title>"+
-                   '</head><body>';
-                var footer = "</body></html>";
-                var sourceHTML = header +"<table>"+ html  +"</table>" +footer;
-
-             css = (
-                '<style>' +
-                '@page WordSection1{size: 841.95pt 595.35pt;mso-page-orientation: landscape;}' +
-                'div.WordSection1 {page: WordSection1;}' +
-                'table{width:24cm;}td{border:1px black solid;width:5em;padding:2px;}'+
-                '</style>'
-                );
-                    blob = new Blob([css+sourceHTML], {
-                    type: "application/msword",
-        
-                });
-        
-                // saveAs(blob, "Report.xls");
-                url = URL.createObjectURL(blob);
-             link = document.createElement('A');
-              link.href = url;
-              // Set default file name. 
-              // Word will append file extension - do not add an extension here.
-              link.download = 'Document';   
-              // $scope.upload(link);
-              document.body.appendChild(link);
-              if (navigator.msSaveOrOpenBlob ) navigator.msSaveOrOpenBlob( blob, 'Document.docx'); // IE10-11
-                  else link.click();  // other browsers
-              document.body.removeChild(link);
-                  }
+                $scope.exportToExcel=function(tableId){ // ex: '#my-table'
+                    var exportHref=Excel.tableToExcel(tableId,'WireWorkbenchDataExport');
+                    $timeout(function(){location.href=exportHref;},100); // trigger download
+                }
                 //
                 $scope.getinfo=function(item){
                     $scope.deptfaculty=[];
@@ -67,7 +43,7 @@
                                     id:element.id,
                                 }
                               userService.personalfaculty(data).then(function(res){
-                                
+                                console.log(res.data);
                                 $scope.deptfaculty.push(res.data);
                               }).catch(function(err)
                               {

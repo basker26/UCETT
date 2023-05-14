@@ -240,6 +240,7 @@
    
         })
         .constant("globalConfig", {
+            deptfacdwnld:"http://localhost:4000/api/user/exceldeptfac",
             personalfaculty:"http://localhost:4000/api/user/personalfaculty",
             getfacname:"http://localhost:4000/api/user/getfacname",
             delallotment:"http://localhost:4000/api/user/delallotment",

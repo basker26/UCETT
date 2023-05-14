@@ -1,7 +1,9 @@
+
 var express = require("express"),
     session= require("express-session"),
     router = express.Router(),
     fs = require('fs'),
+    // excelbuilder = require('msexcel-builder'),
     // html_to_pdf = require('html-pdf-node'),
     url = require('url');
 // const { uuid } = require('uuidv4');
@@ -10,10 +12,12 @@ var express = require("express"),
 // const { data, contains} = require("jquery");
 // const { includes, forEach } = require("underscore");
 // const { element } = require("angular");
+const XLSX = require('xlsx');
 const timestamp = require('time-stamp'),
     dbConnection = require("../config/dbConnection.js"),
     connection = dbConnection.getConnection();// for database connection.
 
+// const { forEach } = require("angular");
 var multer  = require('multer');
 // const { sign } = require("crypto");
 var storage = multer.diskStorage({
@@ -47,6 +51,39 @@ router
     res.send(response(true,"true"));
  
 
+})
+.post("/exceldeptfac",(req,res)=>{
+    if(req.body.data){
+        var data=req.body.data;
+        if((data.length>0 && data[0].length==8 && data[0][1].length==10) && data[0][1][0].d_from==undefined || data[0][1][0].d_to==undefined || data[0][1][0].info==undefined) res.send(response(false,"unsucess",null));
+        else{
+            var d=new Date()
+            var fn="./"+(d.getMonth()+1)+"-"+d.getDate()+"-"+d.getTime()+".xlsx";
+            const workBook = XLSX.utils.book_new();
+            var finad=[];
+            data.forEach((item,index)=>{
+                var x=[];
+                x.push(item[0])
+                for(var i=1;i<7;i++){
+                    for(var j=0;j<10;j++){
+                        if(item[i][j].s){
+                            x.push(item[i][j].info);
+                        }
+                    }
+                }
+                console.log(x);
+                finad.push(x);
+            //     const workSheet = XLSX.utils.sheet_add_aoa([x]);
+            // XLSX.utils.book_append_sheet(workBook, workSheet, 'sheet'+index);  
+            })
+            
+            // console.log(finad);
+            const workSheet = XLSX.utils.aoa_to_sheet(finad);
+            XLSX.utils.book_append_sheet(workBook, workSheet, 'sheet');  
+            XLSX.writeFile(workBook,"./Temp/"+fn);
+            res.send(response(true,"sucess",1));
+        }
+    }else res.send(response(false,"uncess",null));
 })
 .post("/addopenelectives",function(req,res){
     if(req.body.grad && req.body.sem && req.body.elec && req.body.faculty.length>0 && req.body.abbr && req.body.name){
@@ -327,7 +364,7 @@ router
             [{d_from:1,d_to:1,info: "",s:true},{d_from:2,d_to:2,info: "",s:true},{d_from:3,d_to:3,info: "",s:true},{d_from:4,d_to:4,info: "",s:true},{d_from:5,d_to:5,info: "",s:true},{d_from:6,d_to:6,info: "",s:true},{d_from:7,d_to:7,info: "",s:true},{d_from:8,d_to:8,info: "",s:true},{d_from:9,d_to:9,info: "",s:true},{d_from:10,d_to:10,info: "",s:true}],
             [{d_from:1,d_to:1,info: "",s:true},{d_from:2,d_to:2,info: "",s:true},{d_from:3,d_to:3,info: "",s:true},{d_from:4,d_to:4,info: "",s:true},{d_from:5,d_to:5,info: "",s:true},{d_from:6,d_to:6,info: "",s:true},{d_from:7,d_to:7,info: "",s:true},{d_from:8,d_to:8,info: "",s:true},{d_from:9,d_to:9,info: "",s:true},{d_from:10,d_to:10,info: "",s:true}],
             0
-    ]
+        ];
    
     connection.query("call clmsdb.faculty_personal(?);",[data.id],function(err,data){
         if(err){
@@ -1046,17 +1083,6 @@ router
         to=parseInt(req.query.to);
     }
     console.log(code,frm,to,day);
-    // connection.query("call clmsdb.getfac(?,?, ?, ?)",[day,code,to,frm],function(err,data){
-    //     if(err){
-    //      throw err;
-    //     }
-    //     else 
-    //     {
-    //         console.log(data);
-    //         res.send(response(true,'sucess',data));
-
-    //     }
-    // });
     connection.query("SELECT id FROM clmsdb.faculty_info where name in (SELECT concat('Dept of ',name) as facid FROM clmsdb.buildings)",function(err,data){
         if(err) throw err;
         else{
@@ -1068,6 +1094,7 @@ router
                         if(err) throw err;
                         else{
                             let alot=data1.map((item)=>item.labfacallt);
+                            if(alot.length==0) alot.push(' ');
                             let sub=data2.map((item)=>item.sub_id);
                             connection.query("SELECT theoryfacallt FROM clmsdb.theory_fac_allotment where  sub_id  in (?) or theoryfacallt  in (?) union SELECT labfacallt FROM clmsdb.lab_faculty_allotment where subcode  in (?) or labfacallt  in (?)",[sub,alot,sub,alot],function(err,data3){
                                 if(err) throw err;
@@ -2074,6 +2101,7 @@ router
     connection.query("call clmsdb.deleteold(?, ?)",[body.day,body.id],function(err,data){
         if(err) throw err;
         else{
+            console.log(data);
             data[0].forEach(element=>{
                 connection.query("DELETE FROM `clmsdb`.`lecturer_details` WHERE (`class_id` = ?)",[element.class_id],function(err,data){
                     if(err) throw err;
