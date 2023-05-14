@@ -75,6 +75,7 @@
         service.editallotment=editallotment;
         service.editgetelement=editgetelement;
         service.deleteoldallot=deleteoldallot;
+        service.deptfacdwnld=deptfacdwnld;
 
         // naveen
         service.headfoot = headfoot;
@@ -84,6 +85,9 @@
         service.addopenelectives=addopenelectives;
         return service;
         uploaddata
+        function deptfacdwnld(data){
+            return  $http.post(globalConfig.deptfacdwnld,data).then(handleSuccess , handleError("Eroor "))
+        }
         function addopenelectives(data){
             return  $http.post(globalConfig.addopenelectives,data).then(handleSuccess , handleError("Eroor "))
         }

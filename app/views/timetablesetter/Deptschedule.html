@@ -24,7 +24,7 @@
             </select>
         </div>
         <div class="col-md-3" style="margin: auto;">
-            <button class="btn btn-success" ng-click="exportdoc">Export to XLS</button>
+            <button class="btn btn-success" ng-click="exportToExcel('#export')">Export to XLS</button>
         </div>
     </div>
     <div class="row full mt-2 p-3" style="text-align:center;overflow-x: scroll;justify-content: left;">
@@ -196,7 +196,7 @@
             <td ng-if="facinfo[6][8].s" ng-attr-colspan="{{facinfo[6][8].d_to - facinfo[6][8].d_from + 1}}">{{facinfo[6][8].info}}</td>
             <td ng-if="facinfo[6][9].s" ng-attr-colspan="{{facinfo[6][9].d_to - facinfo[6][9].d_from + 1}}">{{facinfo[6][9].info}}</td>
 
-            <td ng-attr-colspan="10">{{facinfo[7]}}</td>
+            <td ng-attr-colspan="1">{{facinfo[7]}}</td>
 
         </tr>
     </table>
@@ -207,6 +207,9 @@
 
 
     </style>
+<!-- <button ng-click="exportdoc(deptfaculty)"></button> -->
+<!-- <button id="button-a">Create Excel</button> -->
+<!-- <button class="btn btn-link" ng-click="exportToExcel('#export')">click</button> -->
 </div>
 </div>
 
