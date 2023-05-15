@@ -11,6 +11,8 @@
         var service = {};
         //charan
         service.personalfaculty=personal;
+        service.updatehod=uhod;
+        service.gethodlist=ghlist;
         //endcharan
         service.delallotment=delallotment;
         service.test1=test1;
@@ -86,6 +88,12 @@
         service.addopenelectives=addopenelectives;
         return service;
         uploaddata
+        function uhod(item){
+            return $http.post(globalConfig.updatehod,item).then(handleSuccess,handleError("Error "))
+        }
+        function ghlist(){
+            return $http.post(globalConfig.gethodlist,null).then(handleSuccess,handleError("Error "))
+        }
         function deptfacdwnld(data){
             return  $http.post(globalConfig.deptfacdwnld,data).then(handleSuccess , handleError("Eroor "))
         }

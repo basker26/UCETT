@@ -15,8 +15,32 @@
                 }).catch(function(err){
                     console.log(err);
                 });
+                userService.gethodlist().then(function(res)
+                {
+                    $scope.gethodres=res.data;
+                }).catch(function(err){
+                    console.log(err);
+                });
 
 
+                $scope.updateHod=function(item){
+
+                    userService.updatehod(item).then(function(res)
+                    {
+                        $scope.resuphod=res.data;
+                        userService.gethodlist().then(function(res)
+                        {
+                            $scope.gethodres=res.data;
+                        }).catch(function(err){
+                            console.log(err);
+                        });
+                    }).catch(function(err){
+                        console.log(err);
+                    });
+                   
+
+                }
+               
 
 
                 $scope.deactivate=null;

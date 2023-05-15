@@ -134,45 +134,6 @@
 
 
 
-<div class="row justify-content-center " >
-    
-    
-    <div class="col-lg-12" >
- 
-        <form name="form" ng-submit="addsemester(spec)" role="form" class="sign-in-form">
-            <h2 style="color:#e96b56; border-bottom: 2px solid #e96b56; ">Update Head</h2>
-            <br>
-            <div class="row featured align-content-center">
-                <div class="col ">
-                    <div class="row unknownselectmargin">
-                            <div class="col">
-                                <strong >Department</strong><br>
-                                <select class="form-control form-control-md" ng-model="filter" required>
-                                    <option ng-repeat="d in filterdata.data" value="{{d.department}}">{{d.department}}</option>
-                                  </select>
-                            </div>  
-                            
-                        
-                        <div class="col">
-                            <strong>Faculty Id</strong><br>
-                            <select class="form-control form-control-sm" style="max-width: 40%;" ng-disabled="!filter"  aria-label="Default select example" ng-model="faculty" ng-change="viewfaculty(faculty)">
-                                <option ng-repeat="d in headupdate | filter:{department:filter}" value="{{d.id}}">{{d.name}}</option>
-                            </select>
-                            </div>
-                        <div class="col pt-3">
-                            <div class="text-center"><button class="submit" type="submit"  class="btn btn-primary">Add</button></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <BR>       
-        </form>
-    </div>
-    
-</div>
-
-
-
 
 
 
@@ -258,21 +219,21 @@
 <!-- Updating HODs for dept  -->
 <div class="row justify-content-center ">
     <div class="col-lg-12">
-        <form name="form" ng-submit="" role="form" class="sign-in-form">
+        <form name="form" ng-submit="updateHod(newhod)" role="form" class="sign-in-form">
         <h2 style="color:#e96b56; border-bottom: 2px solid #e96b56; ">Update Department HOD</h2>
         <br>
         <div class="row featured ">
             <div class="col">
                 <strong>Department Name</strong>
-                <select class="form-control form-control-md" ng-model="" required>
+                <select class="form-control form-control-md" ng-model="newhod.dname" required>
                     <option ng-repeat="d in filterdata.data" value="{{d.department}}">{{d.department}}</option>
                   </select>
             </div>
             <div class="col">
                 <strong>HOD</strong>
-                <select class="form-control form-control-md" ng-model="" required>
-                    <option ng-repeat="" value="{{}}">facluty list</option>
-                  </select>
+                <select class="form-control form-control-sm"  ng-disabled="!newhod.dname"  aria-label="Default select example" ng-model="newhod.hod" ng-change="viewfaculty(faculty)">
+                    <option ng-repeat="d in headupdate | filter:{department:newhod.dname}" value="{{d.id}}">{{d.name}}</option>
+                </select>
             </div>
             <div class="col pt-3">
                 <div class="text-center"><button class="submit" type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Update</button></div>
@@ -289,9 +250,9 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr ng-repeat="">
-                            <td>{{}}</td>
-                            <td>{{}}</td>
+                          <tr ng-repeat="h in gethodres">
+                            <td>{{h.dname}}</td>
+                            <td>{{h.hod}}</td>
                         </tr>
                         </tbody>
                       </table>

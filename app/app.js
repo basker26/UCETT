@@ -240,6 +240,8 @@
    
         })
         .constant("globalConfig", {
+            gethodlist:"http://localhost:4000/api/user/gethods",
+            updatehod:"http://localhost:4000/api/user/hodupdate",
             deptfacdwnld:"http://localhost:4000/api/user/exceldeptfac",
             personalfaculty:"http://localhost:4000/api/user/personalfaculty",
             getfacname:"http://localhost:4000/api/user/getfacname",
