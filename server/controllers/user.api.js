@@ -19,6 +19,7 @@ const timestamp = require('time-stamp'),
 
 // const { forEach } = require("angular");
 var multer  = require('multer');
+const { object } = require("underscore");
 // const { sign } = require("crypto");
 var storage = multer.diskStorage({
 
@@ -413,7 +414,13 @@ router
 //cherrycode
 .post("/exceladdfacinfo",function(req,res){
     var data=req.body.data;
-    // console.log(data);
+    console.log(data);
+    console.log(checkVariable(data));
+    if(checkVariable(data) || (typeof data)=="object") {
+        console.log("hiii")
+        res.send(response(false,"unsucess",null));
+        return;
+    }
     var wrong=[];
     var flag=false;
     data.forEach((item)=>{
@@ -2932,6 +2939,16 @@ function ret_day(item){
     if(item=="Friday") return 5;
     if(item=="Saturday") return 6;
 }
+function checkVariable(variable) {
+
+    if(variable == null) {
+         return true;
+    }
+    else {
+        return false;
+    }
+}
+
 function checkSignIn(req, res,next){
     if(req.session.data){
     //    console.log(req.session);

@@ -1,18 +1,33 @@
-<script data-require="angular.js@*" data-semver="2.0.0" src="https://code.angularjs.org/1.4.8/angular.js
-"></script>
-    <script data-require="jquery@*" data-semver="2.1.4" src="https://code.jquery.com/jquery-2.1.4.js"></script>
-<div class="col-11 col-md-2">
-    <select  ng-model="dept.dept" class="form-select form-select-sm " aria-label=".form-select-sm example" ng-change="getinfo(dept.dept)">
-        <option disabled>Select Department</option>
-        <option ng-repeat="d in data.data" value={{d.department}}>{{d.department}}</option>
-    </select>
-</div>
-<div class="row mycard mt-0">
-    <style>
-        table, th, td {
-          border:1px solid black;
-        }
-        </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+<script>
+    $(function() {
+  $(".exportToExcel").click(function(event) {
+    console.log("Exporting XLS");
+    $("#studentTable").table2excel({
+      exclude: ".excludeThisClass",
+      name: $("#studentTable").data("tableName"),
+      filename: "StudentTable.xls",
+      preserveColors: false
+    });
+  });
+});
+</script>
+
+<div class="row shadow mt-3" style="margin:auto;justify-content: center;">
+    <div class="mt-2 row full p-2" style="background: rgb(247, 236, 224);">
+        <div class="col" >
+            <h5>Select Department</h5>
+            <select  ng-model="dept.dept" class="form-select form-select-lg rounded " aria-label=".form-select-sm example" ng-change="getinfo(dept.dept)">
+                <option disabled>Select Department</option>
+                <option ng-repeat="d in data.data" value={{d.department}}>{{d.department}}</option>
+            </select>
+        </div>
+        <div class="col-md-3" style="margin: auto;">
+            <button class="btn btn-success" ng-click="exportToExcel('#export')">Export to XLS</button>
+        </div>
+    </div>
+    <div class="row full mt-2 p-3" style="text-align:center;overflow-x: scroll;justify-content: left;">
     <table id="export">
         <th>
             Id
@@ -185,7 +200,17 @@
 
         </tr>
     </table>
+    <style>
+        table, th, td {
+          border:1px solid black;
+        }
+
+
+    </style>
 <!-- <button ng-click="exportdoc(deptfaculty)"></button> -->
 <!-- <button id="button-a">Create Excel</button> -->
-<button class="btn btn-link" ng-click="exportToExcel('#export')">click</button>
+<!-- <button class="btn btn-link" ng-click="exportToExcel('#export')">click</button> -->
 </div>
+</div>
+
+

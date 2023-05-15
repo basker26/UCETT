@@ -76,7 +76,11 @@
                             id:item
                         }
                             userService.changefacname(detail).then(function(res){
-                                refresh();
+                                userService.getfac().then(function(res){
+                                    $scope.facdata=res.data;
+                                  }).catch(function(err){
+                                    console.log(err);
+                                  })   
                             }).catch(function(err){
                                 console.log(err);
                             })

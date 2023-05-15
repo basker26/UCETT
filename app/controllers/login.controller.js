@@ -79,7 +79,7 @@
                     } else {
                         $(".error").removeClass("in").show();
 
-                        setTimeout(function(){ alert("Hello"); }, 3000);
+                        // setTimeout(function(){ alert("Hello"); }, 3000);
 
                         $(".error").delay(200).addClass("in").fadeOut(3000);
                         alert("Incorrect Username/Password/No user found");
