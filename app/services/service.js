@@ -85,7 +85,7 @@
         service.getfacname=getfacname;
         service.addopenelectives=addopenelectives;
         return service;
-        uploaddata
+        // uploaddata
         function deptfacdwnld(data){
             return  $http.post(globalConfig.deptfacdwnld,data).then(handleSuccess , handleError("Eroor "))
         }

@@ -59,6 +59,22 @@
                     }
                     userService.excelsub(details).then(function(res){
                         $scope.dummy=res.data;
+                        alert(res.message);
+                        var item={
+                            id:$scope.dept.sem
+                        }
+                        userService.getsubjects(item).then(function(res){
+                            $scope.subjects=res.data;
+                            $scope.subjects.forEach(element => {
+                                if(element.active==1){
+                                    element.active=true;
+                                }else{
+                                    element.active=false;
+                                }
+                            });
+                        }).catch(function(err){
+                            console.log(err);
+                        })
                     }).catch(function(err){
                         console.log(err);
                     })

@@ -1,0 +1,182 @@
+<style>@page WordSection1{size: 841.95pt 595.35pt;mso-page-orientation:landscape;}div.WordSection1 {page: WordSection1;}table{border-collapse:collapse;}td{border:1px gray solid;width:5em;padding:1px;}</style><html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export Table to Word</title></head><body>
+        <div id="logo" class="col-12 text-center" style="text-align: center;"><img src="../../logo.png" alt="ou" width="75px" height="75px"></div>
+        <div id="departmentname" class="col-12 text-center font-weight-bold h4 ng-binding" style="text-align: center;">DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING</div>
+        <div id="collagename" class="col-12 text-center h5" style="text-align: center;">University College Of Engineering(Autonomous), Osmania University, Hyderabad - 500007</div>
+        <div id="academicyear" class="col-12 text-center font-weight-bold h5 " style="text-align: center;">Academic year 2022-2023</div>
+
+        <div class="row full" style="text-align: left;margin-top: 10px;">
+          <div class="col ng-binding">class: BE V semester (CSE)</div>
+      </div>
+    <table border='1' cellpadding='1' cellspacing='1'>
+    <thead>
+          <tr><th style="padding: 0px;border: 1px solid black;"><h6><strong>DAY </strong></h6></th>
+          <th style="text-align: center; padding: 0px;border: 1px solid black;">9:00-10:00</th>
+          <th style="text-align: center;padding: 0px;border: 1px solid black;">10:00-11:00</th>
+          <th style="text-align: center;padding: 0px;border: 1px solid black;">11:00-12:00</th>
+          <th style="text-align: center;padding: 0px;border: 1px solid black;">12:00-1:00</th>
+          <!-- <th style="text-align: center;">1:00-2:00</th> -->
+          <th style="text-align: center;padding: 0px;border: 1px solid black;">2:00-3:00</th>
+          <th style="text-align: center;padding: 0px;border: 1px solid black;">3:00-4:00</th>
+          <th style="text-align: center;padding: 0px;border: 1px solid black;">4:00-5:00</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        <!-- ng-init="seggregate(f)" -->
+        <!-- ng-attr-colspan="{{f.sem}}" -->
+      <!-- ngRepeat: f in weekdata.datas --><tr ng-repeat="f in weekdata.datas" ng-init="seggregate(f)" class="ng-scope">
+         <td style="text-align: center;border: 1px solid black;" class="ng-binding">Monday</td>
+         <!-- ngIf: f.p1b --><td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="4">PP (MVD) </td><!-- end ngIf: f.p1b -->
+         <!-- ngIf: f.p2b -->
+         <!-- ngIf: f.p3b -->
+         <!-- ngIf: f.p4b -->
+         <!-- <td>{{f.p5}}</td> -->
+         <!-- ngIf: f.p6b --><td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="1"></td><!-- end ngIf: f.p6b -->
+         <!-- ngIf: f.p7b --><td ng-if="f.p7b" ng-attr-colspan="{{f.p7col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="1">PP (MVD) </td><!-- end ngIf: f.p7b -->
+         <!-- ngIf: f.p8b --><td ng-if="f.p8b" ng-attr-colspan="{{f.p8col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="1"></td><!-- end ngIf: f.p8b -->
+       
+
+      </tr><!-- end ngRepeat: f in weekdata.datas --><tr ng-repeat="f in weekdata.datas" ng-init="seggregate(f)" class="ng-scope">
+         <td style="text-align: center;border: 1px solid black;" class="ng-binding">Monday</td>
+         <!-- ngIf: f.p1b --><td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="4">PP (MVD) </td><!-- end ngIf: f.p1b -->
+         <!-- ngIf: f.p2b -->
+         <!-- ngIf: f.p3b -->
+         <!-- ngIf: f.p4b -->
+         <!-- <td>{{f.p5}}</td> -->
+         <!-- ngIf: f.p6b --><td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="1"></td><!-- end ngIf: f.p6b -->
+         <!-- ngIf: f.p7b --><td ng-if="f.p7b" ng-attr-colspan="{{f.p7col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="2">PP (MVD) </td><!-- end ngIf: f.p7b -->
+         <!-- ngIf: f.p8b -->
+       
+
+      </tr><!-- end ngRepeat: f in weekdata.datas --><tr ng-repeat="f in weekdata.datas" ng-init="seggregate(f)" class="ng-scope">
+         <td style="text-align: center;border: 1px solid black;" class="ng-binding">Tuesday</td>
+         <!-- ngIf: f.p1b --><td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="4"></td><!-- end ngIf: f.p1b -->
+         <!-- ngIf: f.p2b -->
+         <!-- ngIf: f.p3b -->
+         <!-- ngIf: f.p4b -->
+         <!-- <td>{{f.p5}}</td> -->
+         <!-- ngIf: f.p6b --><td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="3"></td><!-- end ngIf: f.p6b -->
+         <!-- ngIf: f.p7b -->
+         <!-- ngIf: f.p8b -->
+       
+
+      </tr><!-- end ngRepeat: f in weekdata.datas --><tr ng-repeat="f in weekdata.datas" ng-init="seggregate(f)" class="ng-scope">
+         <td style="text-align: center;border: 1px solid black;" class="ng-binding">Wednesday</td>
+         <!-- ngIf: f.p1b --><td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="4"></td><!-- end ngIf: f.p1b -->
+         <!-- ngIf: f.p2b -->
+         <!-- ngIf: f.p3b -->
+         <!-- ngIf: f.p4b -->
+         <!-- <td>{{f.p5}}</td> -->
+         <!-- ngIf: f.p6b --><td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="3"></td><!-- end ngIf: f.p6b -->
+         <!-- ngIf: f.p7b -->
+         <!-- ngIf: f.p8b -->
+       
+
+      </tr><!-- end ngRepeat: f in weekdata.datas --><tr ng-repeat="f in weekdata.datas" ng-init="seggregate(f)" class="ng-scope">
+         <td style="text-align: center;border: 1px solid black;" class="ng-binding">Thursday</td>
+         <!-- ngIf: f.p1b --><td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="4"></td><!-- end ngIf: f.p1b -->
+         <!-- ngIf: f.p2b -->
+         <!-- ngIf: f.p3b -->
+         <!-- ngIf: f.p4b -->
+         <!-- <td>{{f.p5}}</td> -->
+         <!-- ngIf: f.p6b --><td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="3"></td><!-- end ngIf: f.p6b -->
+         <!-- ngIf: f.p7b -->
+         <!-- ngIf: f.p8b -->
+       
+
+      </tr><!-- end ngRepeat: f in weekdata.datas --><tr ng-repeat="f in weekdata.datas" ng-init="seggregate(f)" class="ng-scope">
+         <td style="text-align: center;border: 1px solid black;" class="ng-binding">Friday</td>
+         <!-- ngIf: f.p1b --><td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="4"></td><!-- end ngIf: f.p1b -->
+         <!-- ngIf: f.p2b -->
+         <!-- ngIf: f.p3b -->
+         <!-- ngIf: f.p4b -->
+         <!-- <td>{{f.p5}}</td> -->
+         <!-- ngIf: f.p6b --><td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="3"></td><!-- end ngIf: f.p6b -->
+         <!-- ngIf: f.p7b -->
+         <!-- ngIf: f.p8b -->
+       
+
+      </tr><!-- end ngRepeat: f in weekdata.datas --><tr ng-repeat="f in weekdata.datas" ng-init="seggregate(f)" class="ng-scope">
+         <td style="text-align: center;border: 1px solid black;" class="ng-binding">Saturday</td>
+         <!-- ngIf: f.p1b --><td ng-if="f.p1b" ng-attr-colspan="{{f.p1col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="4"></td><!-- end ngIf: f.p1b -->
+         <!-- ngIf: f.p2b -->
+         <!-- ngIf: f.p3b -->
+         <!-- ngIf: f.p4b -->
+         <!-- <td>{{f.p5}}</td> -->
+         <!-- ngIf: f.p6b --><td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}" style="text-align: center;border: 1px solid black;" class="ng-binding ng-scope" colspan="3"></td><!-- end ngIf: f.p6b -->
+         <!-- ngIf: f.p7b -->
+         <!-- ngIf: f.p8b -->
+       
+
+      </tr><!-- end ngRepeat: f in weekdata.datas -->
+    </tbody>
+  </table><table border='1' cellpadding='1' cellspacing='1'>
+      <thead>
+          <tr>
+            <th style="text-align: center;border: 1px solid black;">S no</th>  
+            <th style="text-align: center;border: 1px solid black;" scope="col">Subject Name</th>
+            <th style="text-align: center;border: 1px solid black;" scope="col">Elective</th>
+  
+            <th style="text-align: center;border: 1px solid black;" scope="col">Faculty Name</th>
+  
+          </tr>
+        </thead>
+      <tbody>
+        <!-- ngRepeat: p in weekdata.theory --><tr ng-repeat="p in weekdata.theory" class="ng-scope">
+            <td style="text-align: center;border: 1px solid black;" class="ng-binding">1</td>
+            <td style="text-align: center;border: 1px solid black;" class="ng-binding"> Positive Psychology</td>
+            <td style="text-align: center;border: 1px solid black;" class="ng-binding"></td>
+  
+            <td style="text-align: center;border: 1px solid black;" class="ng-binding">Mr.M.Venkat Dass</td>
+        </tr><!-- end ngRepeat: p in weekdata.theory --><tr ng-repeat="p in weekdata.theory" class="ng-scope">
+            <td style="text-align: center;border: 1px solid black;" class="ng-binding">2</td>
+            <td style="text-align: center;border: 1px solid black;" class="ng-binding"> Signals and Systems</td>
+            <td style="text-align: center;border: 1px solid black;" class="ng-binding"></td>
+  
+            <td style="text-align: center;border: 1px solid black;" class="ng-binding">Dr.M.Shyam Sunder</td>
+        </tr><!-- end ngRepeat: p in weekdata.theory -->
+      </tbody>
+    </table><table border='1' cellpadding='1' cellspacing='1'>
+    <thead>
+        <tr>
+          <th style="text-align: center;border: 1px solid black;">S no</th>  
+          <th style="text-align: center;border: 1px solid black;" scope="col">Subject Name</th>
+          <th style="text-align: center;border: 1px solid black;" scope="col">Elective</th>
+
+          <th style="text-align: center;border: 1px solid black;" scope="col">Batch</th>
+          <th style="text-align: center;border: 1px solid black;" scope="col">Facultys</th>
+        </tr>
+      </thead>
+    <tbody>
+      <!-- ngRepeat: p in weekdata.lab --><tr ng-repeat="p in weekdata.lab" class="ng-scope">
+          <td style="text-align: center;border: 1px solid black;" class="ng-binding">1</td>
+          <td style="text-align: center;border: 1px solid black;" class="ng-binding">Web Programming</td>
+          <td style="text-align: center;border: 1px solid black;" class="ng-binding"></td>
+          <td style="text-align: center;border: 1px solid black;" class="ng-binding"></td>
+          <!-- <td>{{p.faculty}}</td> -->
+          <td style="text-align: center;border: 1px solid black;"><h6 class="ng-binding">Prof.Koti Lakshmi</h6><!-- ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data2" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Mr.K.Harish</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngRepeat: q in weekdata.data3 --><!-- ngRepeat: q in weekdata.data4 --></td>
+          <!-- <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch"></td>
+          <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+       -->
+       </tr><!-- end ngRepeat: p in weekdata.lab --><tr ng-repeat="p in weekdata.lab" class="ng-scope">
+          <td style="text-align: center;border: 1px solid black;" class="ng-binding">2</td>
+          <td style="text-align: center;border: 1px solid black;" class="ng-binding">Database Management Systems Lab</td>
+          <td style="text-align: center;border: 1px solid black;" class="ng-binding"></td>
+          <td style="text-align: center;border: 1px solid black;" class="ng-binding">I</td>
+          <!-- <td>{{p.faculty}}</td> -->
+          <td style="text-align: center;border: 1px solid black;"><h6 class="ng-binding">Mr.Prakash</h6><!-- ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><h6 ng-repeat="q in weekdata.data2" ng-if="q.sub_name==p.sub_name &amp;&amp; q.batch==p.batch" class="ng-binding ng-scope">Mr.N.Madhu</h6><!-- end ngIf: q.sub_name==p.sub_name && q.batch==p.batch --><!-- end ngRepeat: q in weekdata.data2 --><!-- ngRepeat: q in weekdata.data3 --><!-- ngRepeat: q in weekdata.data4 --></td>
+          <!-- <td ng-repeat ="q in weekdata.data3" ng-if="q.sub_name==p.sub_name && q.batch==p.batch"></td>
+          <td ng-repeat ="q in weekdata.data4" ng-if="q.sub_name==p.sub_name && q.batch==p.batch">{{q.name}}</td>
+       -->
+       </tr><!-- end ngRepeat: p in weekdata.lab -->
+      </tbody>
+  </table>
+  <table table-border="0" class="full " style="margin-top: 150px;word-wrap: break-word;">
+    <tbody><tr style=" font-family: Times New Roman, Times, serif;text-align: center;">
+      <td><b class="ng-binding">BHASKER &amp; vijay &amp; bharath &amp; Bhargavi &amp; Mrs. A.Gayathri</b><br><b>In-Charge of Time-Tables(MED)</b></td>
+      <td><b class="ng-binding">Ms.Prashanthi</b><br><b>Overall co-ordinator, Time tables</b></td>
+      <td><b class="ng-binding">Prof.K.Shyamala</b><br><b class="ng-binding">Head, Dept. of COMPUTER SCIENCE AND ENGINEERING</b></td>
+      <td><b class="ng-binding">Prof.K.Shyamala</b><br><b>Principal(UCEOU)</b></td>
+    </tr>
+  </tbody></table>
+</body></html>

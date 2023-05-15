@@ -308,6 +308,11 @@
                     room:d.room
     
                 }
+                if(d.frm>5){
+                    details.from=details.from+1;
+                    details.to=details.to+1;
+                }
+                
                 userService.updatefac(details).then(function(res){
                     if(res.data){
                         if(!d.updated){
@@ -419,11 +424,16 @@
                                 code:element1.updated,
                                 code2:2
                             }
+                            if(element1.frm>5){
+                                details.frm=details.frm+1;
+                                details.to=details.to+1;
+                            }
                             userService.getelement(details).then(function(res){
                                 if(res.data){
+                                    console.log(res.data)
                                     info=res.data;
-                                if(parseInt(element1.to)>4){
-                                    var tto=parseInt(element1.to)-2;
+                                if(parseInt(element1.frm)>5){
+                                    var tto=parseInt(element1.to)-1;
                                 }else{
                                     var tto=parseInt(element1.to)-1;    
                                 }
@@ -431,19 +441,22 @@
                                     data[index1]=info;
                                 }
                                 
-                                    userService.finalinsert(data).then(function(res){
-                                        if(res){
-                                            count++;
-                                            console.log(count,"gkndsmnkjas")
-                                        if(count==6){
-                                            console.log("done re mental")
-                                            $scope.dummy(count);
-                                        }
-                                        }
+                                    // userService.finalinsert(data).then(function(res){
+                                    //     if(res){
+                                    //         count++;
+                                    //         console.log(data);
+
+                                    //         console.log(count,"gkndsmnkjas")
+                                    //     if(count==6){
+                                    //         console.log("done re mental")
+                                    //         $scope.dummy(count);
+                                    //         return;
+                                    //     }
+                                    //     }
                                         
-                                    }).catch(function(err){
-                                        console.log(err);
-                                    });
+                                    // }).catch(function(err){
+                                    //     console.log(err);
+                                    // });
                                 }else{
                                     $scope.onExit;
                                     alert("review once");
@@ -459,27 +472,63 @@
                             data[index]=0;
                     }
                     // $rvOu8##
+                    if(index==8){
+                        setTimeout(()=>{
+                            data[9]=element.day;
+                            data[10]=2;
+                            data[11]=comb;
+                            data[12]=count;
+                            userService.finalinsert(data).then(function(res){
+                                    if(res){
+                                        count++;
+                                        console.log(data);
+
+                                        console.log(count,"gkndsmnkjas")
+                                    if(count==6){
+                                        console.log("done re mental")
+                                        $scope.dummy(count);
+                                        return;
+                                    }
+                                    }
+                                    
+                                }).catch(function(err){
+                                    console.log(err);
+                                });
+
+                        },10000)
+                    }
                 })
-                data[7]=element.day;
-                data[8]=2;
-                data[9]=comb;
-                data[10]=count;
+                // data[9]=element.day;
+                // data[10]=2;
+                // data[11]=comb;
+                // data[12]=count;
+                // if(test==true){
+                    
+                        
+                //     }).catch(function(err){
+                //         console.log(err);
+                //     });
+                // // }
                 finaldata.push(data);
-                if(test1==false){
-                    userService.finalinsert(data).then(function(res){
-                        count++;
-                        if(count==6){
-                            $scope.dummy(count);
-                        }
-                    }).catch(function(err){
-                        console.log(err);
-                    });
-                }
+                // if(test1==false){
+                //     userService.finalinsert(data).then(function(res){
+                //         console.log(data);
+                //         count++;
+                //         if(count==6){
+                //             $scope.dummy(count);
+                //             return;
+                //         }
+                //     }).catch(function(err){
+                //         console.log(err);
+                //     });
+                // }
+                return;
             });
             $scope.chectflag=false;
             if(!test){
                 alert("please review");
             }else{
+                return;
             }
         }
         $scope.dummy=function(hi){
@@ -505,9 +554,9 @@
                 period.room=null;
                 period.updated=null;
             }
-            if(period.frm>4){
-                var start=period.frm-1;
-                var end =period.to-1;
+            if(period.frm>5){
+                var start=period.frm;
+                var end =period.to;
             }
             else{
                 var start =period.frm;
@@ -521,6 +570,10 @@
                 to:end,
                 code:id,
                 day:day.day
+            }
+            if(period.frm>5){
+                details.from=period.frm+1;
+                details.to=period.to+1;
             }
             userService.facavb(details).then(function(res){
                 res.data.forEach(element => {
@@ -540,7 +593,7 @@
             
         }
         $scope.batch=[{value:"I",active:1},{value:"II",active:1},{value:"III",active:1}];
-        $scope.period2=[{value:1},{value:2},{value:3},{value:4},{value:6},{value:7},{value:8}];
+        $scope.period2=[{value:'1'},{value:'2'},{value:'3'},{value:'4'},{value:'5'},{value:'6'},{value:'7'},{value:'8'},{value:'9'}];
         $scope.finalinfo=[];
         userService.custom().then(function(res) { 
             $scope.filterdata=res.data;
@@ -553,7 +606,7 @@
                 $scope.subjectinfo=res.data;
                 $scope.myDropdownModel = [$scope.subjectinfo.facinfo[0]];
                               $scope.subjectinfo.days.forEach(element => {
-                    element.periods=[{valu:1,selected:true},{valu:2,selected:true},{valu:3,selected:true},{valu:4,selected:true},{valu:6,selected:true},{valu:7,selected:true},{valu:8,selected:true}];
+                              element.periods=[{valu:'1',selected:true},{valu:'2',selected:true},{valu:'3',selected:true},{valu:'4',selected:true},{valu:'5',selected:true},{valu:'6',selected:true},{valu:'7',selected:true},{valu:'8',selected:true},{valu:'9',selected:true}];
                 });
                 console.log($scope.subjectinfo);
             }).catch(function(err){

@@ -11,7 +11,7 @@
     if($state.current.name ==  "timetable"){
         // $window.onbeforeunload =  $state.go("logout");
         //   $window.onhashchange= $state.go("logout") ;
-        $rootScope.time=(new Date().getHours()-7);
+        $rootScope.time=(new Date().getHours());
         // console.log($rootScope.time);
         $scope.weekreport=function(item1){
               var details={
@@ -68,145 +68,322 @@
         });
       }
       $scope.seggregate=function(item){
-          console.log(new Date().getHours());
-          if(item.p1==item.p2&&item.p2==item.p3&&item.p3==item.p4){
-              item.p1b=true;
-              item.p1col=4;
-              item.p2b=false;
-              item.p3b=false;
-              item.p4b=false;
-              item.p1t=[9,13]
-              console.log(14,item)
+              
+        //
+        if(item.p1==item.p2&&item.p2==item.p3&&item.p3==item.p4 && item.p4!=item.p5){
+            item.p1b=true;
+            item.p1col=4;
+            item.p2b=false;
+            item.p3b=false;
+            item.p4b=false;
+            item.p5b=true;
+            item.p5col=1;
+            item.p1t=[8,12];
+            item.p5t=[12,13];
+            // console.log(14,item)
+        }
+        if(item.p1==item.p2&&item.p2==item.p3&&item.p3==item.p4 && item.p4==item.p5 ){
+          item.p1b=true;
+          item.p1col=5;
+          item.p2b=false;
+          item.p3b=false;
+          item.p4b=false;
+          item.p5b=false;
+          item.p1t=[8,13]
+          // console.log(14,item)
+      }
+        //
+        //
+        if(item.p1==item.p2&&item.p2==item.p3&&item.p3!=item.p4  && item.p4!=item.p5){
+            item.p1b=true;
+            item.p1col=3;
+            item.p2b=false;
+            item.p3b=false;
+            item.p4b=true;
+            item.p4col=1;
+            item.p5b=true;
+            item.p5col=1;
+            item.p1t=[8,11];
+            item.p4t=[11,12];
+            item.p5t=[12,13];
+            console.log(31,item)
           }
-          if(item.p1==item.p2&&item.p2==item.p3&&item.p3!=item.p4){
-              item.p1b=true;
-              item.p1col=3;
-              item.p2b=false;
-              item.p3b=false;
-              item.p4b=true;
-              item.p4col=1;
-              item.p1t=[9,12];
-              item.p4t=[12,13];
-              console.log(31,item)
-            }
-          if(item.p1==item.p2&&item.p2!=item.p3&&item.p3!=item.p4){
-              item.p1b=true;
-              item.p1col=2;
-              item.p2b=false;
-              item.p3b=true;
-              item.p3col=1;
-              item.p4b=true;
-              item.p4col=1;
-              item.p1t=[9,11];
-              item.p3t=[11,12];
-              item.p4t=[12,13];
-              console.log("211",item)
+          if(item.p1==item.p2&&item.p2==item.p3&&item.p3!=item.p4  && item.p4==item.p5){
+            item.p1b=true;
+            item.p1col=3;
+            item.p2b=false;
+            item.p3b=false;
+            item.p4b=true;
+            item.p4col=2;
+            item.p1t=[8,11];
+            item.p4t=[11,13];
+            console.log(31,item)
           }
-          if(item.p1!=item.p2&&item.p2==item.p3&&item.p3!=item.p4){
-              item.p1b=true;
-              item.p1col=1;
-              item.p2b=true;
-              item.p2col=2;
-              item.p3b=false;
-              item.p4b=true;
-              item.p4col=1;
-              item.p1t=[9,10];
-              item.p2t=[10,12];
-              item.p4t=[12,13];
-              console.log(121,item)
-          }
-          if(item.p1!=item.p2&&item.p2==item.p3&&item.p3==item.p4){
-              item.p1b=true;
-              item.p1col=1;
-              item.p2b=true;
-              item.p2col=3;
-              item.p3b=false;
-              item.p4b=false;
-              item.p1t=[9,10];
-              item.p2t=[10,13];
-              console.log(13,item)
-          }
-          if(item.p1==item.p2&&item.p2!=item.p3&&item.p3==item.p4){
-              item.p1b=true;
-              item.p1col=2;
-              item.p2b=false;
-              item.p3b=true;
-              item.p3col=2;
-              item.p4b=false;
-              item.p1t=[9,11];
-              item.p3t=[11,13];
-              console.log(22,item)
-          }
-          if(item.p1!=item.p2&&item.p2!=item.p3&&item.p3!=item.p4){
-              item.p1b=true;
-              item.p1col=1;
-              item.p2b=true;
-              item.p2col=1;
-              item.p3b=true;
-              item.p3col=1;
-              item.p4b=true;
-              item.p4col=1;
-              item.p1t=[9,10];
-              item.p2t=[10,11];
-              item.p3t=[11,12];
-              item.p4t=[12,13];
-              console.log(1111,item)
-          }
-          if(item.p1!=item.p2&&item.p2!=item.p3&&item.p3==item.p4){
+          //
+          //
+        if(item.p1==item.p2&&item.p2!=item.p3&&item.p3!=item.p4 && item.p4!=item.p5){
+            item.p1b=true;
+            item.p1col=2;
+            item.p2b=false;
+            item.p3b=true;
+            item.p3col=1;
+            item.p4b=true;
+            item.p4col=1;
+            item.p5b=true;
+            item.p5col=1;
+            item.p1t=[8,10];
+            item.p3t=[10,11];
+            item.p4t=[11,12];
+            item.p5t=[12,13];
+            // console.log("211",item)
+        }
+        if(item.p1==item.p2&&item.p2!=item.p3&&item.p3!=item.p4 && item.p4==item.p5){
+          item.p1b=true;
+          item.p1col=2;
+          item.p2b=false;
+          item.p3b=true;
+          item.p3col=1;
+          item.p4b=true;
+          item.p4col=2;
+          item.p1t=[8,10];
+          item.p3t=[10,11];
+          item.p4t=[11,13];
+          // item.p5t=[12,13];
+          // console.log("211",item)
+      }
+        //
+        //
+        if(item.p1!=item.p2&&item.p2==item.p3&&item.p3!=item.p4 && item.p4!=item.p5){
+            item.p1b=true;
+            item.p1col=1;
+            item.p2b=true;
+            item.p2col=2;
+            item.p3b=false;
+            item.p4b=true;
+            item.p4col=1;
+            item.p5b=true;
+            item.p5col=1;
+            item.p1t=[8,9];
+            item.p2t=[9,11];
+            item.p4t=[11,12];
+            item.p5t=[12,13];
+            // console.log(121,item)
+        }
+        if(item.p1!=item.p2&&item.p2==item.p3&&item.p3!=item.p4 && item.p4==item.p5 ){
+          item.p1b=true;
+          item.p1col=1;
+          item.p2b=true;
+          item.p2col=2;
+          item.p3b=false;
+          item.p4b=true;
+          item.p4col=2;
+          item.p1t=[8,9];
+          item.p2t=[9,11];
+          item.p4t=[11,13];
+          console.log(121,item)
+      }
+        //
+        //
+        if(item.p1!=item.p2&&item.p2==item.p3&&item.p3==item.p4 && item.p4!=item.p5 ){
+            item.p1b=true;
+            item.p1col=1;
+            item.p2b=true;
+            item.p2col=3;
+            item.p3b=false;
+            item.p4b=false;
+            item.p5b=true;
+            item.p5col=1;
+            item.p1t=[8,9];
+            item.p2t=[9,12];
+            item.p5t=[12,13];
+        }
+        if(item.p1!=item.p2&&item.p2==item.p3&&item.p3==item.p4 && item.p4==item.p5 ){
+          item.p1b=true;
+          item.p1col=1;
+          item.p2b=true;
+          item.p2col=4;
+          item.p3b=false;
+          item.p4b=false;
+          item.p1t=[8,9];
+          item.p2t=[9,13];
+      }
+        //
+        //
+        if(item.p1==item.p2&&item.p2!=item.p3&&item.p3==item.p4 && item.p4!=item.p5 ){
+            item.p1b=true;
+            item.p1col=2;
+            item.p2b=false;
+            item.p3b=true;
+            item.p3col=2;
+            item.p4b=false;
+            item.p5=true;
+            item.p5col=1;
+            item.p1t=[8,10];
+            item.p3t=[10,12];
+            item.p5t=[12,13];
+            // console.log(22,item)
+        }
+        if(item.p1==item.p2&&item.p2!=item.p3&&item.p3==item.p4 && item.p4==item.p5){
+          item.p1b=true;
+          item.p1col=2;
+          item.p2b=false;
+          item.p3b=true;
+          item.p3col=2;
+          item.p4b=false;
+          item.p5b=false;
+          item.p1t=[8,10];
+          item.p3t=[10,13];
+          // console.log(22,item)
+      }
+        //
+        //all are different
+        if(item.p1!=item.p2&&item.p2!=item.p3&&item.p3!=item.p4 && item.p4!=item.p5){
             item.p1b=true;
             item.p1col=1;
             item.p2b=true;
             item.p2col=1;
             item.p3b=true;
-            item.p3col=2;
-            item.p4b=false;
-            item.p1t=[9,10]
-            item.p2t=[10,11];
-            item.p3t=[11,13];
-            // item.p4col=1;
-            // console.log(1111,item)
+            item.p3col=1;
+            item.p4b=true;
+            item.p4col=1;
+            item.p5col=1;
+            item.p5b=true;
+            item.p1t=[8,9];
+            item.p2t=[9,10];
+            item.p3t=[10,11];
+            item.p4t=[11,12];
+            item.p5t=[12,13];
+            console.log(11111,item)
+        }
+        //
+        if(item.p1!=item.p2&&item.p2!=item.p3&&item.p3==item.p4 && item.p4!=item.p5){
+          item.p1b=true;
+          item.p1col=1;
+          item.p2b=true;
+          item.p2col=1;
+          item.p3b=true;
+          item.p3col=2;
+          item.p4b=false;
+          item.p5b=true;
+          item.p5col=1;
+          item.p1t=[8,9];
+          item.p2t=[9,10];
+          item.p3t=[10,12];
+          item.p5t=[12,13];
+        
+        }
+        if(item.p1!=item.p2&&item.p2!=item.p3&&item.p3==item.p4 && item.p4==item.p5){
+          item.p1b=true;
+          item.p1col=1;
+          item.p2b=true;
+          item.p2col=1;
+          item.p3b=true;
+          item.p3col=3;
+          item.p4b=false;
+          item.p5b=false;
+          item.p1t=[8,9];
+          item.p2t=[9,10];
+          item.p3t=[10,13];
         }
 
-
-          if(item.p6==item.p7&&item.p7==item.p8){
-              item.p6b=true;
-              item.p6col=3;
-              item.p7b=false;
-              item.p8b=false;
-              item.p6t=[14,17];
-          }
-          if(item.p6==item.p7&&item.p7!=item.p8){
-              item.p6b=true;
-              item.p6col=2;
-              item.p7b=false;
-              item.p8b=true;
-              item.p8col=1;
-              item.p6t=[14,16];
-              item.p8t=[16,17];
-          }
-          if(item.p6!=item.p7&&item.p7==item.p8){
-              item.p6b=true;
-              item.p6col=1;
-              item.p7b=true;
-              item.p7col=2;
-              item.p8b=false;
-              item.p6t=[14,15];
-              item.p7t=[15,17];
-              
-          }
-          if(item.p6!=item.p7&&item.p7!=item.p8){
-              item.p6b=true;
-              item.p6col=1;
-              item.p7b=true;
-              item.p7col=1;
-              item.p8b=true;
-              item.p8col=1;
-              item.p6t=[14,15];
-              item.p7t=[15,16];
-              item.p8t=[16,17];
-          }
-
+        //
+        //
+        if(item.p7==item.p8&&item.p8==item.p9 && item.p10==item.p9){
+          item.p7b=true;
+          item.p7col=4;
+          item.p8b=false;
+          item.p9b=false;
+          item.p10b=false;
+          item.p7t=[14,18];
       }
+      if(item.p7==item.p8&&item.p8==item.p9 && item.p10!=item.p9){
+        item.p7b=true;
+        item.p7col=3;
+        item.p8b=false;
+        item.p9b=false;
+        item.p10b=true;
+        item.p10col=1
+        item.p7t=[14,17];
+        item.p10t=[17,18];
+
+    }
+        //
+        //
+        if(item.p7==item.p8&&item.p8!=item.p9 && item.p10!=item.p9){
+            item.p7b=true;
+            item.p7col=2;
+            item.p8b=false;
+            item.p9b=true;
+            item.p9col=1;
+            item.p10b=true;
+            item.p10col=1;
+            item.p7t=[14,16];
+            item.p9t=[16,17];
+            item.p10t=[17,18];
+        }
+        if(item.p7==item.p8&&item.p8!=item.p9 && item.p10==item.p9){
+          item.p7b=true;
+          item.p7col=2;
+          item.p8b=false;
+          item.p9b=true;
+          item.p9col=2;
+          item.p7t=[14,16];
+          item.p9t=[16,18];
+      }
+        //
+        //
+        if(item.p7!=item.p8&&item.p8==item.p9 && item.p10!=item.p9){
+            item.p7b=true;
+            item.p7col=1;
+            item.p8b=true;
+            item.p8col=2;
+            item.p9b=false;
+            item.p10b=true;
+            item.p10col=1;
+            item.p7t=[14,15];
+            item.p8t=[15,17];
+            item.p8t=[15,18];
+        }
+        if(item.p7!=item.p8&&item.p8==item.p9 && item.p10==item.p9){
+          item.p7b=true;
+          item.p7col=1;
+          item.p8b=true;
+          item.p8col=3;
+          item.p9b=false;
+          item.p10b=false;
+          item.p7t=[14,15];
+          item.p8t=[15,18];
+          
+      }
+        //
+        //
+        if(item.p7!=item.p8&&item.p8!=item.p9 && item.p10!=item.p9){
+            item.p7b=true;
+            item.p7col=1;
+            item.p8b=true;
+            item.p8col=1;
+            item.p9b=true;
+            item.p9col=1;
+            item.p10b=true;
+            item.p10col=1;
+            item.p7t=[14,15];
+            item.p8t=[15,16];
+            item.p9t=[16,17];
+            item.p10t=[17,18];
+        }
+        if(item.p7!=item.p8&&item.p8!=item.p9 && item.p10==item.p9){
+          item.p7b=true;
+          item.p7col=1;
+          item.p8b=true;
+          item.p8col=1;
+          item.p9b=true;
+          item.p9col=2;
+          item.p7t=[14,15];
+          item.p8t=[15,16];
+          item.p9t=[16,18];
+      }
+        //
+       }
         userService.getdept().then(function(res) { 
 
             $scope.deptdata=res.data;
