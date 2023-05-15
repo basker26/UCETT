@@ -81,6 +81,7 @@
         service.headfoot = headfoot;
 
         service.excelsub=excelsub;
+        //to get fac details
         service.getfacname=getfacname;
         service.addopenelectives=addopenelectives;
         return service;
