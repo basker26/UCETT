@@ -8,6 +8,41 @@
     function Controller($scope, $rootScope, userService, $state, $stateParams, $localStorage,$window,) {
         if ($rootScope.userLogin && $rootScope.User && $rootScope.User.rolls.includes($state.current.name)) {
             if($state.current.name ==  "Add Department"){
+
+                userService.getfacname().then(function(res)
+                {
+                    $scope.headupdate=res.data;
+                }).catch(function(err){
+                    console.log(err);
+                });
+                userService.gethodlist().then(function(res)
+                {
+                    $scope.gethodres=res.data;
+                }).catch(function(err){
+                    console.log(err);
+                });
+
+
+                $scope.updateHod=function(item){
+
+                    userService.updatehod(item).then(function(res)
+                    {
+                        $scope.resuphod=res.data;
+                        userService.gethodlist().then(function(res)
+                        {
+                            $scope.gethodres=res.data;
+                        }).catch(function(err){
+                            console.log(err);
+                        });
+                    }).catch(function(err){
+                        console.log(err);
+                    });
+                   
+
+                }
+               
+
+
                 $scope.deactivate=null;
                 userService.custom().then(function(res) { 
                     $scope.filterdata=res.data;

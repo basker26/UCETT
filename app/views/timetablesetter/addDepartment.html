@@ -86,6 +86,8 @@
     
 </div>
 
+
+
 <div class="row justify-content-center " >
     
     
@@ -129,6 +131,13 @@
     </div>
     
 </div>
+
+
+
+
+
+
+
 
 
 <div class="row justify-content-center " >
@@ -199,6 +208,10 @@
     <!-- <button ng-click="activate(deactivate)">{{deactivate}}</button> -->
 </div>
 
+<div class="ttcontrol mycard" style="box-shadow:0px 0px 10px black ; padding:0" >
+</div>
+
+
     </div>
 </div>
 
@@ -206,21 +219,21 @@
 <!-- Updating HODs for dept  -->
 <div class="row justify-content-center ">
     <div class="col-lg-12">
-        <form name="form" ng-submit="" role="form" class="sign-in-form">
+        <form name="form" ng-submit="updateHod(newhod)" role="form" class="sign-in-form">
         <h2 style="color:#e96b56; border-bottom: 2px solid #e96b56; ">Update Department HOD</h2>
         <br>
         <div class="row featured ">
             <div class="col">
                 <strong>Department Name</strong>
-                <select class="form-control form-control-md" ng-model="" required>
+                <select class="form-control form-control-md" ng-model="newhod.dname" required>
                     <option ng-repeat="d in filterdata.data" value="{{d.department}}">{{d.department}}</option>
                   </select>
             </div>
             <div class="col">
                 <strong>HOD</strong>
-                <select class="form-control form-control-md" ng-model="" required>
-                    <option ng-repeat="" value="{{}}">facluty list</option>
-                  </select>
+                <select class="form-control form-control-sm"  ng-disabled="!newhod.dname"  aria-label="Default select example" ng-model="newhod.hod" ng-change="viewfaculty(faculty)">
+                    <option ng-repeat="d in headupdate | filter:{department:newhod.dname}" value="{{d.id}}">{{d.name}}</option>
+                </select>
             </div>
             <div class="col pt-3">
                 <div class="text-center"><button class="submit" type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Update</button></div>
@@ -237,9 +250,9 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr ng-repeat="">
-                            <td>{{}}</td>
-                            <td>{{}}</td>
+                          <tr ng-repeat="h in gethodres">
+                            <td>{{h.dname}}</td>
+                            <td>{{h.hod}}</td>
                         </tr>
                         </tbody>
                       </table>
@@ -250,6 +263,9 @@
     </div>
 </div>    
     
+
+
+
 
 <div class="ttcontrol mycard" style="box-shadow:0px 0px 10px black ; padding:0" >
 <button style="width:100%; height:100%; background-color: #6c757d9c;margin: 0%;" ng-click="activate(deactivate)">Time Scheduler {{deactivate}}</button>
