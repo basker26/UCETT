@@ -11,6 +11,38 @@
 <!-- =============================adding specialization============================ -->
 
 <div class="row justify-content-center " >
+
+    <div class="col-lg-12">
+        <form name="form" ng-submit="" role="form" class="sign-in-form">
+            <h2 style="color:#e96b56; border-bottom: 2px solid #e96b56; ">Add Department</h2>
+            <br>
+            <div class="row featured align-content-center">
+                <div class="col ">
+                    <div class="row unknownselectmargin"> 
+                            <div class="col">
+                            <strong >Department Name</strong><br>
+                            <input class="form-control form-control-md" ng-model="" type="text" placeholder="Department Name" aria-label=".form-control-lg example" required>
+                            </div>
+
+                            <div class="col">
+                            <strong >Abbrivation</strong><br>
+                            <input class="form-control form-control-md" ng-model="" type="text" placeholder="Abbrivation" aria-label=".form-control-lg example" required>
+                            </div>
+
+                            <div class="col">
+                                <strong>HOD</strong><br>
+                                    <select class="form-control form-control-md" ng-model="" required>
+                                        <option value="{{}}">faculty list</option>
+                                    </select>
+                            </div>
+                        <div class="col pt-3">
+                            <div class="text-center"><button class="submit" type="submit"  class="btn btn-primary">Add</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
     
     
     <div class="col-lg-12" >
@@ -169,7 +201,54 @@
 
     </div>
 </div>
-    
+
+
+<!-- Updating HODs for dept  -->
+<div class="row justify-content-center ">
+    <div class="col-lg-12">
+        <form name="form" ng-submit="" role="form" class="sign-in-form">
+        <h2 style="color:#e96b56; border-bottom: 2px solid #e96b56; ">Update Department HOD</h2>
+        <br>
+        <div class="row featured ">
+            <div class="col">
+                <strong>Department Name</strong>
+                <select class="form-control form-control-md" ng-model="" required>
+                    <option ng-repeat="d in filterdata.data" value="{{d.department}}">{{d.department}}</option>
+                  </select>
+            </div>
+            <div class="col">
+                <strong>HOD</strong>
+                <select class="form-control form-control-md" ng-model="" required>
+                    <option ng-repeat="" value="{{}}">facluty list</option>
+                  </select>
+            </div>
+            <div class="col pt-3">
+                <div class="text-center"><button class="submit" type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Update</button></div>
+            </div>
+        </div>
+        <div class="row featured mt-2">
+            <div class="col">
+                <div style="height:30vh; overflow-y: scroll;">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Department</th>
+                            <th scope="col">HOD</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="">
+                            <td>{{}}</td>
+                            <td>{{}}</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+</div>    
     
 
 <div class="ttcontrol mycard" style="box-shadow:0px 0px 10px black ; padding:0" >
