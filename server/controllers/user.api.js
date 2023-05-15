@@ -637,6 +637,91 @@ router
     res.send(response(true,"true",wrong)) ;
 })
 
+
+.post("/addnewdept",checkSignIn,(req,res)=>{
+    console.log("adding department")
+    var data = req.body;
+    data.abbr =data.abbr.toUpperCase();
+    connection.query("SELECT * FROM clmsdb.departmentnames where abbrivation=?",[data.abbr],(err,result)=>{
+        if(err)console.log(err);
+        else{
+            if(result.length ==0)
+            {
+                connection.query("INSERT INTO `clmsdb`.`departmentnames` (`abbrivation`, `fullname`) VALUES (?,?)",[data.abbr,data.dname],(err,result)=>{
+                    if(err)console.log(err);
+                    else{
+                        connection.query("INSERT INTO `clmsdb`.`heads` (`deptid`) VALUES (?)",[data.abbr],(err,result)=>{
+                            if(err)console.log(err);
+                            else{
+                                  res.send(response(true,"Added Department",null));
+                            }
+                        })
+                    }
+                })
+            }
+            else{
+                res.send(response(false,"Department Already Exist",null))
+            }
+        }
+    })
+    
+})
+
+.post("/getpandcs",checkSignIn,(req,res)=>{
+    console.log("getting principal and cod");
+    var info={}
+    connection.query("select name from clmsdb.faculty_info where id in (select Principal from  clmsdb.principalsandcoordinators)",(err,data)=>{
+        if(err){console.log(err);res.send(response(false,"cannot fetch principal",null));}
+        else{
+            info.p=data[0].name;
+            connection.query("select name from clmsdb.faculty_info where id in (select cod from  clmsdb.principalsandcoordinators)",(err,data)=>{
+                if(err){console.log(err);res.send(response(false,"cannot fetch coordinator",info));}
+                else{
+                    info.c=data[0].name;
+                    // console.log(info)
+                    res.send(response(true,"details fetched succesfully",info));
+                }
+            })
+        }
+    })
+})
+
+.post("/updatepandc",checkSignIn,(req,res)=>{
+    console.log("updating principal and coordinator")
+    var data = req.body;
+    if(data.p){
+        connection.query("UPDATE `clmsdb`.`principalsandcoordinators` SET `Principal` = ?",[data.p],(err,dataa)=>{
+            if(err)console.log(err)
+            else{
+                if(data.c){
+                    connection.query("UPDATE `clmsdb`.`principalsandcoordinators` SET `cod` = ?",[data.c],(err,data)=>{
+                        if(err)console.log(err);
+                        else{
+                            res.send(response(true,("principal and coordinator updated"),null))
+                        }
+                    })
+                }
+                else{
+                    res.send(response(true,"Principal updated",null))
+                }
+            }
+        });
+    }
+    else{
+        if(data.c){
+            connection.query("UPDATE `clmsdb`.`principalsandcoordinators` SET `cod` = ?",[data.c],(err,data)=>{
+                if(err)console.log(err);
+                else{
+                    res.send(response(true,("coordinator updated"),null))
+                }
+            })
+        }
+        else{
+            res.send(response(false,"Unable to update. Enter valid details",null))
+        }
+    }
+})
+
 .post("/headfoot",(req,res)=>{
     // res.send(response(true,"success",null));
     const romans={
