@@ -19,7 +19,7 @@ const timestamp = require('time-stamp'),
 
 // const { forEach } = require("angular");
 var multer  = require('multer');
-const { object } = require("underscore");
+const { object, result } = require("underscore");
 // const { sign } = require("crypto");
 var storage = multer.diskStorage({
 
@@ -480,6 +480,35 @@ router
     res.send(response(false,"Invalid Data",wrong));
     res.send(response(true,"valid data",wrong));
 })
+
+//cherry_updatehod
+.post("/hodupdate",checkSignIn,function(req,res){
+    var item=req.body;
+    connection.query("UPDATE `clmsdb`.`heads` SET `facid` = ? where  (`deptid` = ?)",[item.hod,item.dname],(err,result)=>{
+        if(err)console.log(err);
+        else{
+            res.send(response(true,"updated",null))
+            return;
+        }
+           
+    })
+   
+})
+
+
+.post("/gethods",checkSignIn,function(req,res){
+    connection.query("select  name as hod , deptid as dname from clmsdb.heads as h,clmsdb.faculty_info as f where f.id=h.facid;",(err,result)=>{
+        if(err)console.log(err);
+        else{
+            console.log(result)
+            res.send(response(true,"list",result))
+            return;
+        }
+    })
+})
+
+
+
 
 //ExcelsubAdd by naveen
 .post("/excelSubAdd",function(req,res){
