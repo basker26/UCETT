@@ -56,6 +56,7 @@
     <table id="exportthis" class="table table-bordered" ng-if="weekdata" style="margin:auto;border-collapse: collapse;" >
     <thead>
           <th style="padding: 0px;border: 1px solid black;"><h6><strong>DAY </strong></h5></th>
+          <th style="text-align: center; padding: 0px;border: 1px solid black;">8:00-9:00</th>
           <th style="text-align: center; padding: 0px;border: 1px solid black;">9:00-10:00</th>
           <th style="text-align: center;padding: 0px;border: 1px solid black;">10:00-11:00</th>
           <th style="text-align: center;padding: 0px;border: 1px solid black;">11:00-12:00</th>
@@ -64,6 +65,8 @@
           <th style="text-align: center;padding: 0px;border: 1px solid black;">2:00-3:00</th>
           <th style="text-align: center;padding: 0px;border: 1px solid black;">3:00-4:00</th>
           <th style="text-align: center;padding: 0px;border: 1px solid black;">4:00-5:00</th>
+          <th style="text-align: center;padding: 0px;border: 1px solid black;">5:00-6:00</th>
+
 
       </tr>
     </thead>
@@ -77,9 +80,13 @@
          <td ng-if="f.p3b" ng-attr-colspan="{{f.p3col}}"  style="text-align: center;border: 1px solid black;">{{f.p3}}</td>
          <td ng-if="f.p4b" ng-attr-colspan="{{f.p4col}}"  style="text-align: center;border: 1px solid black;">{{f.p4}}</td>
          <!-- <td>{{f.p5}}</td> -->
-         <td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}"  style="text-align: center;border: 1px solid black;">{{f.p6}}</td>
+         <td ng-if="f.p5b" ng-attr-colspan="{{f.p5col}}"  style="text-align: center;border: 1px solid black;">{{f.p5}}</td>
+         <!-- <td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}"  style="text-align: center;border: 1px solid black;">{{f.p6}}</td> -->
          <td ng-if="f.p7b" ng-attr-colspan="{{f.p7col}}"   style="text-align: center;border: 1px solid black;">{{f.p7}}</td>
          <td ng-if="f.p8b" ng-attr-colspan="{{f.p8col}}"   style="text-align: center;border: 1px solid black;">{{f.p8}}</td>
+         <td ng-if="f.p9b" ng-attr-colspan="{{f.p9col}}"   style="text-align: center;border: 1px solid black;">{{f.p9}}</td>
+         <td ng-if="f.p10b" ng-attr-colspan="{{f.p10col}}"   style="text-align: center;border: 1px solid black;">{{f.p10}}</td>
+
        
 
       </tr>

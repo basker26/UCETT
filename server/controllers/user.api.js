@@ -552,7 +552,7 @@ router
         
         if(subj!='' && abbr!=''  && type!='' && !containsNumbers(subj) && !containsNumbers(abbr) && !containsNumbers(elective) && !containsNumbers(type)&& isType(type))  
         {
-            if(elective=="")elective="---";
+            if(elective=="*")elective=null;
             connection.query("SELECT * FROM clmsdb.subject_info where type=? and sub_name =? and sub_abbr=? and elective=? and subinfo=?",[type,subj,abbr,elective,req.body.id],(err,result)=>{
                 if(err)console.log("err");
                 if(result.length==0)
@@ -1996,7 +1996,7 @@ router
     connection.query("SELECT id,dayname(curdate()) as day, course,specilization,semester,department FROM clmsdb.departments_course where id=?",[de.id],function(err,datase){
         if(err) throw err;
         else{
-    connection.query('SELECT time_table.day,time_table.p1,time_table.p2,time_table.p3,time_table.p4,time_table.p6,time_table.p7,time_table.p8,course,specilization,semester FROM clmsdb.time_table,clmsdb.departments_course,clmsdb.working_days where time_table.combid=? and active=1 and departments_course.id=?  and time_table.day=working_days.day order by working_days.id',[de.id,de.id],function(err,datas){
+    connection.query('SELECT time_table.day,time_table.p1,time_table.p2,time_table.p3,time_table.p4,time_table.p5,time_table.p7,time_table.p8,time_table.p9,time_table.p10 ,course,specilization,semester FROM clmsdb.time_table,clmsdb.departments_course,clmsdb.working_days where time_table.combid=? and active=1 and departments_course.id=?  and time_table.day=working_days.day order by working_days.id',[de.id,de.id],function(err,datas){
                 if(err) throw err;
                 else{
                     connection.query("SELECT theoryfacallt,sub_name,elective,faculty_info.name FROM clmsdb.theory_fac_allotment,clmsdb.subject_info, clmsdb.faculty_info  where subject_info.subinfo=? and theory_fac_allotment.sub_id= subject_info.sub_id and faculty_info.id=theory_fac_allotment.facid",[de.id],function(err,data){
@@ -2117,21 +2117,19 @@ router
 })
 .post("/editfinalinsertAPI",checkSignIn,function(req,res){
     var body=req.body;
-    console.log(body,"hkhjkhk");
-    for(var i=0;i<8;i++){
+    console.log(body);
+    for(var i=0;i<9;i++){
         if(body[i]!=0){
 
         }else{
             body[i]=null;
         }
     }
-    body[8]=1;
     // body[11]=1;
-    console.log("hehhehe",body,"sjdaks");
-    connection.query("UPDATE `clmsdb`.`time_table` SET `p1` = ?, `p2` = ?, `p3` = ?, `p4` = ?,`p6`=?,`p7`=?,`p8`=? WHERE (`day` = ? and active=? and combid=?)",body,function(err,data){
+    console.log(body,"im at edit time table");
+    connection.query("UPDATE `clmsdb`.`time_table` SET `p1` = ?, `p2` = ?, `p3` = ?, `p4` = ?,`p5`=?,`p7`=?,`p8`=?,`p9`=?,`p10`=? WHERE (`day` = ? and active=? and combid=?)",body,function(err,data){
         if(err) throw err;
         else{
-            console.log("helllo");
             res.send(response(true,'sucess',true));
         }
     })
@@ -2148,7 +2146,7 @@ router
             res.send(response(true,'sucess',null));
             break;
         }else{
-            if(i<8 && body[i]==0){
+            if(i<9 && body[i]==0){
                 count++;
                 body[i]=null;
             }
@@ -2156,11 +2154,11 @@ router
     }
     
     if(!test || count==8){
-        if(body[7]=="Monday"){
+        if(body[9]=="Monday"){
             // connection.query("UPDATE `clmsdb`.`time_table` SET `active` = '0' WHERE (`combid` = ?)",[body[9]],function(err,data4){
             //     if(err) throw err;
             //     else{
-                    connection.query("INSERT INTO `clmsdb`.`time_table` ( `p1`, `p2`, `p3`, `p4`, `p6`, `p7`, `p8`,`day`, `active`, `combid`) VALUES (?,?,?,?,?,?,?,?,?,?)",body,function(err,data){
+                    connection.query("INSERT INTO `clmsdb`.`time_table` ( `p1`, `p2`, `p3`, `p4`, `p5`, `p7`, `p8`,`p9`,`p10`,`day`, `active`, `combid`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",body,function(err,data){
                         if(err) throw err;
                         else{
                             // connection.query("call clmsdb.deleteing(?)",[body[9]],function(err,data1){
@@ -2178,7 +2176,7 @@ router
                             // })
                             // console.log(body);
                              var data={
-                                 number:body[10]+1
+                                 number:body[12]+1
                              }
                              res.send(response(true,'sucess',data));
             
@@ -2188,7 +2186,7 @@ router
             })
             
         }else{
-            connection.query("INSERT INTO `clmsdb`.`time_table` ( `p1`, `p2`, `p3`, `p4`, `p6`, `p7`, `p8`,`day`, `active`, `combid`) VALUES (?,?,?,?,?,?,?,?,?,?)",body,function(err,data){
+            connection.query("INSERT INTO `clmsdb`.`time_table` ( `p1`, `p2`, `p3`, `p4`, `p5`, `p7`, `p8`,`p9`,`p10`,`day`, `active`, `combid`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",body,function(err,data){
                 if(err) throw err;
                 else{
                     // connection.query("call clmsdb.deleteing(?)",[body[9]],function(err,data1){
@@ -2206,7 +2204,7 @@ router
                     // })
                     // console.log(body);
                     var data={
-                        number:body[10]+1
+                        number:body[12]+1
                     }
                      res.send(response(true,'sucess',data));
     
