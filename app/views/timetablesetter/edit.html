@@ -225,6 +225,7 @@
                     <th>
                         <h6><strong>DAY </strong></h5>
                     </th>
+                    <th style="text-align: center;">8:00-9:00</th>
                     <th style="text-align: center;">9:00-10:00</th>
                     <th style="text-align: center;">10:00-11:00</th>
                     <th style="text-align: center;">11:00-12:00</th>
@@ -233,6 +234,7 @@
                     <th style="text-align: center;">2:00-3:00</th>
                     <th style="text-align: center;">3:00-4:00</th>
                     <th style="text-align: center;">4:00-5:00</th>
+                    <th style="text-align: center;">5:00-6:00</th>
     
                     </tr>
                 </thead>
@@ -256,7 +258,7 @@
                                         <div class="form-group col">
                                             <label for="inputPassword4">TO</label>
                                             <select  class="form-control d-inline-block" ng-model="d.to" ng-disabled="!d.frm" ng-change="fetch(d,f,dept.sem)" required>
-                                                <option ng-repeat="s in period2" ng-if="d.valu<=4?(s.value<=4 && s.value>=d.valu):(s.value>4 && s.value>=d.valu)" value={{s.value}}>{{s.value}}</option>
+                                                <option ng-repeat="s in period2" ng-if="d.valu<=5?(s.value<=5 && s.value>=d.valu):(s.value>5 && s.value>=d.valu)" value={{s.value}}>{{s.value}}</option>
                                             </select>
                                         </div>
                                         </div>

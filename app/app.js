@@ -240,6 +240,7 @@
    
         })
         .constant("globalConfig", {
+            excelsub:"http://localhost:4000/api/user/excelSubAdd",
             gethodlist:"http://localhost:4000/api/user/gethods",
             updatehod:"http://localhost:4000/api/user/hodupdate",
             deptfacdwnld:"http://localhost:4000/api/user/exceldeptfac",

@@ -60,6 +60,7 @@
         </tr>
         <tr> -->
             <!-- <th><h6><strong>Sem&</strong> </h5><h6><strong>Room no </strong></h5></th> -->
+            <th style="text-align: center;">8:00-9:00</th>
             <th style="text-align: center;">9:00-10:00</th>
             <th style="text-align: center;">10:00-11:00</th>
             <th style="text-align: center;">11:00-12:00</th>
@@ -68,6 +69,8 @@
             <th style="text-align: center;">2:00-3:00</th>
             <th style="text-align: center;">3:00-4:00</th>
             <th style="text-align: center;">4:00-5:00</th>
+            <th style="text-align: center;">5:00-6:00</th>
+
 
         </tr>
       </thead>
@@ -77,10 +80,13 @@
            <td ng-if="f.p2b" ng-attr-colspan="{{f.p2col}}" ng-style="{'background-color': (time>=f.p2t[0] && time< f.p2t[1])? '#e96c56d0 ':'#fff' }" style="text-align: center;">{{f.p2}}</td>
            <td ng-if="f.p3b" ng-attr-colspan="{{f.p3col}}" ng-style="{'background-color': (time>=f.p3t[0] && time< f.p3t[1])? '#e96c56d0 ':'#fff' }" style="text-align: center;">{{f.p3}}</td>
            <td ng-if="f.p4b" ng-attr-colspan="{{f.p4col}}" ng-style="{'background-color': (time>=f.p4t[0] && time< f.p4t[1])? '#e96c56d0 ':'#fff' }" style="text-align: center;">{{f.p4}}</td>
-           <td ng-if="f.p6b" ng-attr-colspan="{{f.p6col}}" ng-style="{'background-color': (time>=f.p6t[0] && time < f.p6t[1])? '#e96c56d0 ':'#fff' }" style="text-align: center;">{{f.p6}}</td>
+           <td ng-if="f.p5b" ng-attr-colspan="{{f.p5col}}" ng-style="{'background-color': (time>=f.p5t[0] && time < f.p5t[1])? '#e96c56d0 ':'#fff' }" style="text-align: center;">{{f.p5}}</td>
            <td ng-if="f.p7b" ng-attr-colspan="{{f.p7col}}"  ng-style="{'background-color': (time>=f.p7t[0] && time < f.p7t[1])? '#e96c56d0 ':'#fff' }" style="text-align: center;">{{f.p7}}</td>
            <td ng-if="f.p8b" ng-attr-colspan="{{f.p8col}}"  ng-style="{'background-color': (time>=f.p8t[0] && time < f.p8t[1])? '#e96c56d0 ':'#fff' }" style="text-align: center;">{{f.p8}}</td>
-        </tr>
+           <td ng-if="f.p9b" ng-attr-colspan="{{f.p9col}}"  ng-style="{'background-color': (time>=f.p9t[0] && time < f.p9t[1])? '#e96c56d0 ':'#fff' }" style="text-align: center;">{{f.p9}}</td>
+           <td ng-if="f.p10b" ng-attr-colspan="{{f.p10col}}"  ng-style="{'background-color': (time>=f.p10t[0] && time < f.p10t[1])? '#e96c56d0 ':'#fff' }" style="text-align: center;">{{f.p10}}</td>
+          
+          </tr>
       </tbody>
     </table>
   </div>

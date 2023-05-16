@@ -90,7 +90,7 @@
         service.getfacname=getfacname;
         service.addopenelectives=addopenelectives;
         return service;
-        uploaddata
+        // uploaddata
         function uhod(item){
             return $http.post(globalConfig.updatehod,item).then(handleSuccess,handleError("Error "))
         }
