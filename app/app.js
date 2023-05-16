@@ -307,6 +307,10 @@
 
             // naveen 
             headfoot: "http://localhost:4000/api/user/headfoot",
+            addnewdept: "http://localhost:4000/api/user/addnewdept",
+            updatepandc: "http://localhost:4000/api/user/updatepandc",
+            getpandcs : "http://localhost:4000/api/user/getpandcs"
+
         }).run(run);
 
     run.$inject = ['$rootScope','$localStorage'];

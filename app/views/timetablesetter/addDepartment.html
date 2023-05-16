@@ -13,7 +13,47 @@
 <div class="row justify-content-center " >
 
     <div class="col-lg-12">
-        <form name="form" ng-submit="" role="form" class="sign-in-form">
+        <form name="form" ng-submit="updatepandc(pandc)" role="form" class="sign-in-form">
+            <h2 style="color:#e96b56; border-bottom: 2px solid #e96b56; ">Principal and CO-ordinator</h2>
+            <br>
+            <div class="row featured align-content-center">
+                <div class="col ">
+                    <div class="row unknownselectmargin"> 
+                            <div class="col">
+                            <strong >Principal:</strong> {{pandcs.p}}
+                                <br>
+                                <select class="form-control form-control-md" aria-label="Default select example" ng-model="pandc.p">
+                                    <option value="" selected>Change Principal</option>
+                                    <option ng-repeat="d in headupdate " value="{{d.id}}">{{d.name}}</option>
+                                </select>
+                            <!-- <input class="form-control form-control-md" ng-model="pandc.p" type="text" placeholder="Principal" aria-label=".form-control-lg example" required> -->
+                            </div>
+
+
+                            <div class="col">
+                            <strong >TT Co-ordinator:</strong> {{pandcs.c}}<br>
+                            <select class="form-control form-control-md" aria-label="Default select example" ng-model="pandc.c">
+                                <option value="" selected>Change Co-ordinator</option>
+                                <option ng-repeat="d in headupdate" value="{{d.id}}">{{d.name}}</option>
+                            </select>
+                            <!-- <input class="form-control form-control-md"  style="text-transform: uppercase;" ng-model="pandc.c" type="text" placeholder="Co-ordinator" aria-label=".form-control-lg example" required> -->
+                            </div>
+
+                        <div class="col pt-3">
+                            <div class="text-center"><button class="submit"  type="submit"  class="btn btn-primary">Update</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+ </div>
+
+
+<div class="row justify-content-center " >
+
+    <div class="col-lg-12">
+        <form name="form" ng-submit="addnewdept(newdept)" role="form" class="sign-in-form">
             <h2 style="color:#e96b56; border-bottom: 2px solid #e96b56; ">Add Department</h2>
             <br>
             <div class="row featured align-content-center">
@@ -21,22 +61,16 @@
                     <div class="row unknownselectmargin"> 
                             <div class="col">
                             <strong >Department Name</strong><br>
-                            <input class="form-control form-control-md" ng-model="" type="text" placeholder="Department Name" aria-label=".form-control-lg example" required>
+                            <input class="form-control form-control-md" ng-model="newdept.dname" type="text" placeholder="Department Name" aria-label=".form-control-lg example" required>
                             </div>
 
                             <div class="col">
                             <strong >Abbrivation</strong><br>
-                            <input class="form-control form-control-md" ng-model="" type="text" placeholder="Abbrivation" aria-label=".form-control-lg example" required>
+                            <input class="form-control form-control-md" ng-disabled="!newdept.dname" style="text-transform: uppercase;" ng-model="newdept.abbr" type="text" placeholder="Abbrivation" aria-label=".form-control-lg example" required>
                             </div>
 
-                            <div class="col">
-                                <strong>HOD</strong><br>
-                                    <select class="form-control form-control-md" ng-model="" required>
-                                        <option value="{{}}">faculty list</option>
-                                    </select>
-                            </div>
                         <div class="col pt-3">
-                            <div class="text-center"><button class="submit" type="submit"  class="btn btn-primary">Add</button></div>
+                            <div class="text-center"><button class="submit" ng-disabled="!newdept.abbr" type="submit"  class="btn btn-primary">Add</button></div>
                         </div>
                     </div>
                 </div>
@@ -231,7 +265,7 @@
             </div>
             <div class="col">
                 <strong>HOD</strong>
-                <select class="form-control form-control-sm"  ng-disabled="!newhod.dname"  aria-label="Default select example" ng-model="newhod.hod" ng-change="viewfaculty(faculty)">
+                <select class="form-control form-control-md"  ng-disabled="!newhod.dname"  aria-label="Default select example" ng-model="newhod.hod" ng-change="viewfaculty(faculty)">
                     <option ng-repeat="d in headupdate | filter:{department:newhod.dname}" value="{{d.id}}">{{d.name}}</option>
                 </select>
             </div>

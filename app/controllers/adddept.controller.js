@@ -22,6 +22,10 @@
                     console.log(err);
                 });
 
+                userService.getpandcs().then((res)=>{
+                    $scope.pandcs=res.data;
+                }).catch(function(err){console.log(err)});
+
 
                 $scope.updateHod=function(item){
 
@@ -125,6 +129,22 @@
                     }).then(function(err){
                         console.log(err);
                     })
+                }
+
+                $scope.addnewdept = function(item){
+                    userService.addnewdept(item).then(function(res){
+                        alert(res.message)
+                    }).catch(function(err){console.log(err)});
+                }
+
+                $scope.updatepandc = function(item){
+                    console.log(item)
+                    userService.updatepandc(item).then(function(res){
+                        alert(res.message);
+                        userService.getpandcs().then((res)=>{
+                            $scope.pandcs=res.data;
+                        }).catch(function(err){console.log(err)});
+                    }).catch(function(err){console.log(err)});
                 }
                 
                 $scope.addrooms=function(item){
@@ -266,5 +286,7 @@
         }else{
             $state.go("login");
         }
+
+
     }
 })();

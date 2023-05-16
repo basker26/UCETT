@@ -81,6 +81,9 @@
 
         // naveen
         service.headfoot = headfoot;
+        service.addnewdept = addnewdept;
+        service.updatepandc = updatepandc;
+        service.getpandcs = getpandcs;
 
         service.excelsub=excelsub;
         //to get fac details
@@ -91,6 +94,17 @@
         function uhod(item){
             return $http.post(globalConfig.updatehod,item).then(handleSuccess,handleError("Error "))
         }
+        function addnewdept(item){
+            return $http.post(globalConfig.addnewdept,item).then(handleSuccess,handleError("Error "))
+        }
+        function updatepandc(item){
+            return $http.post(globalConfig.updatepandc,item).then(handleSuccess,handleError("Error "))
+        }
+        function getpandcs(){
+            return $http.post(globalConfig.getpandcs,null).then(handleSuccess,handleError("Error "))
+        }
+
+
         function ghlist(){
             return $http.post(globalConfig.gethodlist,null).then(handleSuccess,handleError("Error "))
         }
