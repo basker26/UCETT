@@ -416,7 +416,7 @@ router
     var data=req.body.data;
     console.log(data);
     console.log(checkVariable(data));
-    if(checkVariable(data) || (typeof data)=="object") {
+    if(checkVariable(data)) {
         console.log("hiii")
         res.send(response(false,"unsucess",null));
         return;

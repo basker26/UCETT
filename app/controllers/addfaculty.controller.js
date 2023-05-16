@@ -63,7 +63,10 @@
                     console.log(workbook);
                     var excelRows = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
                     console.log(excelRows);
-                    userService.excelfac(excelRows).then(function(res){
+                    var details={
+                        data:excelRows
+                    };
+                    userService.excelfac(details).then(function(res){
                         $scope.dummy=res.data;
                     }).catch(function(err){
                         console.log(err);
