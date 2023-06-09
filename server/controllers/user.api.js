@@ -673,10 +673,14 @@ router
     connection.query("select name from clmsdb.faculty_info where id in (select Principal from  clmsdb.principalsandcoordinators)",(err,data)=>{
         if(err){console.log(err);res.send(response(false,"cannot fetch principal",null));}
         else{
-            info.p=data[0].name;
+                if(data.length>0){
+                    info.p=data[0].name;
+                }
+            
             connection.query("select name from clmsdb.faculty_info where id in (select cod from  clmsdb.principalsandcoordinators)",(err,data)=>{
                 if(err){console.log(err);res.send(response(false,"cannot fetch coordinator",info));}
                 else{
+                    if(data.length>0)
                     info.c=data[0].name;
                     // console.log(info)
                     res.send(response(true,"details fetched succesfully",info));
@@ -2051,7 +2055,7 @@ router
         value=body.theoryfacallt;
     else
         value=body.labfacallt;   
-    connection.query("SELECT sub_abbr as subject FROM clmsdb.theory_fac_allotment,clmsdb.subject_info where theoryfacallt=? and subject_info.sub_id=theory_fac_allotment.sub_id",[value],function(err,data){
+    connection.query("SELECT concat(clmsdb.subject_info.sub_abbr,'(',clmsdb.faculty_info.abbr,')')  as subject FROM clmsdb.theory_fac_allotment,clmsdb.faculty_info,clmsdb.subject_info where clmsdb.theory_fac_allotment.theoryfacallt=? and clmsdb.faculty_info.id=clmsdb.theory_fac_allotment.facid and clmsdb.subject_info.sub_id= clmsdb.theory_fac_allotment.sub_id",[value],function(err,data){
         if(err) throw err;
         else{
             if(data.length!=0){
@@ -2089,7 +2093,7 @@ router
     })
 })
 .post("/custom",function(req,res){
-    connection.query('SELECT distinct department FROM clmsdb.departments_course',function(err,data){
+    connection.query('SELECT abbrivation as department FROM clmsdb.departmentnames',function(err,data){
         if(err) throw err;
         else{
         connection.query('SELECT distinct course FROM clmsdb.departments_course',function(err,data1){
@@ -2122,7 +2126,7 @@ router
         if(body[i]!=0){
 
         }else{
-            body[i]=null;
+            body[i]="***";
         }
     }
     // body[11]=1;
@@ -2148,7 +2152,7 @@ router
         }else{
             if(i<9 && body[i]==0){
                 count++;
-                body[i]=null;
+                body[i]="***";
             }
         }
     }
@@ -2336,7 +2340,7 @@ router
 
 })
 .post("/getdepart",function(req,res){
-    connection.query('SELECT distinct(department) as building_name FROM clmsdb.departments_course;',function(err,data){
+    connection.query('SELECT abbrivation as building_name FROM clmsdb.departmentnames',function(err,data){
         if(err) throw err;
         else{
         res.send(response(true,"success",data)); 
