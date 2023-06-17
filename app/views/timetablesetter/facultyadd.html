@@ -23,11 +23,11 @@
                     </div>
                     <div class="col">
                         <h6>Email:</h6>
-                        <input class="form-control" ng-disabled="!add.name" type="text" ng-model="add.email" placeholder="xxxxxxxxxx" aria-label="default input example" required>
+                        <input class="form-control" ng-disabled="!add.name" type="text" ng-model="add.email" placeholder="xxxxxxxxxx" aria-label="default input example"  required>
                     </div>
                     <div class="col">
                         <h6>Phone:</h6>
-                        <input class="form-control" ng-disabled="!add.name" type="text" ng-model="add.phone" placeholder="xxxxxxxxxx" aria-label="default input example" required>
+                        <input class="form-control" ng-disabled="!add.name" type="tel" ng-model="add.phone" placeholder="xxxxxxxxxx" aria-label="default input example"  required>
                     </div>
                     <div class="col">
                         <h6>Department:</h6>
@@ -55,11 +55,11 @@
         <h3 style="text-align: center; color:#e96b56;">List of Faculty</h3>
             <table class="table table-striped table-hover mt-1">
                 <thead class="table-dark">
-                <th>Employee ID</th>
                 <th>Name</th>
-                <th>Department</th>
-                <!-- <th></th> -->
-                <th>Status</th>
+                <th>Abbrevation</th>
+                <th>Phone Number</th>
+                <th>Email Address</th>
+                <!-- <th>Department</th> -->
                 <th>
                     <div class="row">
                         <h6>Filter Department:</h6>
@@ -72,17 +72,29 @@
                         <h6>Filter Name:</h6>
                         <input ng-model="filtername">
                 </th>
+                <th>Designation</th>
+                <th></th>
             </thead>
             <tr ng-repeat="d in facdata | filter:{name:filtername,department:filter}">
-                <td>{{d.id}}</td>
-                <td>{{d.name}}
-                    <input type="text" ng-model="d.editname" >
-                    <input type="text" ng-model="d.editabbr">
+                <td>
+                    <input type="text" ng-model="d.editname" placeholder={{d.name}}>
+                </td>
+                <td>
+                    <input type="text" ng-model="d.editabbr" placeholder={{d.abbr}}>
+                </td>
+                <td>
+                    <input type="tel" ng-model="d.phno" placeholder={{d.phoneno}} >
+                </td>
+                <td>
+                    <input type="text" ng-model="d.email" placeholder={{d.emaill}}>
+                </td>
+                <td>
+                    <input type="text" ng-model="d.dsig" placeholder={{d.designation}}>
                 </td>
                 <td>{{d.department}}</td>
-                <td>
+                <!-- <td>
                         <button class="btn btn-primary  btn-sm" ng-init="check(d)" style="background-color:rgb(106, 230, 106); border-color: rgb(106, 230, 106);" ng-click="test(d)">{{d.Status}}</button>
-                </td>
+                </td> -->
                 <td>
                     <button class="btn btn-primary  btn-sm" ng-click="delete(d)" style="background-color: rgb(191, 25, 25);  border-color: rgb(191, 25, 25)">Delete</button>
                 </td>

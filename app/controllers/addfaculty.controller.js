@@ -66,24 +66,52 @@
                     var details={
                         data:excelRows
                     };
-                    userService.excelfac(details).then(function(res){
-                        $scope.dummy=res.data;
-                    }).catch(function(err){
-                        console.log(err);
-                    })
+                    var c=true;
+                    for(var i=0;i<excelRows.length;i++){
+                        if(!excelRows[i].name || !excelRows[i].designation || !excelRows[i].email || !excelRows[i].phoneno || !excelRows[i].abbr || !excelRows[i].emp_code || !excelRows[i].department  || !validateEmail(excelRows[i].email) || !validatePhoneNumber(excelRows[i].phoneno)){
+                            alert(excelRows[i].name,excelRows[i].designation,excelRows[i].email,excelRows[i].phoneno,excelRows[i].abbr,excelRows[i].emp_code,excelRows[i].department,validateEmail(excelRows[i].email),validatePhoneNumber(excelRows[i].phoneno));
+                            alert("please check the data");
+                            c=false;
+                            break;
+                        }
+                    }
+                    if(c){
+                        userService.excelfac(details).then(function(res){
+                            $scope.dummy=res.data;
+                        }).catch(function(err){
+                            console.log(err);
+                        })
+                    }
+                    
                 };
                 //
                 $scope.editfaculty=function(item){
-                    if(item.editname || item.editabbr){
+                    console.log(item);
+                    if(item.editname || item.editabbr || item.phno || item.email || item.dsig){
+                        if(item.phno){
+                            if(!validatePhoneNumber(item.phno)){
+                                alert('Enter correct Number');
+                                return ;
+                            }
+                        }
+                        if(item.email){
+                           if(!validateEmail(item.email)){ 
+                            alert('Enter correct email addreess');
+                            return ;
+                            }
+                        }
                         var detail={
                             id:item
                         }
                             userService.changefacname(detail).then(function(res){
-                                userService.getfac().then(function(res){
-                                    $scope.facdata=res.data;
-                                  }).catch(function(err){
-                                    console.log(err);
-                                  })   
+                                setTimeout(() => {
+                                    userService.getfac().then(function(res){
+                                        $scope.facdata=res.data;
+                                      }).catch(function(err){
+                                        console.log(err);
+                                      })
+                                }, 200);
+                                 
                             }).catch(function(err){
                                 console.log(err);
                             })
@@ -93,22 +121,23 @@
                 }
                 $scope.addfaculty=function(item,facdata){
                     // var ob=facdata.find(o=>o.name===item.name);
-                    if(false){
-                        alert("faculty already exists");
-                    }else{
+                     if(validateEmail(item.email) && validatePhoneNumber(item.phone)){
                         userService.addfaculty(item).then(function(res){
                         item.dept=null;
                         item.abbr=null;
                         item.name=null;
+                         userService.getfac().then(function(res){
+                        $scope.facdata=res.data;
+                      }).catch(function(err){
+                        console.log(err);
+                      })
                     }).catch(function(err){
                         console.log(err);
                     });
-                    // userService.getfac().then(function(res){
-                    //     $scope.facdata=res.data;
-                    //   }).catch(function(err){
-                    //     console.log(err);
-                    //   })
-                    refresh();    
+                   
+                    // refresh();    
+                    }else{
+                        alert("please enter valid email/phone no");
                     }
                     
                 }
@@ -128,6 +157,12 @@
                 $scope.delete=function(item){
                     var details=item;
                     userService.deletefac(details).then(function(res){
+                        alert('deleted');
+                        userService.getfac().then(function(res){
+                            $scope.facdata=res.data;
+                        }).catch(function(err){
+                            console.log(err);
+                        })
 
                     }).catch(function(err){
                         console.log(err);
@@ -154,6 +189,20 @@
             // else if($state.current.name){
             //     console.log("vjkhdjkdhf")
             // }
+            function validateEmail(email) {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailPattern.test(email);
+            }
+            function validatePhoneNumber(phoneNumber) {
+                console.log(phoneNumber);
+                var pattern = /^\d{10}$/;
+                var cleanedPhoneNumber = phoneNumber.toString().replace(/\D/g, '');
+                if (pattern.test(cleanedPhoneNumber)) {
+                  return true; 
+                } else {
+                  return false;
+                }
+              }
         }else{
             $state.go("login");
         }

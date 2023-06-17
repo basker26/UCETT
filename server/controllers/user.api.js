@@ -424,15 +424,15 @@ router
     var wrong=[];
     var flag=false;
     data.forEach((item)=>{
-        if(!( item.name && item.abbr && item.emp_code && item.active && item.department && item.phoneno && item.email)){
+        if(!( item.name && item.abbr && item.emp_code  && item.department && item.phoneno && item.email && item.designation)){
             flag=true;
             return;
         }
-         if( (/^([a-zA-Z])+/).test(item.name) && (/^([a-zA-Z])+/).test(item.abbr) && (/^([a-zA-Z0-9])+/).test(item.emp_code) &&(/^([a-zA-Z0-9])+/).test(item.department) &&  (/^([0-9])+/).test(item.active) &&(/([0-9]{10})/).test(item.phoneno) && (/^[a-zA-Z0-9_\.\-]+[@][a-z]+[\.][a-z]{2,3}/).test(item.email)){
+         if( (/^([a-zA-Z])+/).test(item.name) && (/^([a-zA-Z])+/).test(item.abbr) && (/^([a-zA-Z0-9])+/).test(item.emp_code) &&(/^([a-zA-Z0-9])+/).test(item.department)  && (/([0-9]{10})/).test(item.phoneno) && (/^[a-zA-Z0-9_\.\-]+[@][a-z]+[\.][a-z]{2,3}/).test(item.email)){
             connection.query("SELECT * FROM clmsdb.faculty_info where emp_code=?",[item.emp_code],(err,data0)=>{
                 if(err) console.log(err);
                 else if(data0.length==0){
-                    connection.query("INSERT INTO `clmsdb`.`faculty_info` (`name`, `abbr`, `emp_code`, `department`, `active`, `phoneno`, `emaill`) VALUES (?, ?, ?, ?, ?,?, ?)",[item.name,item.abbr,item.emp_code,item.department,item.active,item.phoneno,item.email],function(err,data){
+                    connection.query("INSERT INTO `clmsdb`.`faculty_info` (`name`, `abbr`, `emp_code`, `department`, `active`, `phoneno`, `emaill`,`designation`) VALUES (?, ?, ?, ?, ?,?, ?,?)",[item.name,item.abbr,item.emp_code,item.department,2,item.phoneno,item.email,item.designation],function(err,data){
                         if(err) console.log(err);
                        else{
                            //start
