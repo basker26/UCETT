@@ -1,0 +1,164 @@
+<!-- <form>
+    <div class="form-row">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Search Subject"ng-model='subfilter'>
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example" ng-model="external.selectedsub" required>
+            <option value ="d" ng-repeat="d in labdata.subjectinfo | filter:{sub_name:subfilter}">{{d.tag}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Search Internal faculty" ng-model="facfilter">
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example" ng-model="external.internal" required>
+            <option value="f" ng-repeat="f in labdata.facultyinfo | filter:{name:facfilter}">{{f.name}}</option>
+        </select>
+        </div>
+        <div class="col">
+            <input type="date" ng-model=" external.Startingdate"class="form-control" placeholder="Starting Date" required>
+        </div>
+        <div class="col">
+            <input type="date" ng-model="external.endingdate" class="form-control" placeholder="Starting Date">
+    <input type="button" name="confirm" ng-click="review(external)">
+            
+        </div>
+    </div>
+    <div class="form-row">
+        <input type="text" ng-model="external.name" placeholder="External Examiner Name" required>
+        <input type="text" ng-model="external.dept" placeholder="Department" required>
+        <input type="text" ng-model="external.clg" placeholder="College" required>
+        <input type="text" ng-model="external.address" placeholder="Contact" required>
+        <input type="text" ng-model="external.number" placeholder="Contact Number" required>
+    </div>
+</form> -->
+<div class="container">
+    <form ng-submit="review(external)">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+        <input type="text" class="form-control" placeholder="Search Subject"ng-model='subfilter'>
+        </div>
+        <div class="form-group col-md-6">
+        <input type="text" class="form-control" placeholder="Search Internal faculty" ng-model="facfilter">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="select1">Subject</label>
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" ng-model="external.selectedsub" required>
+            <option value ="{{d}}" ng-repeat="d in labdata.subjectinfo | filter:{sub_name:subfilter}">{{d.tag}}</option>
+        </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="select2">Internal faculty</label>
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" ng-model="external.internal" required>
+            <option value="{{f}}" ng-repeat="f in labdata.facultyinfo | filter:{name:facfilter}">{{f.name}}</option>
+        </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+        <input type="text" ng-model="external.name" placeholder="External Examiner Name" required>
+            
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" ng-model="external.dept" placeholder="Department" required>
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" ng-model="external.clg" placeholder="College" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-3">
+            <input type="text" ng-model="external.address" placeholder="College Address" required>
+          </div>
+          <div class="form-group col-md-3">
+            <input type="text" ng-model="external.email" placeholder="email Address" required>
+          </div>
+          <div class="form-group col-md-3">
+            <input type="text" ng-model="external.number" placeholder="External Number" required>
+          </div>
+          <div class="form-group col-md-4">
+            <input type="date" ng-model="external.stdate" required>
+          </div>
+          <div class="form-group col-md-4">
+            <input type="date" ng-model="external.eddate">
+          </div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <div class="container-fluid">
+    <div class="header">
+        <div class="row">image</div>
+        <div class="row">UNIVERSITY COLLEGE OF ENGINEERING</div>
+        <div class="row">(AUTONOMOUS)</div>
+        <div class="row">OSMANIA UNIVERSITY, HYDERABAD - 500007, INDIA</div>
+    </div>
+
+    <div class=" row mt-2">
+        <div class="col sno">No. /UCE/OU/2023</div>
+        <div class="col date">Date: {{curdate}}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <p>
+                To
+                {{external.name}},
+                {{external.dept}},
+                {{external.clg}},
+                {{external.address}} 
+                Phone: {{external.number}},
+                Email Id: {{external.email}}.
+            </p>
+        </div>
+    </div>
+
+    <div class="row mt-2 justify-content-center">
+        <div class="col">
+            <p>Sub: {{subjectletter}}</p>
+        </div>
+    </div>
+
+    <div class="row mt-2 text-left"><p>Sir/Madam</p></div>
+
+    <div class="row">
+        <p>
+            &ensp I am pleased to inform you that you have been appointed as External Examiner to conduct the Practical Examination scheduled {{period}}.  The timetable and the groupings of candidates in the subject of {{subject}} is attached herewith.  
+        </p>
+
+        <p>
+            &ensp You are requested to intimate your acceptance by e-mail/mobile to internal examiner, or Head Department of {{dept}}, UCE (A), OU. The honorarium and TA will be  paid  as  per  the  University  College  of  Engineering  (A),  Osmania  University,  norms  in vogue.
+        </p>
+    </div>
+
+
+    <div class="row">
+        <div class="col-4">
+            Yours faithfully,
+            <br>
+            <br>
+            <br>
+            Chief Superintendent
+            B.E. Exams
+        </div>
+    </div>
+
+
+    <div class="row">
+        Copy to: <br>
+        <ol>
+            <li>
+                {{internalinfo}}
+            </li>
+            <li>
+                {{internalcon}}
+            </li>
+            <li>
+                {{head}}
+            </li>
+            <li>
+                Director of Evaluation, Examination Cell, UCE (A), O.U.
+            </li>
+        </ol>
+    </div>
+</div>

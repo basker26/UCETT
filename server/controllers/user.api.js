@@ -1113,6 +1113,23 @@ router
         }
     })
 })
+.post("/labordersgetinfo",checkSignIn,function(req,res){
+    connection.query("SELECT sub_name , concat( sub_name,' ' ,course, '( ' , specilization , ' ) -',semester) as tag,concat( course, '( ' , specilization , ' ) -') as sub, semester ,fullname   FROM clmsdb.subject_info,clmsdb.departments_course,clmsdb.departmentnames where subinfo=id and abbrivation=department",function(err,data){
+        if(err) console.log(err);
+        else{
+            connection.query("SELECT * FROM clmsdb.faculty_info",function(err,data1){
+                if(err) console.log(err);
+                else{
+                        var send={
+                            subjectinfo:data,
+                            facultyinfo:data1
+                        }
+                        res.send(response(true,"sucess",send));
+                }
+            })
+        }
+    })
+})
 .post("/Changepassword",checkSignIn,function(req,res){
     var body=req.body;
     connection.query("SELECT * FROM clmsdb.users where password=md5(?) and user_id=?",[body.oldpass,body.userid],function(err,data1){

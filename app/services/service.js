@@ -84,6 +84,7 @@
         service.addnewdept = addnewdept;
         service.updatepandc = updatepandc;
         service.getpandcs = getpandcs;
+        service.labordersgetinfo=labordersgetinfo;
 
         service.excelsub=excelsub;
         //to get fac details
@@ -91,6 +92,9 @@
         service.addopenelectives=addopenelectives;
         return service;
         // uploaddata
+        function labordersgetinfo(){
+            return $http.post(globalConfig.labordersgetinfo).then(handleSuccess,handleError("Error "))
+        }
         function uhod(item){
             return $http.post(globalConfig.updatehod,item).then(handleSuccess,handleError("Error "))
         }

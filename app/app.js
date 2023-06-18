@@ -221,6 +221,16 @@
                     }
                 }
             })
+            .state("Lab Orders",{
+                parent:"home",
+                url:"home/Lab Orders",
+                views:{
+                    'tasks@home':{
+                        templateUrl:"/views/timetablesetter/Lab_Orders.html",
+                        controller:"LabOrders"
+                    }
+                }
+            })  
             .state("processbill",{
                 parent:"home",
                 url:"/process/bill",
@@ -240,6 +250,7 @@
    
         })
         .constant("globalConfig", {
+            labordersgetinfo:"http://localhost:4000/api/user/labordersgetinfo",
             addopenelectives:"http://localhost:4000/api/user/addopenelectives",
             excelsub:"http://localhost:4000/api/user/excelSubAdd",
             gethodlist:"http://localhost:4000/api/user/gethods",
