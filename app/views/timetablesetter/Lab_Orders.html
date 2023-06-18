@@ -29,7 +29,40 @@
         <input type="text" ng-model="external.number" placeholder="Contact Number" required>
     </div>
 </form> -->
-<div class="container">
+
+<style>
+    .row{
+        margin: auto;
+        margin-top: 7px;
+    }
+
+    .header .row{
+        font-family:serif;
+        width: fit-content;
+        margin: auto !important;
+    }
+
+    .container
+    {
+        max-width: 80%;
+        margin: auto;
+        border: 2px dotted #ffe02e;
+    }
+
+    .container-md{
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        background: #ffe96e;
+        transition: all ease-in-out 0.1s;
+        /* height: 100%; */
+    }
+
+    .container-md input, select{
+        width: 100%;
+    }
+</style>
+
+<div class="container-md mt-3" style="padding: 3%;">
     <form ng-submit="review(external)">
       <div class="form-row">
         <div class="form-group col-md-6">
@@ -39,76 +72,90 @@
         <input type="text" class="form-control" placeholder="Search Internal faculty" ng-model="facfilter">
         </div>
       </div>
+
+
       <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-6 ">
           <label for="select1">Subject</label>
-          <select class="form-select form-select-sm" aria-label=".form-select-sm example" ng-model="external.selectedsub" required>
+          <select class="form-select form-select-lg" aria-label=".form-select-lg example" ng-model="external.selectedsub" required>
             <option value ="{{d}}" ng-repeat="d in labdata.subjectinfo | filter:{sub_name:subfilter}">{{d.tag}}</option>
         </select>
         </div>
         <div class="form-group col-md-6">
           <label for="select2">Internal faculty</label>
-          <select class="form-select form-select-sm" aria-label=".form-select-sm example" ng-model="external.internal" required>
+          <select class="form-select form-select-lg" aria-label=".form-select-lg example" ng-model="external.internal" required>
             <option value="{{f}}" ng-repeat="f in labdata.facultyinfo | filter:{name:facfilter}">{{f.name}}</option>
         </select>
         </div>
       </div>
+
+
+
       <div class="form-row">
         <div class="form-group col-md-4">
-        <input type="text" ng-model="external.name" placeholder="External Examiner Name" required>
+        <input type="text" class="form-control" ng-model="external.name" placeholder="External Examiner Name" required>
             
         </div>
         <div class="form-group col-md-4">
-            <input type="text" ng-model="external.dept" placeholder="Department" required>
+            <input type="text" class="form-control" ng-model="external.dept" placeholder="Department" required>
         </div>
         <div class="form-group col-md-4">
-            <input type="text" ng-model="external.clg" placeholder="College" required>
+            <input type="text" class="form-control" ng-model="external.clg" placeholder="College" required>
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group col-md-3">
-            <input type="text" ng-model="external.address" placeholder="College Address" required>
+
+
+      <div class="form-row justify-content-between">
+        <div class="form-group col-md-2">
+            <input type="text" class="form-control" ng-model="external.address" placeholder="College Address" required>
           </div>
-          <div class="form-group col-md-3">
-            <input type="text" ng-model="external.email" placeholder="email Address" required>
+          <div class="form-group col-md-2">
+            <input type="text" class="form-control" ng-model="external.email" placeholder="email Address" required>
           </div>
-          <div class="form-group col-md-3">
-            <input type="text" ng-model="external.number" placeholder="External Number" required>
+          <div class="form-group col-md-2">
+            <input type="text" class="form-control" ng-model="external.number" placeholder="External Number" required>
           </div>
-          <div class="form-group col-md-4">
-            <input type="date" ng-model="external.stdate" required>
+          <div class="form-group col-md-2">
+            <input type="date" class="form-control" ng-model="external.stdate" required>
           </div>
-          <div class="form-group col-md-4">
-            <input type="date" ng-model="external.eddate">
+          <div class="form-group col-md-2">
+            <input type="date" class="form-control" ng-model="external.eddate">
           </div>
       </div>
       
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
-  <div class="container-fluid">
-    <div class="header">
-        <div class="row">image</div>
-        <div class="row">UNIVERSITY COLLEGE OF ENGINEERING</div>
-        <div class="row">(AUTONOMOUS)</div>
-        <div class="row">OSMANIA UNIVERSITY, HYDERABAD - 500007, INDIA</div>
+
+
+
+
+
+
+   
+  <div class="container justify-content-center mt-3" style="padding: 5%;text-align: center;">
+    <div class="header justify-content-center">
+        <div class="row"><img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fbranditechture.agency%2Fbrand-logos%2Fwp-content%2Fuploads%2Fwpdm-cache%2FOsmania-University-900x0.png&tbnid=qJrCOTdVtGTokM&vet=12ahUKEwi4ysepgM3_AhVDLLcAHQolBgIQMygCegUIARDHAQ..i&imgrefurl=https%3A%2F%2Fbranditechture.agency%2Fbrand-logos%2Fdownload%2Fosmania-university%2F&docid=5s1WOgztkCctPM&w=900&h=664&q=osmania%20university&hl=en&ved=2ahUKEwi4ysepgM3_AhVDLLcAHQolBgIQMygCegUIARDHAQ"/></div>
+        <div class="row"><h2>UNIVERSITY COLLEGE OF ENGINEERING</h2></div>
+        <div class="row"><h3>(AUTONOMOUS)</h3></div>
+        <div class="row"><h5>OSMANIA UNIVERSITY, HYDERABAD - 500007, INDIA</h5></div>
     </div>
 
-    <div class=" row mt-2">
-        <div class="col sno">No. /UCE/OU/2023</div>
-        <div class="col date">Date: {{curdate}}</div>
+    <div class=" row mt-5">
+        <div class="col sno text-left">No. /UCE/OU/2023</div>
+        <div class="col date text-right">Date: {{curdate}}</div>
     </div>
 
-    <div class="row">
+    <div class="row mt-3 justify-content-left text-left">
         <div class="col-6">
             <p>
                 To
-                {{external.name}},
-                {{external.dept}},
-                {{external.clg}},
-                {{external.address}} 
-                Phone: {{external.number}},
-                Email Id: {{external.email}}.
+                {{external.name}},<br>
+                {{external.dept}},<br>
+                {{external.clg}},<br>
+                {{external.address}} <br>
+                Phone: {{external.number}},<br>
+                Email Id: {{external.email}}.<br>
             </p>
         </div>
     </div>
@@ -132,7 +179,8 @@
     </div>
 
 
-    <div class="row">
+    <div class="row justify-content-right text-center">
+        <div class="col"></div>
         <div class="col-4">
             Yours faithfully,
             <br>
@@ -144,9 +192,9 @@
     </div>
 
 
-    <div class="row">
+    <div class="row text-left">
         Copy to: <br>
-        <ol>
+        <ol >
             <li>
                 {{internalinfo}}
             </li>
