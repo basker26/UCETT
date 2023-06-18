@@ -45,6 +45,17 @@
                             $scope.internalinfo=fac.name+", "+fac.designation+", Department of "+fac.department+" , UCE (A), O.U,"
                             $scope.internalcon="Email ID:"+fac.emaill+", Ph.Number:"+fac.phoneno;
                             $scope.head="The Head, Dept. of "+sub.fullname+", UCE (A), OU for information."
+                            var data={
+                              internal:"+91"+fac.phoneno,
+                              external:"+91"+data.number,
+                              internalmsg:$scope.subjectletter+" period "+$scope.period+" subject "+$scope.subject+" with a request to confirm with External Examiner in advance His/Her contact number. "+fac.phoneno,
+                              externalmsg:$scope.subjectletter+" period "+$scope.period+" subject "+$scope.subject+" You are requested to intimate your acceptance by e-mail/mobile to internal examiner.His/Her contact number. "+fac.phoneno
+                            }
+                            userService.msglaborders(data).then(function(res){
+                                alert("Information is shared");
+                            }).then(function(err){
+                              console.log(err);
+                            })
                         }
                     }
                     function getMonthName(monthNumber) {

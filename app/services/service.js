@@ -10,6 +10,7 @@
         
         var service = {};
         //charan
+        service.msglaborders=msglaborders;
         service.personalfaculty=personal;
         service.updatehod=uhod;
         service.gethodlist=ghlist;
@@ -94,6 +95,9 @@
         // uploaddata
         function labordersgetinfo(){
             return $http.post(globalConfig.labordersgetinfo).then(handleSuccess,handleError("Error "))
+        }
+        function msglaborders(data){
+            return $http.post(globalConfig.msglaborders,data).then(handleSuccess,handleError("Error "))
         }
         function uhod(item){
             return $http.post(globalConfig.updatehod,item).then(handleSuccess,handleError("Error "))

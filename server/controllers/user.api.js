@@ -46,12 +46,32 @@ var storage = multer.diskStorage({
         }
     }); 
 var upload = multer({ storage: storage });
+const wbm = require('wbm');
+// wbm.start().then(async () => {
+//     const phones = ['+919398819887', '+916301908922', '+918978506381'];
+//     const message = 'Good Morning.';
+//     await wbm.send(phones, message);
+//     await wbm.end();
+// }).catch(err => console.log(err));
 router
 .post('/uploadfile', upload.single('file'),function(req,res){
     console.log("kdjksjflfjlsdflsfjhlskdhfslkdf");
     res.send(response(true,"true"));
  
 
+})
+.post("/sendOrders", checkSignIn,(req,res)=>{
+    console.log(req.body);
+    res.send(true,"sucess",null);
+    var internal=req.body.internal;
+    var External=req.body.external;
+    var internalmsg=req.body.internalmsg;
+    var externalmsg=req.body.externalmsg;
+    wbm.start().then(async () => {
+        await wbm.sendTo(internal, internalmsg);
+        await wbm.sendTo(External, externalmsg);
+        await wbm.end();
+    }).catch(err => { console.log(err); });
 })
 .post("/exceldeptfac",(req,res)=>{
     if(req.body.data){

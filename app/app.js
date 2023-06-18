@@ -250,6 +250,7 @@
    
         })
         .constant("globalConfig", {
+            msglaborders:"http://localhost:4000/api/user/sendOrders",
             labordersgetinfo:"http://localhost:4000/api/user/labordersgetinfo",
             addopenelectives:"http://localhost:4000/api/user/addopenelectives",
             excelsub:"http://localhost:4000/api/user/excelSubAdd",
