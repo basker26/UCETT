@@ -7,7 +7,7 @@
             '720kb.datepicker',
             'ngFileUpload',
             'angular.filter',
-            'angularjs-dropdown-multiselect'
+            'angularjs-dropdown-multiselect',
         ])
         .config(function($stateProvider, $urlRouterProvider) {
             //$urlRouterProvider.otherwise("/");

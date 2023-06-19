@@ -194,7 +194,6 @@
                 return emailPattern.test(email);
             }
             function validatePhoneNumber(phoneNumber) {
-                console.log(phoneNumber);
                 var pattern = /^\d{10}$/;
                 var cleanedPhoneNumber = phoneNumber.toString().replace(/\D/g, '');
                 if (pattern.test(cleanedPhoneNumber)) {
@@ -202,7 +201,7 @@
                 } else {
                   return false;
                 }
-              }
+            }
         }else{
             $state.go("login");
         }

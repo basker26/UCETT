@@ -13,14 +13,25 @@ var express = require("express"),
 // const { includes, forEach } = require("underscore");
 // const { element } = require("angular");
 // const XLSX = require('xlsx');
+const nodemailer = require('nodemailer');
 const timestamp = require('time-stamp'),
     dbConnection = require("../config/dbConnection.js"),
     connection = dbConnection.getConnection();// for database connection.
 
 // const { forEach } = require("angular");
 var multer  = require('multer');
+const PDFDocument = require('pdfkit');
 const { object, result } = require("underscore");
 // const { sign } = require("crypto");
+const path=require('path');
+// const os=cwd();
+let mailTransporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'baskerron@gmail.com',
+        // pass: 'xheayjozmqqkyzeg'
+    }
+});
 var storage = multer.diskStorage({
 
     destination: function (req, file, cb) {
@@ -47,12 +58,6 @@ var storage = multer.diskStorage({
     }); 
 var upload = multer({ storage: storage });
 const wbm = require('wbm');
-// wbm.start().then(async () => {
-//     const phones = ['+919398819887', '+916301908922', '+918978506381'];
-//     const message = 'Good Morning.';
-//     await wbm.send(phones, message);
-//     await wbm.end();
-// }).catch(err => console.log(err));
 router
 .post('/uploadfile', upload.single('file'),function(req,res){
     console.log("kdjksjflfjlsdflsfjhlskdhfslkdf");
@@ -60,18 +65,104 @@ router
  
 
 })
-.post("/sendOrders", checkSignIn,(req,res)=>{
+.post("/sendOrders",(req,res)=>{
     console.log(req.body);
-    res.send(true,"sucess",null);
+    var body=req.body;
+    // res.send(true,"sucess",null);
     var internal=req.body.internal;
     var External=req.body.external;
     var internalmsg=req.body.internalmsg;
     var externalmsg=req.body.externalmsg;
-    wbm.start().then(async () => {
-        await wbm.sendTo(internal, internalmsg);
-        await wbm.sendTo(External, externalmsg);
-        await wbm.end();
-    }).catch(err => { console.log(err); });
+    //whatsapp message
+    // wbm.start().then(async () => {
+    //     await wbm.sendTo(internal, internalmsg);
+    //     await wbm.sendTo(External, externalmsg);
+    //     await wbm.end();
+    // }).catch(err => { console.log(err); });
+    //whatsapp message
+    //gmail
+    let mailDetails = {
+        from: 'baskerron@gmail.com',
+        to: body.internalmail,
+        subject: body.subletter,
+        text: body.para1+" "+body.para2,
+    };
+    mailTransporter.sendMail(mailDetails, function(err, data) {
+        if(err) {
+            console.log('Error Occurs'+err);
+        } else {
+            console.log('Email sent successfully');
+        }
+    });
+     
+    //gmail
+    const doc = new PDFDocument();
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename=generated.pdf');
+    doc.pipe(res);
+    doc.image('app/universitylogo.png',doc.page.width/2 - 75/2,doc.y,{fit: [60, 60]})
+    doc.fontSize(16);
+    doc.font('Times-Bold')
+    .text('UNIVERSITY COLLEGE OF ENGINEERING',{align: 'center'})
+    doc.fontSize(11);
+    doc.font('Times-Bold')
+    .text('(AUTONOMOUS)',{align: 'center'}) 
+    doc.fontSize(14);
+    doc.font('Times-Bold')
+    .text('OSMANIA UNIVERSITY, HYDERABAD – 500007, INDIA',{align: 'center'}) 
+    doc.fontSize(11);
+    const date = new Date();
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is zero-based
+    const year = String(date.getFullYear());
+    doc.text(" ");
+    doc.font('Times-Bold')
+    .text('NO.           /UCE/OU/'+year+"                                                                                               "+"Date: "+day+"-"+month+"-"+year,{align: 'left'}) 
+    doc.text(" ");
+    doc.text('TO',{
+        align:'left'
+    }) 
+    doc.text(" ");
+    doc.text(body.externalname,{
+        align:'left'
+    }) 
+    doc.text(body.externaldept+",",{
+        align:'left'
+    })
+    doc.text(body.externalclg+",",{
+        align:'left'
+    })
+    doc.text(body.externalclgAddres+".",{
+        align:'left'
+    })
+    doc.text("Phone Number: "+body.externalphone+",",{
+        align:'left'
+    })
+    doc.text("Email: "+body.externalemail+".",{
+        align:'left'
+    })
+    doc.text(" ");
+    doc.font("Times-Roman");
+    doc.text("Sub: "+body.subletter,doc.x + 20, doc.y);
+    doc.text(" ");
+    doc.text(body.para1,doc.x - 20, doc.y);
+    doc.text(" ");
+    doc.text(body.para2);
+    doc.text(" ");
+    doc.text(" ");
+    doc.text("                                                                                                                                            Yours Faithfully,",{align:"left"})
+    doc.font("Times-Bold");
+    doc.text("Chief Superintendent",{align:"right"});
+    doc.text("                                                                                                                                            "+body.course);
+    doc.text(" ");
+    doc.text("Copy to:");
+    doc.text(" ");
+    doc.font("Times-Roman")
+    doc.text("1) "+body.para3,doc.x+20,doc.y);
+    doc.text(body.para4,doc.x+20,doc.y);
+    doc.text("2) "+body.para5,doc.x-20,doc.y);
+    doc.text("3) Director of Evaluation, Examination Cell, UCE (A), O.U.");
+    doc.end();
 })
 .post("/exceldeptfac",(req,res)=>{
     if(req.body.data){

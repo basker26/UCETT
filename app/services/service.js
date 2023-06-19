@@ -7,7 +7,7 @@
     
     userService.$inject = ['$http', 'globalConfig'];
     function userService($http, globalConfig) {
-        
+        var check=false;
         var service = {};
         //charan
         service.msglaborders=msglaborders;
@@ -79,6 +79,8 @@
         service.editgetelement=editgetelement;
         service.deleteoldallot=deleteoldallot;
         service.deptfacdwnld=deptfacdwnld;
+        service.validnumber=validnumber;
+        service.validemail=validemail;
 
         // naveen
         service.headfoot = headfoot;
@@ -93,11 +95,25 @@
         service.addopenelectives=addopenelectives;
         return service;
         // uploaddata
+        function validemail(data){
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(data);
+        }
+        function validnumber(data){
+                var pattern = /^\d{10}$/;
+                var cleanedPhoneNumber = data.toString().replace(/\D/g, '');
+                if (pattern.test(cleanedPhoneNumber)) {
+                  return true; 
+                } else {
+                  return false;
+                }
+        }
         function labordersgetinfo(){
             return $http.post(globalConfig.labordersgetinfo).then(handleSuccess,handleError("Error "))
         }
         function msglaborders(data){
-            return $http.post(globalConfig.msglaborders,data).then(handleSuccess,handleError("Error "))
+            check=true;
+            return $http.post(globalConfig.msglaborders,data,{responseType: 'arraybuffer' }).then(handleSuccess,handleError("Error "))
         }
         function uhod(item){
             return $http.post(globalConfig.updatehod,item).then(handleSuccess,handleError("Error "))
@@ -310,7 +326,12 @@
             return $http.post(globalConfig.userLoginApi, user).then(handleSuccess, handleError('Error deleting user'));
         }
         function handleSuccess(res) {
-            return res.data;
+            if(!check){
+                return res.data;
+            }else{
+                check=false;
+                return res;
+            }
         }
         function handleError(error) {
             return function () {
